@@ -11,10 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607112501) do
+ActiveRecord::Schema.define(version: 20160607155735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.string   "title"
+    t.text     "answer_options"
+    t.integer  "share_counter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "survey_questions", ["topic_id"], name: "index_survey_questions_on_topic_id", using: :btree
+
+  create_table "survey_responses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "survey_question_id"
+    t.text     "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "survey_responses", ["survey_question_id"], name: "index_survey_responses_on_survey_question_id", using: :btree
+  add_index "survey_responses", ["user_id"], name: "index_survey_responses_on_user_id", using: :btree
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
