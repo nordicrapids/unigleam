@@ -15,6 +15,13 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime
 #  updated_at             :datetime
+#  provider               :string
+#  uid                    :string
+#  is_admin               :boolean          default(FALSE)
+#  first_name             :string
+#  last_name              :string
+#  age                    :integer
+#  address                :text
 #
 
 require 'test_helper'
