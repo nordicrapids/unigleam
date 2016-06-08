@@ -24,7 +24,7 @@ before_action :authenticate_user!
       flash[:notice] = "Topic has been created."
       redirect_to admin_topics_path
     else
-      flash[:alert] = "Topic has not been created."
+      flash[:alert] = "Topic has not been created. #{@topic.errors.full_messages.to_sentence}"
       render "new"
     end
   end
