@@ -1,0 +1,23 @@
+<%= form_for [:admin, @survey_question] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :topic_id, "Topic" %>
+    <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.id, x.id] }, @survey_question.topic_id), {}, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, :class => "form-control", :placeholder => "Title" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :answer_options, "Answer Options" %>
+    <%= f.text_field :answer_options, :class => "form-control", :placeholder => "Answer options" %>
+  </div>
+
+  <div class="form-action">
+    <%= f.submit "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success" %>
+    <%= link_to "Cancel", admin_survey_questions_path %>
+  </div>
+
+<% end %>

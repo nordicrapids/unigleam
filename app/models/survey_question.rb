@@ -12,4 +12,11 @@
 #
 
 class SurveyQuestion < ActiveRecord::Base
+
+  belongs_to :topic
+
+  def self.strong_parameters
+    columns =[:id, :topic_id, :title, :answer_options, :share_counter]
+  end
+
 end
