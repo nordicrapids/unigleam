@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   namespace :admin do
-    # users
+    resources :survey_questions
     root "pages#dashboard"
 
   end
