@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="pull-left">
-      <h2>Survey Questions</h2>
+      <h2>Topics</h2>
     </div>
 
     <div class="pull-right">
-      <%= link_to "Add New Survey Question", new_admin_survey_question_path, :class => "btn btn-success" %>
+      <%= link_to "Add New Topic", new_admin_topic_path, :class => "btn btn-success" %>
     </div>
   </div>
 </div>
@@ -21,33 +21,25 @@
       <th>
         Topic
       </th>
-
-      <th>
-        Title
-      </th>
-
+  
       <th>
         Action
       </th>
     </thead>
 
     <tbody>
-      <% @survey_questions.each do |survey_question| %>
+      <% @topics.each do |topic| %>
         <tr>
           <td>
-            <%= survey_question.id %>
+            <%= topic.id %>
           </td>
 
           <td>
-            <%= survey_question.topic.name if survey_question.topic.present? %>
+            <%= topic.name %>
           </td>
 
           <td>
-            <%= survey_question.title %>
-          </td>
-
-          <td>
-            <%= link_to "Edit", edit_admin_survey_question_path(survey_question) %>
+            <%= link_to "Edit", edit_admin_topic_path(topic) %>
           </td>
         </tr>
       <% end %>

@@ -1,0 +1,23 @@
+<%= form_for [:admin, @topic] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Topic" %>
+    <%= f.text_field :name, :class => "form-control", :placeholder => "Topic" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :photo, "Topic Image" %>
+    <%= f.file_field :photo %>
+
+    <% if @topic.photo.present? %>
+      <br/>
+      <%= image_tag @topic.photo.url(:preview), :class => "img-thumbnail" %>
+    <% end %>
+  </div>
+
+  <div class="form-action">
+    <%= f.submit "#{@topic.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success" %>
+    <%= link_to "Cancel", admin_topics_path %>
+  </div>
+
+<% end %>
