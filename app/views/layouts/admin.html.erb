@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unigleam</title>
+  <%= stylesheet_link_tag    'application', media: 'all'  %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="admin-content">
+
+  <%= render "layouts/header" %>
+
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <div class="sidebar-brand-user">
+          <p>Welcome</p>
+          <p><%= current_user.full_name %></p>
+        </div>
+      </li>
+
+      <li class="<%= 'active' if params[:action] == 'dashboard' %>">
+        <%= link_to "<i class='fa fa-dashboard'></i> Dashboard".html_safe, admin_root_path %>
+      </li>
+
+      <li>
+        <%= link_to "<i class='fa fa-bar-chart'></i> Usage".html_safe, admin_root_path %>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <div class="body-content">
+
+    <div class="container">
+      <br/>
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>
