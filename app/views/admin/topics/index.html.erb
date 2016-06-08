@@ -19,9 +19,13 @@
       </th>
 
       <th>
+        Image
+      </th>
+
+      <th>
         Topic
       </th>
-  
+
       <th>
         Action
       </th>
@@ -32,6 +36,10 @@
         <tr>
           <td>
             <%= topic.id %>
+          </td>
+
+          <td>
+            <%= image_tag topic.photo.url(:preview), :class => "img-thumbnail" %>
           </td>
 
           <td>
