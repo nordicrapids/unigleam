@@ -20,7 +20,7 @@ class Topic < ActiveRecord::Base
   has_many :survey_questions
 
   def self.strong_parameters
-    columns =[:id, :name, :photo]
+    columns =[:id, :name, :photo, :slug]
   end
 
   has_attached_file :photo, :styles => {
