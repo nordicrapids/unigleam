@@ -1,5 +1,11 @@
+<%= content_for :banner do %>
+  <%= image_tag "banner/vote.png", :class=>'page_banner' %>
+<% end %>
+
+
+123
 <% @survey_questions.each do |survey_question| %>
-  
+
   <%= survey_question.title %>
   <br/>
 <% end %>
