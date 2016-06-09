@@ -12,8 +12,20 @@
 
   <div class="form-group">
     <%= f.label :answer_options, "Answer Options" %>
-    <%= f.text_field :answer_options, :class => "form-control", :placeholder => "Answer options" %>
   </div>
+
+  <table class="table table-borderless" id="survey_question_answers">
+    <tbody>
+      <%= f.fields_for :survey_question_answers do |f2| %>
+        <%= render "survey_question_answer_fields", :f => f2 %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to_add_tr_field("Add New Answer", f, :survey_question_answers, "survey_question_answers") %>
+
+  <br/>
+  <br/>
 
   <div class="form-action">
     <%= f.submit "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success" %>
