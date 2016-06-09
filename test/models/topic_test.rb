@@ -10,6 +10,7 @@
 #  photo_updated_at   :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
+#  slug               :string
 #
 
 require 'test_helper'

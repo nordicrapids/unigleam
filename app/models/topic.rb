@@ -10,9 +10,12 @@
 #  photo_updated_at   :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
+#  slug               :string
 #
 
 class Topic < ActiveRecord::Base
+	extend FriendlyId
+  friendly_id :name, use: :slugged
 
   has_many :survey_questions
 
