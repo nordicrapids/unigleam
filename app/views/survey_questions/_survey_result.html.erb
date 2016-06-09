@@ -1,0 +1,30 @@
+<h4 class="theme-font">
+  <%= survey_question.title %>
+</h4>
+
+<%
+  survey_response = survey_question.survey_responses
+  total_survey_response = survey_response.count
+%>
+
+<table class="table table-borderless">
+  <% survey_question.survey_question_answers.each do |survey_question_answer| %>
+    <% total_survey_response_answer = survey_response.where(:answer => survey_question_answer.answer ).count %>
+    <tr>
+      <td>
+        <%= survey_question_answer.answer %>
+      </td>
+
+      <td>
+        <%= total_survey_response.to_i == 0 ? '0' : (number_with_precision(((total_survey_response_answer.to_f/total_survey_response.to_f) * 100), precision: 2)) %> %
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+<%= link_to "Vote", vote_survey_path, :class => "btn btn-theme", :remote => true %>
+<br/>
+
+<br/>
+<br/>

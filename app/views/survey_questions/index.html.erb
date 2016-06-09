@@ -2,10 +2,13 @@
   <%= image_tag "banner/vote.png", :class=>'page_banner' %>
 <% end %>
 
-
-123
+<h2 class="theme-font">Cast your gleam</h2>
+<br/>
+<br/>
 <% @survey_questions.each do |survey_question| %>
 
-  <%= survey_question.title %>
-  <br/>
+  <div id="survey_question_<%= survey_question.id %>">
+    <%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
+  </div>
+
 <% end %>

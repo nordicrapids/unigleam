@@ -1,0 +1,2 @@
+$("#survey_question_<%= @survey_question.id %>").html("")
+$("#survey_question_<%= @survey_question.id %>").html("<%= j render(:partial => 'survey_questions/survey_question', :locals => { :survey_question => @survey_question  } ) %>")

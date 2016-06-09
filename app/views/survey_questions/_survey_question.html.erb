@@ -1,0 +1,22 @@
+<%= form_for survey_question, :url => create_vote_survey_path(survey_question), :method => "post", :remote => true do |f| %>
+  <h4 class="theme-font">
+    <%= survey_question.title %>
+  </h4>
+
+  <% survey_question.survey_question_answers.each do |survey_question_answer| %>
+    <div class="radio">
+      <label>
+        <%= f.radio_button :answer, "#{survey_question_answer.answer}", :checked => false %>
+         <%= survey_question_answer.answer %>
+      </label>
+    </div>
+  <% end %>
+
+  <br/>
+  <%= f.submit "Vote", :class => "btn btn-theme" %>
+  <%= link_to "Result", vote_result_path(survey_question), :class => "btn btn-theme", :remote => "true" %>
+  <br/>
+<% end %>
+
+<br/>
+<br/>

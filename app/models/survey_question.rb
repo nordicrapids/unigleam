@@ -15,6 +15,7 @@ class SurveyQuestion < ActiveRecord::Base
 
   belongs_to :topic
   has_many :survey_question_answers, -> { order(position: :asc) }
+  has_many :survey_responses
 
   accepts_nested_attributes_for :survey_question_answers, :allow_destroy => true
 
