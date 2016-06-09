@@ -11,11 +11,11 @@ before_action :authenticate_user!
   end
 
   def edit
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
   end
 
   def create
@@ -30,7 +30,7 @@ before_action :authenticate_user!
   end
 
   def update
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     if (@topic.update_attributes(topic_params))
       flash[:notice] = "Topic has been updated."
       redirect_to admin_topics_path

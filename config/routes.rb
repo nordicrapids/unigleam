@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   match "topics" => "topics#index", :via => :get, as: "topics"
 
+  # survey questions
+  match "topics/:id/surveys" => "survey_questions#index", :via => :get, as: "topics_survey"
+
   namespace :admin do
     resources :topics
     resources :survey_questions

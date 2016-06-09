@@ -8,5 +8,7 @@
 <hr/>
 
 <% @topics.all.each do |topic| %>
-  <%= link_to "#{topic.name}", root_path %><br/>
+  <%= image_tag topic.photo.url(:preview) %> <%= link_to "#{topic.name}", topics_survey_path(topic) %>
+  <br/>
+  <br/>
 <% end %>
