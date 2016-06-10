@@ -1,0 +1,83 @@
+<div class="dashboard">
+
+  <h3 class="theme-font">Dashboard</h3>
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="col-sm-6 col-md-3 box-counter-divider">
+
+        <div class="dashboard-counter-box">
+          <div class="pull-left">
+            <div class="icon-box red">
+              <i class="fa fa-eye"></i>
+            </div>
+          </div>
+
+          <div class="right">
+            <span class="record-title">Views on<span> <br/>
+            <span class="record-title">Unigleam.com<span> <br/>
+            <span class="record-counter">0</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-6 col-md-3 box-counter-divider">
+
+        <div class="dashboard-counter-box">
+          <div class="pull-left">
+            <div class="icon-box blue">
+              <i class="fa fa-qrcode"></i>
+            </div>
+          </div>
+
+          <div class="right">
+            <span class="record-title">Number of<span> <br/>
+            <span class="record-title">Unigleam Users<span> <br/>
+            <span class="record-counter"><%= User.all.count %></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-6 col-md-3 box-counter-divider">
+
+        <div class="dashboard-counter-box">
+          <div class="pull-left">
+            <div class="icon-box green">
+              <i class="fa fa-photo"></i>
+            </div>
+          </div>
+
+          <div class="right">
+            <span class="record-title">Number of Gleams<span> <br/>
+            <span class="record-title">Casted<span> <br/>
+            <span class="record-counter"><%= SurveyResponse.all.count %></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-6 col-md-3 box-counter-divider">
+
+        <div class="dashboard-counter-box">
+          <div class="pull-left">
+            <div class="icon-box yellow">
+              <i class="fa fa-tint"></i>
+            </div>
+          </div>
+
+          <div class="right">
+            <span class="record-title">Number of Gleams<span> <br/>
+            <span class="record-title">Shared<span> <br/>
+            <span class="record-counter">0</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
