@@ -7,23 +7,26 @@
   total_survey_response = survey_response.count
 %>
 
-<table class="table table-borderless">
-  <% survey_question.survey_question_answers.each do |survey_question_answer| %>
-    <% total_survey_response_answer = survey_response.where(:answer => survey_question_answer.answer ).count %>
-    <tr>
-      <td>
-        <%= survey_question_answer.answer %>
-      </td>
+<% survey_question.survey_question_answers.each_with_index do |survey_question_answer,index| %>
+  <% total_survey_response_answer = survey_response.where(:answer => survey_question_answer.answer ).count %>
+  <% total_survey_response_percentage = total_survey_response.to_i == 0 ? '0' : (number_with_precision(((total_survey_response_answer.to_f/total_survey_response.to_f) * 100), precision: 2)) %>
 
-      <td>
-        <%= total_survey_response.to_i == 0 ? '0' : (number_with_precision(((total_survey_response_answer.to_f/total_survey_response.to_f) * 100), precision: 2)) %> %
-      </td>
-    </tr>
-  <% end %>
-</table>
+  <div class="result-title">
+    <%= survey_question_answer.answer %>
+  </div>
+  <div class="result">
+    <div class="result-bar bar-<%= index %>" style="width: <%= total_survey_response_percentage.to_f - 10 %>%">
+      <span><%= total_survey_response_answer %></span>
+    </div>
+    <%= total_survey_response_percentage %> %
+  </div>
+  <p class="result-total">
+    <%= total_survey_response.to_i == 0 ? "0 gleam" : pluralize(total_survey_response, 'gleam') %> casted
+  </p>
+<% end %>
 
 <br/>
-<%= link_to "Vote", vote_survey_path, :class => "btn btn-theme", :remote => true %>
+<%= link_to "Vote", vote_survey_path(survey_question.id), :class => "btn btn-theme", :remote => true %>
 <br/>
 
 <br/>
