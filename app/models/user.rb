@@ -22,9 +22,14 @@
 #  last_name              :string
 #  age                    :integer
 #  address                :text
+#  latitude               :float
+#  longitude              :float
 #
 
 class User < ActiveRecord::Base
+  geocoded_by :address
+  after_validation :geocode
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

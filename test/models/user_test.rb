@@ -22,6 +22,8 @@
 #  last_name              :string
 #  age                    :integer
 #  address                :text
+#  latitude               :float
+#  longitude              :float
 #
 
 require 'test_helper'
