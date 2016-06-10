@@ -91,4 +91,27 @@
     <br/>
   </div>
 
+  <br/>
+  <br/>
+  <br/>
+  <div class="col-sm-12">
+    <br/>
+    <br/>
+    <h2>Users</h2>
+    <table class="table">
+      <thead>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Coordinate</th>
+      </thead>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.address %></td>
+        <td><%= user.latitude %>,<%= user.longitude %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
 </div>
