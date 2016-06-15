@@ -1,6 +1,6 @@
 class Admin::SurveyQuestionsController < ApplicationController
-  layout "admin"
-  before_action :authenticate_user!
+layout "admin"
+before_action :authenticate_user!
 
   def index
     @survey_questions = SurveyQuestion.all
