@@ -6,14 +6,21 @@
   <% survey_question.survey_question_answers.each do |survey_question_answer| %>
     <div class="radio">
       <label>
-        <%= f.radio_button :answer, "#{survey_question_answer.answer}", :checked => false %>
-         <%= survey_question_answer.answer %>
+        <% if user_signed_in? %>
+          <%= f.radio_button :answer, "#{survey_question_answer.answer}", :checked => false %>
+        <% else %>
+          <%= f.radio_button :answer, "#{survey_question_answer.answer}", :checked => false, :disabled => true %>
+        <% end %>
+        <%= survey_question_answer.answer %>
       </label>
     </div>
   <% end %>
 
   <br/>
-  <%= f.submit "Vote", :class => "btn btn-theme" %>
+  <% if user_signed_in? %>
+    <%= f.submit "Vote", :class => "btn btn-theme" %>
+  <% end %>
+  
   <%= link_to "Result", vote_result_path(survey_question), :class => "btn btn-theme", :remote => "true" %>
   <br/>
 <% end %>

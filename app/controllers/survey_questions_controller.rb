@@ -1,5 +1,5 @@
 class SurveyQuestionsController < ApplicationController
-before_action :authenticate_user!
+before_action :authenticate_user!, only: [:create_vote_survey]
 
   def index
     @topic = Topic.friendly.find(params[:id])
