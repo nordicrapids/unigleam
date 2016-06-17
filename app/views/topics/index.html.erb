@@ -1,18 +1,39 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="pull-left">
-      <h2>Topics</h2>
-    </div>
-  </div>
-</div>
-<hr/>
+<div id="portfolio" class="container">
 
-<% @topics.all.each do |topic| %>
-  <%= link_to topics_survey_path(topic) do %>
-    <%= image_tag topic.photo.url(:preview) %>
-  <% end %>
-  
-  <%= link_to "#{topic.name}", topics_survey_path(topic) %>
-  <br/>
-  <br/>
-<% end %>
+	<!-- Begin Title -->
+	<div class="row" style="visibility: visible; ">
+		<div class="col-xs-4 col-xs-offset-4 text-center mb10">
+			<div class="heading"><h4>Topics</h4></div>
+		</div>
+	</div>
+
+	<!-- Portfolio Items -->
+	<div class="row">
+		<ul id="" class="col-sm-12 text-center no-padding">
+
+			<% @topics.all.each do |topic| %>
+			  <li onclick="" class="item print col-sm-3 mix_all" style="display: inline-block;  opacity: 1;">
+					<div class="view-circle img-circle image-hover-1">
+						<!-- Project Thumb -->
+						<%= image_tag topic.photo.url(:preview), :class => "img-responsive" %>
+				    <div class="mask img-circle">
+					    <div class="image-hover-content">
+								<%= link_to topics_survey_path(topic) do %>
+									<div class="image-icon-holder"><span class="ion-ios7-search image-icons"></span></div>
+								<% end %>
+							</div><!-- /portfolio hover content -->
+						</div><!-- /mask-->
+					</div><!-- /portfolio hover -->
+					<div class="portfolio-text mt20 mb5">
+				  	<h3 class="portfolio-title">
+							<%= link_to topic.name, topics_survey_path(topic) %>
+						</h3>
+					</div>
+				</li><!-- /list item -->
+			<% end %>
+
+
+		</ul><!-- /portfolio ul -->
+	</div><!-- /row -->
+
+</div>
