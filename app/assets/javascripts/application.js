@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require highcharts
+//= require theme/js/royal_preloader.min
+//= require theme/js/scrollReveal
 //= require_tree .

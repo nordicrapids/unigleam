@@ -12,5 +12,13 @@
  *
  *= require_tree .
  *= require font-awesome
+ *= require theme/css/style
+ *= require theme/css/royal_preloader
+ *= require theme/css/bootstrap-social
+ *= require theme/css/animate.min
+ *= require theme/css/owl.carousel
+ *= require theme/css/jquery.snippet
+ *= require theme/css/buttons
+ *= require theme/css/ionicons.min
  *= require_self
  */
