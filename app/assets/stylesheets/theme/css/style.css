@@ -52,7 +52,7 @@ Author:Denis Samardjiev
 	=Media Queries
 */
 
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700%7CRaleway:200,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700%7CRaleway:200,300,400,700');
 
 /* =Common Styles
 -------------------------------------------------------------- */
@@ -83,9 +83,13 @@ html {
 }
 
 pre[class*="htmlCodeCollapse"] {
+    border-radius:$border-radius;
     margin:0 0 1.336em 0;
     padding:.3em 1em 1em 1em;
     font-size:1.125em;
+    @include breakpoint(b2) {
+        font-size:.806em;
+    }
 }
 
 .blue-css-square { height:20px; width:20px; background-color:#3498db;margin-top:3px; }
