@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 // gallery zoom
 $('.popup-gallery').each(function() {
-     $(this).magnificPopup({ 
+     $(this).magnificPopup({
         delegate: '.gallery-zoom',
         type:'image',
         gallery: {
@@ -43,11 +43,13 @@ $(document).ready(function() {
 });
 
 // scroll to top action
-$('.scroll-top').on('click', function(event) {
-    event.preventDefault();
-    $('html, body').animate({
-        scrollTop: 0
-    }, 'slow');
+$(document).ready(function() {
+    $('.scroll-top').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'slow');
+    });
 });
 
 // run mixitup portfolio
@@ -185,7 +187,7 @@ $(document).ready(function(){
       if (percent>100) {
           percent=0;
           crsl.carousel('next');
-      }      
+      }
     }
     crsl.carousel({
         interval: false,
@@ -203,5 +205,5 @@ $(document).ready(function(){
 $('#fixed-navbar').affix({
     offset: {
         top: $('.top-bar').height()
-    }   
+    }
 });
