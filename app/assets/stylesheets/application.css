@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require font-awesome
+ *= require ionicons
  *= require theme/css/style
  *= require theme/css/royal_preloader
  *= require theme/css/bootstrap-social
