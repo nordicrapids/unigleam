@@ -86,9 +86,6 @@ pre[class*="htmlCodeCollapse"] {
     margin:0 0 1.336em 0;
     padding:.3em 1em 1em 1em;
     font-size:1.125em;
-    @include breakpoint(b2) {
-        font-size:.806em;
-    }
 }
 
 .blue-css-square { height:20px; width:20px; background-color:#3498db;margin-top:3px; }
