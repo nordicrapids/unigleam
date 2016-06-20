@@ -23,8 +23,11 @@ class Topic < ActiveRecord::Base
     columns =[:id, :name, :photo, :slug]
   end
 
+	# Topic.find_each { |t| t.photo.reprocess! }
+
   has_attached_file :photo, :styles => {
                             :preview => ["150x150>",:jpg],
+														:medium => ["260x260#",:jpg],
 														:large => ["100%", :jpg] },
 														:default_style => :thumb,
 														:default_url => "/assets/missing.png",
