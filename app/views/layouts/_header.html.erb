@@ -14,7 +14,7 @@
 	        <ul class="topbar-list list-inline">
 						<% unless user_signed_in? %>
 							<li>
-								<a data-toggle="modal" data-target="#login">Login</a>
+								<a data-toggle="modal" data-target="#login_modal">Login</a>
 							</li>
 
 							<li>
@@ -33,33 +33,48 @@
 	<!-- End Top Bar -->
 
 	<!-- Login -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+	<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
 	    <div class="modal-dialog modal-sm">
 	        <div class="modal-content">
 	            <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 	                <h4 class="modal-title" id="loginLabel">Login</h4>
 	            </div>
-	            <div class="modal-body">
-		            <form role="form">
+							<%= form_for(resource, :as => resource_name,
+								 :url => session_path(resource_name),
+								 :html => {:id => "sign_in_user"},
+								 :format => :json,
+								 :remote => true ) do |f| %>
+
+								<div class="modal-body">
+
+									<div class="alert alert-danger" role="alert" id="login_error_message" style="display:none;">
+									  <strong>Warning!</strong> Username or password is invalid!
+									</div>
+
 			            <div class="form-group">
-			                <label for="exampleInputEmail1">Email address</label>
-			                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+										<%= f.label :email, "Email address" %>
+										<%= f.email_field :email, :class => "form-control", :placeholder => "Enter email" %>
 			            </div>
 			            <div class="form-group">
-			                <label for="exampleInputPassword1">Password</label>
-			                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										<%= f.label :password, "Password" %>
+										<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
 			            </div>
 			            <div class="checkbox">
-			                <label>
-			                    <input type="checkbox"> Do you flex?
-			                </label>
+		                <label>
+											<%= f.check_box :remember_me %> Remember me
+		                </label>
 			            </div>
-			        </form><!-- /form -->
-	            </div>
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-rw btn-primary">Login</button>
-	            </div>
+	            	</div>
+
+								<div class="modal-footer">
+									<center><%= f.submit "Login", :class => "btn btn-rw btn-theme" %></center>
+									<br/>
+									<center><%= link_to "<i class='fa fa-facebook'></i> Sign in with Facebook".html_safe, user_omniauth_authorize_path(:facebook), :class => "facebook_login" %></center>
+									<br/>
+		            </div>
+							<% end %>
+
 	        </div><!-- /modal content -->
 	    </div><!-- /modal dialog -->
 	</div><!-- /modal holder -->
