@@ -8,49 +8,32 @@
 </head>
 <body class="admin-content">
 
-  <!-- Begin Header -->
-  <header>
-
-    <div class="navbar-wrapper">
-  		<div class="navbar navbar-main" id="fixed-navbar">
-  			<div class="container">
-  				<div class="row">
-  					<div class="col-sm-12 column-header">
-  						<div class="navbar-header">
-  							<!-- Brand -->
-  							<%= link_to root_path, :class=>"navbar-brand" do %>
-  			          <%= image_tag "company-logo.png", :class => "raleway-logo"  %>
-  			        <% end %>
-
-  							<!-- Mobile Navigation -->
-  							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-  					            <span class="sr-only">Toggle navigation</span>
-  					            <span class="icon-bar"></span>
-  					            <span class="icon-bar"></span>
-  					            <span class="icon-bar"></span>
-  							</button>
-  						</div><!-- /navbar header -->
-
-  						<!-- Main Navigation - Explained in Documentation -->
-  						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
-  							<ul class="nav navbar-nav navbar-right">
-  								<li>
-  									<%= link_to "Home", root_path %>
-  						    </li>
-
-  								<li>
-  									<%= link_to "Topics", topics_path %>
-  						    </li>
-
-  							</ul><!-- /navbar right -->
-  						</nav><!-- /nav -->
-  					</div>
-  				</div>
-  			</div><!-- /container header -->
-  		</div><!-- /navbar -->
-  	</div><!-- /navbar wrapper -->
-
-  </header>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to root_path do %>
+            <%= image_tag "company-logo.png", :class => "company-logo" %>
+          <% end %>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
 
   <div id="wrapper">
 

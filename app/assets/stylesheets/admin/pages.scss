@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .admin-content{
 
+  .navbar{
+    z-index: 1500;
+  }
+
   #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -82,7 +86,7 @@
       color: #EE8742 !important;
     }
 
-    color: black;
+    color: black !important;
   }
 
   .sidebar-nav li a:active,
