@@ -1,7 +1,4 @@
 <%= form_for survey_question, :url => create_vote_survey_path(survey_question), :method => "post", :remote => true do |f| %>
-  <h4 class="theme-font">
-    <%= survey_question.title %>
-  </h4>
 
   <% survey_question.survey_question_answers.each do |survey_question_answer| %>
     <div class="radio">
@@ -20,7 +17,7 @@
   <% if user_signed_in? %>
     <%= f.submit "Vote", :class => "btn btn-theme" %>
   <% end %>
-  
+
   <%= link_to "Result", vote_result_path(survey_question), :class => "btn btn-theme", :remote => "true" %>
   <br/>
 <% end %>

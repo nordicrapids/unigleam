@@ -4,13 +4,40 @@
 
 <div class="container">
   <h2 class="theme-font">Cast your gleam</h2>
-  <br/>
-  <br/>
-  <% @survey_questions.each do |survey_question| %>
-
-    <div id="survey_question_<%= survey_question.id %>">
-      <%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
-    </div>
-
-  <% end %>
+	<br/>
 </div>
+
+<% @survey_questions.each_with_index do |survey_question, index| %>
+	<div class="<%= index.even? ? "background-light-grey" : "" %> pt40 pb40 border-top">
+		<div class="container">
+			<!-- Begin Carousel + Content -->
+			<div class="row">
+
+				<!-- Begin Carousel -->
+				<div class="col-sm-4" style="visibility: visible; ">
+					<div style="background-image:url('<%= survey_question.topic.photo.url(:medium) %>'); height:260px; background-repeat: no-repeat;"></div>
+				</div><!-- /column -->
+				<!-- End Carousel -->
+
+				<!-- Content Inside -->
+				<div class="col-sm-8" style="visibility: visible; ">
+					<div class="heading mb20 mt30-xs">
+						<h4>
+							<span class="ion-beaker mr15"></span>
+							<span class="theme-font"><%= survey_question.title %></span>
+						</h4>
+					</div>
+
+					<div id="survey_question_<%= survey_question.id %>">
+			      <%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
+			    </div>
+
+				</div><!-- /column -->
+				<!-- End Content Inside -->
+
+			</div><!-- /row -->
+			<!-- End Carousel + Content -->
+
+		</div><!-- /container -->
+	</div>
+<% end %>
