@@ -8,7 +8,49 @@
 </head>
 <body class="admin-content">
 
-  <%= render "layouts/header" %>
+  <!-- Begin Header -->
+  <header>
+
+    <div class="navbar-wrapper">
+  		<div class="navbar navbar-main" id="fixed-navbar">
+  			<div class="container">
+  				<div class="row">
+  					<div class="col-sm-12 column-header">
+  						<div class="navbar-header">
+  							<!-- Brand -->
+  							<%= link_to root_path, :class=>"navbar-brand" do %>
+  			          <%= image_tag "company-logo.png", :class => "raleway-logo"  %>
+  			        <% end %>
+
+  							<!-- Mobile Navigation -->
+  							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+  					            <span class="sr-only">Toggle navigation</span>
+  					            <span class="icon-bar"></span>
+  					            <span class="icon-bar"></span>
+  					            <span class="icon-bar"></span>
+  							</button>
+  						</div><!-- /navbar header -->
+
+  						<!-- Main Navigation - Explained in Documentation -->
+  						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
+  							<ul class="nav navbar-nav navbar-right">
+  								<li>
+  									<%= link_to "Home", root_path %>
+  						    </li>
+
+  								<li>
+  									<%= link_to "Topics", topics_path %>
+  						    </li>
+
+  							</ul><!-- /navbar right -->
+  						</nav><!-- /nav -->
+  					</div>
+  				</div>
+  			</div><!-- /container header -->
+  		</div><!-- /navbar -->
+  	</div><!-- /navbar wrapper -->
+
+  </header>
 
   <div id="wrapper">
 
@@ -46,6 +88,16 @@
     </div>
 
   </div>
+
+  <!-- On Scroll Animations - scrollReveal.js -->
+  <script>
+		var config = {
+			easing: 'hustle',
+			mobile:  true,
+			delay:  'onload'
+		}
+		window.sr = new scrollReveal( config );
+  </script>
 
 </body>
 </html>
