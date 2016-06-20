@@ -88,3 +88,7 @@
     display: inline-block;
     border-bottom: 2px solid #EE8742 !important;
 }
+
+.navbar.navbar-main ul.nav li:hover > a {
+  color: #EE8742 !important;
+}
