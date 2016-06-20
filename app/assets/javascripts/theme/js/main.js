@@ -1,8 +1,10 @@
 // preloader
-Royal_Preloader.config({
+$(document).ready(function() {
+  Royal_Preloader.config({
     mode:           'number',
     showProgress:   false,
     background:     '#ffffff'
+  });
 });
 
 // image zoom
