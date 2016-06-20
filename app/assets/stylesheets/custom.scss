@@ -75,4 +75,16 @@
 
 .footer-light{
   margin-top: 150px;
+  .heading-footer{
+    h4{
+      border-bottom: 2px solid #EE8742 !important;
+    }
+  }
+}
+
+.heading h1, .heading h2, .heading h3, .heading h4, .heading h5, .heading h6 {
+    margin: 0 0 -2px 0;
+    padding-bottom: 15px;
+    display: inline-block;
+    border-bottom: 2px solid #EE8742 !important;
 }

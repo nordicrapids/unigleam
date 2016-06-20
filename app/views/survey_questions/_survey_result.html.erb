@@ -1,7 +1,3 @@
-<h4 class="theme-font">
-  <%= survey_question.title %>
-</h4>
-
 <%
   survey_response = survey_question.survey_responses
   total_survey_response = survey_response.count
@@ -20,11 +16,11 @@
     </div>
     <%= total_survey_response_percentage %> %
   </div>
-  <p class="result-total">
-    <%= total_survey_response.to_i == 0 ? "0 gleam" : pluralize(total_survey_response, 'gleam') %> casted
-  </p>
 <% end %>
+<br/>
+<small>(Total of: <%= total_survey_response.to_i == 0 ? "0 gleam" : pluralize(total_survey_response, 'gleam') %> casted)</small>
 
+<br/>
 <br/>
 <%= link_to "Vote", vote_survey_path(survey_question.id), :class => "btn btn-theme", :remote => true %>
 <br/>
