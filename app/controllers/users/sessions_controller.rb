@@ -1,15 +1,12 @@
 class Users::SessionsController < ApplicationController
 
   def create
+    @status = false
     resource = User.find_for_database_authentication(email: params[:user][:email])
-
-    return invalid_login_attempt unless resource
 
     if resource.valid_password?(params[:user][:password])
       sign_in :user, resource
-      return render :json => {:success => true}
-    else
-      invalid_login_attempt
+      @status = true
     end
   end
 
@@ -19,9 +16,5 @@ class Users::SessionsController < ApplicationController
 
   end
 
-private
-    def invalid_login_attempt
-      return render :json => {:success => false}
-    end
 
 end

@@ -9,11 +9,11 @@ $ ->
       alert('failure!')
 
   $(document).on 'ajax:success', 'form#sign_in_user', (e, data, status, xhr) ->
-    console.log data
-    alert "123"
-    if data.success
-      $('#login_modal').modal('hide')
-      window.location.href = $("body").data("url")
-
-    else
-      $("#login_error_message").show()
+    # console.log data
+    # alert "123"
+    # if data.success
+    #   $('#login_modal').modal('hide')
+    #   window.location.href = $("body").data("url")
+    #
+    # else
+    #   $("#login_error_message").show()
