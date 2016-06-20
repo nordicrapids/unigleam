@@ -23,7 +23,7 @@
 //= require theme/js/jquery.fitvids
 //= require theme/js/style-switcher
 //= require theme/js/activate-snippet
-//= require theme/js/skrollr.min
 //= require theme/js/royal_preloader.min
+//= require theme/js/skrollr.min
 //= require theme/js/main
 //= require_tree .
