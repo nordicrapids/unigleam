@@ -8,7 +8,7 @@ $ ->
     else
       alert('failure!')
 
-  $("form#sign_in_user").bind "ajax:success", (e, data, status, xhr) ->
+  $(document).on 'ajax:success', 'form#sign_in_user', (e, data, status, xhr) ->
     console.log data
     alert "123"
     if data.success
