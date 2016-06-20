@@ -12,8 +12,19 @@
 				<!-- Social Buttons -->
 				<div class="col-sm-5 text-right">
 	        <ul class="topbar-list list-inline">
-						<li>
-							<a data-toggle="modal" data-target="#login">Login</a></li><li><a href="pages-forms-register-login.html">Register</a></li>
+						<% unless user_signed_in? %>
+							<li>
+								<a data-toggle="modal" data-target="#login">Login</a>
+							</li>
+
+							<li>
+								<a href="pages-forms-register-login.html">Register</a>
+							</li>
+						<% else %>
+							<li>
+								<%= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
+							</li>
+						<% end %>
 					</ul>
 				</div>
 			</div><!--/row -->
@@ -85,7 +96,7 @@
 								<li>
 									<%= link_to "Topics", topics_path %>
 						    </li>
-								
+
 							</ul><!-- /navbar right -->
 						</nav><!-- /nav -->
 					</div>
