@@ -1,14 +1,14 @@
 <%= form_for survey_question, :url => create_vote_survey_path(survey_question.id), :method => "post", :remote => true do |f| %>
 
   <% survey_response = user_signed_in? ? survey_question.user_response(current_user) : "" %>
-
+  <%= survey_response %>
   <% survey_question.survey_question_answers.each do |survey_question_answer| %>
     <div class="radio">
       <label>
         <% if user_signed_in? %>
-          <%= f.radio_button :answer, "#{survey_question_answer.answer}", :checked => (survey_question_answer.answer == survey_response ? true : false ) %>
+          <%= f.radio_button :answer, "#{survey_question_answer.id}", :checked => (survey_question_answer.id == survey_response ? true : false ) %>
         <% else %>
-          <%= f.radio_button :answer, "#{survey_question_answer.answer}", :checked => false, :disabled => true %>
+          <%= f.radio_button :answer, "#{survey_question_answer.id}", :checked => false, :disabled => true %>
         <% end %>
         <%= survey_question_answer.answer %>
       </label>

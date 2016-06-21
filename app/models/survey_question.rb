@@ -53,7 +53,7 @@ class SurveyQuestion < ActiveRecord::Base
     survey_response = SurveyResponse.where({user_id: user.id, survey_question_id: survey_question.id}).first
 
     if survey_response.present?
-      return survey_response.answer
+      return survey_response.survey_question_answer_id
     else
       return ""
     end

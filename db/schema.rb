@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621063611) do
+ActiveRecord::Schema.define(version: 20160621094007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,10 @@ ActiveRecord::Schema.define(version: 20160621063611) do
     t.text     "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "survey_question_answer_id"
   end
 
+  add_index "survey_responses", ["survey_question_answer_id"], name: "index_survey_responses_on_survey_question_answer_id", using: :btree
   add_index "survey_responses", ["survey_question_id"], name: "index_survey_responses_on_survey_question_id", using: :btree
   add_index "survey_responses", ["user_id"], name: "index_survey_responses_on_user_id", using: :btree
 

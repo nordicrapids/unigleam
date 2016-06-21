@@ -12,6 +12,8 @@
 
 class SurveyQuestionAnswer < ActiveRecord::Base
 
+  belongs_to :survey_question
+
   def self.strong_parameters
     columns = [:id,
               :survey_question_id,
