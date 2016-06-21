@@ -45,6 +45,7 @@
 
 <script src="https://connect.facebook.net/en_US/all.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
+
 	FB.init({
 	  appId: '<%= ENV["FACEBOOK_KEY"] %>',
 	  status: true,
@@ -63,12 +64,14 @@
 			if (response && response.post_id) {
 
 				$.ajax({
-				  type: "POST",
-				  url: survey_url,
-				  data: {},
-				  success: success,
-				  dataType: dataType
-				});
+		      url: survey_url,
+		      type: "POST",
+		      data: {},
+		      success: function (response) {
+		      },
+		      error: function (xhr, status) {
+		      }
+		    });
 
 			}
 

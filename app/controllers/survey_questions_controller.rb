@@ -30,6 +30,7 @@ before_action :authenticate_user!, only: [:create_vote_survey]
   def share_counter
     @survey_question = SurveyQuestion.friendly.find(params[:id])
     @survey_question.increment!(:share_counter)
+    render json: {:status => "success"}
   end
 
 end
