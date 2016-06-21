@@ -71,7 +71,7 @@
           <div class="right">
             <span class="record-title">Number of Gleams<span> <br/>
             <span class="record-title">Shared<span> <br/>
-            <span class="record-counter">0</span>
+            <span class="record-counter"><%= SurveyQuestion.sum(:share_counter) %></span>
           </div>
         </div>
 
