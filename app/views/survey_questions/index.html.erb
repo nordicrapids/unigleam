@@ -62,7 +62,6 @@
 		}, function( response ) {
 
 			if (response && response.post_id) {
-
 				$.ajax({
 		      url: survey_url,
 		      type: "POST",
@@ -72,10 +71,9 @@
 		      error: function (xhr, status) {
 		      }
 		    });
-
 			}
 
-			});
+		});
 	}
 
 	$(".facebook-share-btn").on( "click", function() {
