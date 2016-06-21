@@ -42,3 +42,35 @@
 		</div><!-- /container -->
 	</div>
 <% end %>
+
+<script src="http://connect.facebook.net/en_US/all.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+	FB.init({
+	  appId: '<%= ENV["FACEBOOK_KEY"] %>',
+	  status: true,
+	  cookie: true,
+	  xfbml: true
+	});
+
+function share_prompt() {
+	FB.ui( {
+		method: 'feed',
+		name: "fsdfsdf",
+		link: "www.google.com",
+		picture: "FacbookShareRed.jpg"
+	}, function( response ) {
+
+		if (response && response.post_id) {
+			alert('Post was published.');
+		} else {
+		 	alert('Post was not published.');
+		}
+
+		});
+}
+
+$(document).ready(function(){
+	$('.facebook-share-btn').on( 'click', share_prompt() );
+});
+
+</script>
