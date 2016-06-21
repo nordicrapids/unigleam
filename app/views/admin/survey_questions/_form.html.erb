@@ -11,6 +11,17 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :image, "Topic Image" %>
+    <%= f.file_field :image %>
+
+    <% if @survey_question.image.present? %>
+      <br/>
+      <%= image_tag @survey_question.image.url(:medium), :class => "img-thumbnail" %>
+    <% end %>
+  </div>
+
+
+  <div class="form-group">
     <%= f.label :answer_options, "Answer Options" %>
   </div>
 
