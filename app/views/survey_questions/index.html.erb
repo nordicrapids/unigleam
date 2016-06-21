@@ -61,7 +61,8 @@ function share_prompt() {
 	}, function( response ) {
 
 		if (response && response.post_id) {
-			alert('Post was published.');
+			console.log(response)
+
 		} else {
 		 	alert('Post was not published.');
 		}
