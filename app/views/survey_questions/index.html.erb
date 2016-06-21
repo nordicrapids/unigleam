@@ -52,31 +52,30 @@
 	  xfbml: true
 	});
 
-function share_prompt() {
-	FB.ui( {
-		method: 'feed',
-		name: "fsdfsdf",
-		link: "www.google.com",
-		picture: "FacbookShareRed.jpg"
-	}, function( response ) {
+	function share_prompt(title,url,picture_url) {
+		FB.ui( {
+			method: 'feed',
+			name: title,
+			link: url,
+			picture: picture_url
+		}, function( response ) {
 
-		if (response && response.post_id) {
-			console.log(response)
+			if (response && response.post_id) {
+				console.log(response)
 
-		} else {
-		 	alert('Post was not published.');
-		}
+			} else {
+			}
 
-		});
-}
+			});
+	}
 
-$(document).ready(function(){
-	$("body").on( "click", ".facebook-share-btn", function() {
+	$(".facebook-share-btn").on( "click", function() {
 		event.preventDefault();
-		alert("123");
-		share_prompt()
+		title = $(this).data("title")
+		url = $(this).data("url")
+		picture_url = $(this).data("picture-url")
+		share_prompt(title,url,picture_url)
 	});
 
-});
 
 </script>
