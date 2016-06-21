@@ -52,7 +52,7 @@
 	  xfbml: true
 	});
 
-	function share_prompt(title,url,picture_url,survey) {
+	function share_prompt(title,url,picture_url,survey_url) {
 		FB.ui( {
 			method: 'feed',
 			name: title,
@@ -61,7 +61,14 @@
 		}, function( response ) {
 
 			if (response && response.post_id) {
-				alert(survey)
+
+				$.ajax({
+				  type: "POST",
+				  url: survey_url,
+				  data: {},
+				  success: success,
+				  dataType: dataType
+				});
 
 			}
 
@@ -72,8 +79,8 @@
 		title       = $(this).data("title")
 		url         = $(this).data("url")
 		picture_url = $(this).data("picture-url")
-		survey      = $(this).data("survey")
-		share_prompt(title,url,picture_url,survey)
+		survey_url  = $(this).data("survey")
+		share_prompt(title,url,picture_url,survey_url)
 	});
 
 
