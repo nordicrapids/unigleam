@@ -24,7 +24,8 @@
   <div class="btn btn-theme facebook-share-btn"
     data-title="<%= survey_question.title %>"
     data-picture-url= "<%= survey_question.image.url(:medium) %>"
-    data-url="<%= topics_survey_question_url(survey_question.topic, survey_question) %>" >
+    data-url="<%= topics_survey_question_url(survey_question.topic, survey_question) %>"
+    data-survey="<%= survey_question.slug %>" >
     Share
   </div>
 
