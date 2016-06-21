@@ -21,7 +21,10 @@
 
   <%= link_to "Result", vote_result_path(survey_question.id), :class => "btn btn-theme", :remote => "true" %>
 
-  <%= link_to "Share", "#",  :class => "btn btn-theme facebook-share-btn", :"data-url" => topics_survey_question_url(survey_question.topic, survey_question) %>
+  <button class="btn btn-theme facebook-share-btn" data-url="<%= topics_survey_question_url(survey_question.topic, survey_question) %>">
+    Share
+  </button>
+  
   <br/>
 <% end %>
 
