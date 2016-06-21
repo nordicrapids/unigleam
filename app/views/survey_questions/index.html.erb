@@ -71,7 +71,12 @@ function share_prompt() {
 }
 
 $(document).ready(function(){
-	$('.facebook-share-btn').on( 'click', share_prompt() );
+	$("body").on( "click", ".facebook-share-btn", function() {
+		event.preventDefault();
+		alert("123");
+		share_prompt()
+	});
+
 });
 
 </script>
