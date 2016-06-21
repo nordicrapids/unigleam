@@ -48,4 +48,15 @@ class SurveyQuestion < ActiveRecord::Base
     columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
   end
 
+  def user_response(user)
+    survey_question = self
+    survey_response = SurveyResponse.where({user_id: user.id, survey_question_id: survey_question.id}).first
+
+    if survey_response.present?
+      return survey_response.answer
+    else
+      return ""
+    end
+  end
+
 end
