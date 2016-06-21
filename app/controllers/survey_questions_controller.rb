@@ -27,4 +27,9 @@ before_action :authenticate_user!, only: [:create_vote_survey]
     @survey_question = SurveyQuestion.find(params[:id])
   end
 
+  def share_counter
+    @survey_question = SurveyQuestion.friendly.find(params[:id])
+    @survey_question.increment!(:share_counter)
+  end
+
 end

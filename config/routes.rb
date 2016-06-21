@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   match "survey_question/:id/result" => "survey_questions#vote_result", :via => :get, as: "vote_result"
   match "survey_question/:id/survey" => "survey_questions#vote_survey", :via => :get, as: "vote_survey"
+  match "survey_question/:id/share" => "survey_questions#share_counter", :via => :post, as: "survey_share_counter"
 
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"
 
