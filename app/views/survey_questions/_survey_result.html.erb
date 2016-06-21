@@ -4,7 +4,7 @@
 %>
 
 <% survey_question.survey_question_answers.each_with_index do |survey_question_answer,index| %>
-  <% total_survey_response_answer = survey_response.where(:answer => survey_question_answer.answer ).count %>
+  <% total_survey_response_answer = survey_response.where(:survey_question_answer_id => survey_question_answer.id ).count %>
   <% total_survey_response_percentage = total_survey_response.to_i == 0 ? '0' : (number_with_precision(((total_survey_response_answer.to_f/total_survey_response.to_f) * 100), precision: 2)) %>
 
   <div class="result-title">

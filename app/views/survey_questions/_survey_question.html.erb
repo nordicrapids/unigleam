@@ -1,7 +1,6 @@
 <%= form_for survey_question, :url => create_vote_survey_path(survey_question.id), :method => "post", :remote => true do |f| %>
 
   <% survey_response = user_signed_in? ? survey_question.user_response(current_user) : "" %>
-  <%= survey_response %>
   <% survey_question.survey_question_answers.each do |survey_question_answer| %>
     <div class="radio">
       <label>
