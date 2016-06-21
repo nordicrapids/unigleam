@@ -18,7 +18,9 @@
     <%= f.submit "Vote", :class => "btn btn-theme" %>
   <% end %>
 
-  <%= link_to "Result", vote_result_path(survey_question), :class => "btn btn-theme", :remote => "true" %>
+  <%= link_to "Result", vote_result_path(survey_question.id), :class => "btn btn-theme", :remote => "true" %>
+
+  <%#= topics_survey_question_url(survey_question.topic, survey_question) %>
   <br/>
 <% end %>
 

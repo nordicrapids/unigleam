@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # survey questions
   match "topics/:id/surveys" => "survey_questions#index", :via => :get, as: "topics_survey"
+  match "topics/:id/surveys/:survey_question_id" => "survey_questions#index", :via => :get, as: "topics_survey_question"
 
   match "survey_question/:id/result" => "survey_questions#vote_result", :via => :get, as: "vote_result"
   match "survey_question/:id/survey" => "survey_questions#vote_survey", :via => :get, as: "vote_survey"
