@@ -13,9 +13,13 @@
 #  image_content_type :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  slug               :string
 #
 
 class SurveyQuestion < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   belongs_to :topic
   has_many :survey_question_answers, -> { order(position: :asc) }

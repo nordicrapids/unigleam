@@ -1,4 +1,4 @@
-<%= form_for survey_question, :url => create_vote_survey_path(survey_question), :method => "post", :remote => true do |f| %>
+<%= form_for survey_question, :url => create_vote_survey_path(survey_question.id), :method => "post", :remote => true do |f| %>
 
   <% survey_question.survey_question_answers.each do |survey_question_answer| %>
     <div class="radio">

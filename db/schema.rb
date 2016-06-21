@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160621063611) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "slug"
   end
 
   add_index "survey_questions", ["topic_id"], name: "index_survey_questions_on_topic_id", using: :btree
