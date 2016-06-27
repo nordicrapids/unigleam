@@ -44,6 +44,13 @@
     position: absolute;
     padding: 15px;
     top: 30px;
+
+    @media(max-width:768px) {
+      .container-fluid{
+        padding-top: 20px;
+      }
+    }
+
   }
 
   #wrapper.toggled #page-content-wrapper {
