@@ -1,0 +1,237 @@
+// Place all the styles related to the admin/pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-content{
+
+  .navbar{
+    z-index: 1500;
+  }
+
+  #wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+
+  #sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #EE8742;
+    color: white;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+
+  #page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    top: 30px;
+
+    @media(max-width:768px) {
+      .container-fluid{
+        padding-top: 20px;
+      }
+    }
+
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+  }
+
+
+  /* Sidebar Styles */
+  .sidebar-nav {
+    position: absolute;
+    top: 60px;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+  }
+
+  .sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    .fa {
+      text-align: right;
+      text-indent: 0;
+      padding-right: 8px;
+    }
+  }
+
+  .sidebar-nav li.active a,
+  .sidebar-nav li a:hover {
+    text-decoration: none;
+    background: white;
+    i.fa {
+      color: #EE8742 !important;
+    }
+
+    color: black !important;
+  }
+
+  .sidebar-nav li a:active,
+  .sidebar-nav li a:focus {
+    text-decoration: none;
+  }
+
+  .sidebar-nav > .sidebar-brand {
+    height: 70px;
+    font-size: 18px;
+    line-height: 60px;
+    padding-top: 15px;
+
+    .sidebar-brand-user{
+      line-height: 15px;
+      font-size: 18px;
+    }
+  }
+
+  .sidebar-nav > .sidebar-brand a {
+    color: white;
+  }
+
+  .sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+  }
+
+  @media(min-width:768px) {
+    #wrapper {
+      padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+      padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+      width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+      width: 0;
+    }
+
+    #page-content-wrapper {
+      padding: 20px;
+      position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+    }
+  }
+
+
+  .dashboard{
+
+    .box-counter-divider{
+      padding: 0;
+      padding-right: 15px;
+    }
+
+    .dashboard-counter-box{
+      display: inline-block;
+      border-radius: 2px;
+      margin: 1rem;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      padding: 10px;
+      margin-left: 0;
+
+      .left, .right {
+        padding: 0;
+      }
+
+      .right {
+        text-align: right;
+
+        .record-title {
+          color: #ACB4B2;
+          font-size: 12px;
+        }
+
+        .record-counter {
+          color: black;
+          font-size: 15px;
+        }
+      }
+
+      .icon-box{
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        margin: auto;
+
+        .fa{
+          font-size: 25px;
+          color: white;
+        }
+      }
+
+      .icon-box.red{
+        background: #E94A34;
+      }
+
+      .icon-box.blue{
+        background: #2B96DD;
+      }
+
+      .icon-box.green{
+        background: #1ECE6C;
+      }
+
+      .icon-box.yellow{
+        background: #F1C500;
+      }
+
+    }
+
+    .line-chart-content{
+      background-color: #EE8742;
+      color: white;
+
+      .line-chart-title{
+        font-size: 18px;
+      }
+    }
+
+  }
+
+  .map-wrapper{
+    height: 550px;
+    padding-left: 0px;
+  }
+
+}

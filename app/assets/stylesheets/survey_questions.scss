@@ -1,0 +1,62 @@
+// Place all the styles related to the survey_questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.answer_fields{
+  width: 85%;
+  display: inline-block;
+}
+
+.remove_answer{
+  margin-top: 5px;
+}
+
+.result-title{
+  line-height: 30px;
+  font-size: 15px;
+}
+
+.result-total{
+  line-height: 30px;
+  font-size: 15px;
+}
+
+.result{
+  .result-bar{
+    height: 28px;
+    padding-right: 15px;
+    line-height: 28px;
+    display: inline-block;
+    text-align: right;
+  }
+
+  .bar-0{
+    background: #D21414;
+    color: white;
+  }
+
+  .bar-1{
+    background: #00ABED;
+    color: white;
+  }
+
+  .bar-2{
+    background: #EE8742;
+    color: white;
+  }
+
+  .bar-3{
+    background: #BC8CBC;
+    color: white;
+  }
+
+  .bar-4{
+    background: #18C47C;
+    color: white;
+  }
+
+  .bar-5{
+    background: #FEE63E;
+    color: white;
+  }
+
+}

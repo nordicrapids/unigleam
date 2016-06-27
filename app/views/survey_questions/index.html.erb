@@ -1,0 +1,88 @@
+<%= content_for :banner do %>
+  <%= image_tag "banner/vote.png", :class=>'page_banner' %>
+<% end %>
+
+<div class="container">
+	<div class="col-xs-4 col-xs-offset-4 text-center mb10">
+		<div class="heading"><h4>Cast your gleam - <%= @topic.name %></h4></div>
+	</div>
+</div>
+
+<% @survey_questions.each_with_index do |survey_question, index| %>
+	<div class="<%= index.even? ? "background-light-grey" : "" %> pt40 pb40 border-top">
+		<div class="container">
+			<!-- Begin Carousel + Content -->
+			<div class="row">
+
+				<!-- Begin Carousel -->
+				<div class="col-sm-4" style="visibility: visible; ">
+					<div style="background-image:url('<%= survey_question.image.url(:medium) %>'); height:260px; background-repeat: no-repeat;"></div>
+				</div><!-- /column -->
+				<!-- End Carousel -->
+
+				<!-- Content Inside -->
+				<div class="col-sm-8" style="visibility: visible; ">
+					<div class="heading mb20 mt30-xs">
+						<h4>
+							<span class="ion-beaker mr15"></span>
+							<span class="theme-font"><%= survey_question.title %></span>
+						</h4>
+					</div>
+
+					<div id="survey_question_<%= survey_question.id %>">
+			      <%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
+			    </div>
+
+				</div><!-- /column -->
+				<!-- End Content Inside -->
+
+			</div><!-- /row -->
+			<!-- End Carousel + Content -->
+
+		</div><!-- /container -->
+	</div>
+<% end %>
+
+<script src="https://connect.facebook.net/en_US/all.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+
+	FB.init({
+	  appId: '<%= ENV["FACEBOOK_KEY"] %>',
+	  status: true,
+	  cookie: true,
+	  xfbml: true
+	});
+
+	function share_prompt(title,url,picture_url,survey_url) {
+		FB.ui( {
+			method: 'feed',
+			name: title,
+			link: url,
+			picture: picture_url
+		}, function( response ) {
+
+			if (response && response.post_id) {
+				$.ajax({
+		      url: survey_url,
+		      type: "POST",
+		      data: {},
+		      success: function (response) {
+		      },
+		      error: function (xhr, status) {
+		      }
+		    });
+			}
+
+		});
+	}
+
+	$(".facebook-share-btn").on( "click", function() {
+		title       = $(this).data("title")
+		url         = $(this).data("url")
+		picture_url = $(this).data("picture-url")
+		survey_url  = $(this).data("survey")
+		share_prompt(title,url,picture_url,survey_url)
+	});
+
+
+</script>

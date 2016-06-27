@@ -1,0 +1,141 @@
+.theme-font{
+  color: #EE8742;
+}
+
+.btn-theme, .btn-theme:hover{
+  background: #EE8742;
+  color: white;
+}
+
+.company-logo{
+  max-width: 200px;
+  padding: 10px;
+}
+
+.navbar-default {
+  background: white;
+}
+
+.body-content {
+  padding-top: 60px;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #EE8742;
+  color: white;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+  border: none !important;
+}
+
+.page_banner{
+  max-width: 100%;
+}
+
+.footer-light{
+  margin-top: 150px;
+  .heading-footer{
+    h4{
+      border-bottom: 2px solid #EE8742 !important;
+    }
+  }
+}
+
+.heading h1, .heading h2, .heading h3, .heading h4, .heading h5, .heading h6 {
+    margin: 0 0 -2px 0;
+    padding-bottom: 15px;
+    display: inline-block;
+    border-bottom: 2px solid #EE8742 !important;
+}
+
+.navbar.navbar-main ul.nav li:hover > a {
+  color: #EE8742 !important;
+}
+
+// login
+.modal-header {
+	background-color: #EE8742 !important;
+  .close{
+    color: white;
+  }
+}
+
+.modal-footer {
+  .btn {
+    width: 100%;
+  }
+}
+
+.facebook_login, .facebook_login:hover {
+  .fa {
+    padding-right: 18px;
+  }
+  width: 100%;
+  background-color: #3b5998;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.image-hover-1:hover .mask {
+	opacity: 0.8 !important;
+	background-color: #EE8742 !important;
+
+  .image-icons{
+    color: #EE8742 !important;
+  }
+}
+
+// header login links
+.topbar-list li a:hover {
+  color: #EE8742 !important;
+}
+
+.login-btn{
+  height: 42px;
+}
+
+// scrolltip
+.footer-scrolltop-holder:hover {
+  background: #EE8742 !important;
+}

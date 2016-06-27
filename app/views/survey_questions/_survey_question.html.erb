@@ -1,0 +1,36 @@
+<%= form_for survey_question, :url => create_vote_survey_path(survey_question.id), :method => "post", :remote => true do |f| %>
+
+  <% survey_response = user_signed_in? ? survey_question.user_response(current_user) : "" %>
+  <% survey_question.survey_question_answers.each do |survey_question_answer| %>
+    <div class="radio">
+      <label>
+        <% if user_signed_in? %>
+          <%= f.radio_button :answer, "#{survey_question_answer.id}", :checked => (survey_question_answer.id == survey_response ? true : false ) %>
+        <% else %>
+          <%= f.radio_button :answer, "#{survey_question_answer.id}", :checked => false, :disabled => true %>
+        <% end %>
+        <%= survey_question_answer.answer %>
+      </label>
+    </div>
+  <% end %>
+
+  <br/>
+  <% if user_signed_in? %>
+    <%= f.submit "Vote", :class => "btn btn-theme" %>
+  <% end %>
+
+  <%= link_to "Result", vote_result_path(survey_question.id), :class => "btn btn-theme", :remote => "true" %>
+
+  <div class="btn btn-theme facebook-share-btn"
+    data-title="<%= survey_question.title %>"
+    data-picture-url= "<%= survey_question.image.url(:medium) %>"
+    data-url="<%= topics_survey_question_url(survey_question.topic, survey_question) %>"
+    data-survey="<%= survey_share_counter_url(survey_question.slug) %>" >
+    Share
+  </div>
+
+  <br/>
+<% end %>
+
+<br/>
+<br/>

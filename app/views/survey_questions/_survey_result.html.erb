@@ -1,0 +1,37 @@
+<%
+  survey_response = survey_question.survey_responses
+  total_survey_response = survey_response.count
+%>
+
+<% survey_question.survey_question_answers.each_with_index do |survey_question_answer,index| %>
+  <% total_survey_response_answer = survey_response.where(:survey_question_answer_id => survey_question_answer.id ).count %>
+  <% total_survey_response_percentage = total_survey_response.to_i == 0 ? '0' : (number_with_precision(((total_survey_response_answer.to_f/total_survey_response.to_f) * 100), precision: 2)) %>
+
+  <div class="result-title">
+    <%= survey_question_answer.answer %>
+  </div>
+  <div class="result">
+    <div class="result-bar bar-<%= index %>" style="width: <%= total_survey_response_percentage.to_f - 10 %>%">
+      <span><%= total_survey_response_answer %></span>
+    </div>
+    <%= total_survey_response_percentage %> %
+  </div>
+<% end %>
+<br/>
+<small>(Total of: <%= total_survey_response.to_i == 0 ? "0 gleam" : pluralize(total_survey_response, 'gleam') %> casted)</small>
+
+<br/>
+<br/>
+<%= link_to "Vote", vote_survey_path(survey_question.id), :class => "btn btn-theme", :remote => true %>
+
+<div class="btn btn-theme facebook-share-btn"
+  data-title="<%= survey_question.title %>"
+  data-picture-url= "<%= survey_question.image.url(:medium) %>"
+  data-url="<%= topics_survey_question_url(survey_question.topic, survey_question) %>"
+  data-survey="<%= survey_share_counter_url(survey_question.slug) %>" >
+  Share
+</div>
+<br/>
+
+<br/>
+<br/>
