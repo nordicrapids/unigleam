@@ -149,6 +149,11 @@
   color: white !important;
 
   .upper-footer{
+    .inverse-company-logo {
+      width: 100%;
+      padding-top: 50px;
+    }
+
     line-height: 150%;
     padding-bottom: 10px;
     .title {
@@ -165,13 +170,14 @@
   }
 
   hr {
-    border: none;  // remove default style
-    border-bottom: 3px solid black;  //apply style
+    margin-top: 10px;
   }
 
   .lower-footer{
     text-align: center;
-
+    .btn-social-icon {
+      padding-right: 40px;
+    }
   }
 }
 

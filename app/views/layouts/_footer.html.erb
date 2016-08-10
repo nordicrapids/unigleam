@@ -2,7 +2,11 @@
   <div class="container upper-footer">
     <div class="col-sm-12">
       <div class="col-sm-6">
-      1
+        <div class="col-sm-8 col-sm-offset-2">
+          <%= link_to root_path do %> 
+            <%= image_tag "inverse-company-logo.png", :class => "inverse-company-logo" %>
+          <% end %>
+        </div>
       </div>
 
       <div class="col-sm-2">
@@ -36,38 +40,75 @@
 
       <div class="col-sm-2">
         <p class="title">Popular</p>
+        <ul>
+          <% Topic.all.order("name asc").each do |topic| %>
+            <li>
+              <%= link_to topic.name, topics_survey_path(topic) %>
+            </li>
+          <% end %>
+        </ul>
       </div>
 
       <div class="col-sm-2">
         <p class="title">Help</p>
+        <ul>
+          <li>
+            <%= link_to "Login", root_path %>
+          </li>
+
+          <li>
+            <%= link_to "Sign Up", root_path %>
+          </li>
+
+          <li>
+            <%= link_to "FAQ", root_path %>
+          </li>
+
+          <li>
+            <%= link_to "Policies", root_path %>
+          </li>
+
+          <li>
+            <%= link_to "Unigleam Icons", root_path %>
+          </li>
+
+          <li>
+            <%= link_to "Advertise", root_path %>
+          </li>
+        </ul>
       </div>  
-    </div>
+    </div>    
+  </div>
+
+  <div class="container">
     <hr/>
-    <div class="lower-footer">
-      <h5 class="white-font">Join Us On</h5>
-      <div>
-        <a class="btn btn-social-icon">
-          <i class="fa fa-facebook"></i>
-        </a>
+  </div>
 
-        <a class="btn btn-social-icon">
-          <i class="fa fa-twitter"></i>
-        </a>
+  <div class="lower-footer">
+    <h5 class="white-font">Join Us On</h5>
+    <div>
+      <a class="btn btn-social-icon">
+        <i class="fa fa-facebook"></i>
+      </a>
 
-        <a class="btn btn-social-icon">
-          <i class="fa fa-instagram"></i>
-        </a>
+      <a class="btn btn-social-icon">
+        <i class="fa fa-twitter"></i>
+      </a>
 
-        <a class="btn btn-social-icon">
-          <i class="fa fa-google-plus"></i>
-        </a>
+      <a class="btn btn-social-icon">
+        <i class="fa fa-instagram"></i>
+      </a>
 
-        <a class="btn btn-social-icon">
-          <i class="fa fa-youtube"></i>
-        </a>
+      <a class="btn btn-social-icon">
+        <i class="fa fa-google-plus"></i>
+      </a>
 
-      </div>
+      <a class="btn btn-social-icon">
+        <i class="fa fa-youtube"></i>
+      </a>
+
     </div>
+  </div>
 
   </div>
 </footer>
