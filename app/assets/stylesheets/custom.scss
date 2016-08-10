@@ -1,5 +1,5 @@
 .theme-font{
-  color: #EE8742;
+  color: #ED8742;
 }
 
 .white-font{
@@ -7,7 +7,7 @@
 }
 
 .btn-theme, .btn-theme:hover{
-  background: #EE8742;
+  background: #ED8742;
   color: white;
 }
 
@@ -44,7 +44,7 @@
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #EE8742;
+  background: #ED8742;
   color: white;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -79,7 +79,7 @@
   margin-top: 150px;
   .heading-footer{
     h4{
-      border-bottom: 2px solid #EE8742 !important;
+      border-bottom: 2px solid #ED8742 !important;
     }
   }
 }
@@ -88,16 +88,16 @@
     margin: 0 0 -2px 0;
     padding-bottom: 15px;
     display: inline-block;
-    border-bottom: 2px solid #EE8742 !important;
+    border-bottom: 2px solid #ED8742 !important;
 }
 
 .navbar.navbar-main ul.nav li:hover > a {
-  color: #EE8742 !important;
+  color: #ED8742 !important;
 }
 
 // login
 .modal-header {
-	background-color: #EE8742 !important;
+	background-color: #ED8742 !important;
   .close{
     color: white;
   }
@@ -123,16 +123,16 @@
 
 .image-hover-1:hover .mask {
 	opacity: 0.8 !important;
-	background-color: #EE8742 !important;
+	background-color: #ED8742 !important;
 
   .image-icons{
-    color: #EE8742 !important;
+    color: #ED8742 !important;
   }
 }
 
 // header login links
 .topbar-list li a:hover {
-  color: #EE8742 !important;
+  color: #ED8742 !important;
 }
 
 .login-btn{
@@ -141,7 +141,7 @@
 
 // scrolltip
 .footer-scrolltop-holder:hover {
-  background: #EE8742 !important;
+  background: #ED8742 !important;
 }
 
 .footer {
