@@ -1,33 +1,62 @@
 // Place all the styles related to the topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.circle_image_link {
+  text-align: center;
+  .circle-image {
+    border-radius: 50%;
+  }
+  .image-title {
+    position: absolute;
+    left: 50%;
+    color: white;
+    top: 50%;
+  }
+}
 
 .circular-selector {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 140px;
-  height: 140px;
-  margin-top: -70px;
-  margin-left: -70px;
+  width: 260px;
+  height: 260px;
+  margin-top: 0px;
+  margin-left: -120px;
   display: block;
 
-
-  button {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    background: #428bca;
-    border-radius: 50%;
-    border: 0;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-    transition: all .1s;
+  // first image 
+  .first_circle_label {
+    line-height: 260px;
+    a {
+      .circle_label {
+        position: absolute;
+        color: white;
+        font-size: 23px;
+        height: 260px;
+        width: 260px;
+      }
+    }
+    .first_circle_image {
+      // width: 200px !important;
+      // height: 100%;    
+      // display: block;
+      // border: 0;
+      // color: white;
+      // font-size: 20px;
+      // cursor: pointer;
+      // transition: all .1s;
+      // margin: auto;
+      // .circle_label {
+      //   position: absolute;
+      //   color: white;
+      //   left: 30%;
+      //   top: 20%;
+      //   font-size: 23px;
+      // }
+    }
   }
 
+  // other images
   ul {
     position: absolute;
     list-style: none;
@@ -46,9 +75,9 @@
       transition: all 0.8s ease-in-out;
 
       label {
-        max-width: 80px;
-        width: 80px;
-        height: 80px;
+        max-width: 150px;
+        width: 150px;
+        height: 150px;
         line-height: 80px;
         margin-left: -40px;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
@@ -56,12 +85,18 @@
         position: absolute;
         left: 50%;
         bottom: 100%;
-        background: blue;
         border-radius: 50%;
         text-align: center;
         overflow: hidden;
         cursor: pointer;
         transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+        .circle_label{
+          position: absolute;
+          color: white;
+          left: 30%;
+          top: 20%;
+          font-size: 23px;
+        }
       }
     }
   }

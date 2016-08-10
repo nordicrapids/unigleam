@@ -1,23 +1,48 @@
-<div style="height: 400px;">
+<div style="height: 600px;">
 	<div class='circular-selector'>
 	  <ul>
-	    <li style="transform: rotate(0deg);">
-	      <label for='c1' style="transform: rotate(0deg);">Menu 1</label>
-	    </li>
-	    
-	    <li style="transform: rotate(90deg);">
-	      <label for='c2'>Menu 2</label>
-	    </li>
-
-	    <li style="transform: rotate(180deg);">
-	      <label for='c3'>Menu 3</label>
-	    </li>
-
-	    <li style="transform: rotate(270deg);">
-	      <label for='c3'>Menu 3</label>
-	    </li>
-	    
+	  	<% unit_degree = 360/(@topics.count-1) %>		  
+		  <% @other_topics.each_with_index do |topic, i| %>
+		  	<%
+		  		rotate_degree = i*unit_degree
+		  	%>
+		    <li style="transform: rotate(<%= rotate_degree %>deg);">		 		    	     
+		      <label style="transform: rotate(<%= 360-rotate_degree %>deg);">
+		      	<%= link_to topics_survey_path(topic) do %>   		
+		      		<span class="circle_label"><%= topic.name %></span>
+			      	<%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>			      	
+			      <% end %>
+		      </label>
+		    </li>
+		   <% end %>	    
 	  </ul>
-	  <button>Click to toggle the menus</button>
+
+	  <label class="first_circle_label">
+	  	<%= link_to topics_survey_path(@first_topic), :class=>"first_circle_image circle_image_link" do %>
+	  		<span class="circle_label"><%= @first_topic.name %></span>
+		  	<%= image_tag @first_topic.photo.url(:medium), :class => "img-responsive circle-image" %>		  			  
+	  	<% end %>
+	  </label>
 	</div>
 </div>
+
+
+<% @topics.all.each do |topic| %>
+  <li onclick="" class="item print col-sm-3 mix_all" style="display: none;  opacity: 1;">
+		<div class="view-circle img-circle image-hover-1">
+			<%= image_tag topic.photo.url(:medium), :class => "img-responsive" %>
+	    <div class="mask img-circle">
+		    <div class="image-hover-content">
+					<%= link_to topics_survey_path(topic) do %>
+						<div class="image-icon-holder"><span class="ion-ios7-search image-icons"></span></div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="portfolio-text mt20 mb5">
+	  	<h3 class="portfolio-title">
+				<%= link_to topic.name, topics_survey_path(topic) %>
+			</h3>
+		</div>
+	</li>
+<% end %>
