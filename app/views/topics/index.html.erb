@@ -1,39 +1,23 @@
-<div class="container" id="portfolio">
+<div style="height: 400px;">
+	<div class='circular-selector'>
+	  <ul>
+	    <li style="transform: rotate(0deg);">
+	      <label for='c1' style="transform: rotate(0deg);">Menu 1</label>
+	    </li>
+	    
+	    <li style="transform: rotate(90deg);">
+	      <label for='c2'>Menu 2</label>
+	    </li>
 
-	<!-- Begin Title -->
-	<div class="row" style="visibility: visible; ">
-		<div class="col-xs-4 col-xs-offset-4 text-center mb10">
-			<div class="heading"><h4>Topics</h4></div>
-		</div>
+	    <li style="transform: rotate(180deg);">
+	      <label for='c3'>Menu 3</label>
+	    </li>
+
+	    <li style="transform: rotate(270deg);">
+	      <label for='c3'>Menu 3</label>
+	    </li>
+	    
+	  </ul>
+	  <button>Click to toggle the menus</button>
 	</div>
-
-	<!-- Portfolio Items -->
-	<div class="row">
-		<ul id="" class="col-sm-12 text-center no-padding">
-
-			<% @topics.all.each do |topic| %>
-			  <li onclick="" class="item print col-sm-3 mix_all" style="display: inline-block;  opacity: 1;">
-					<div class="view-circle img-circle image-hover-1">
-						<!-- Project Thumb -->
-						<%= image_tag topic.photo.url(:medium), :class => "img-responsive" %>
-				    <div class="mask img-circle">
-					    <div class="image-hover-content">
-								<%= link_to topics_survey_path(topic) do %>
-									<div class="image-icon-holder"><span class="ion-ios7-search image-icons"></span></div>
-								<% end %>
-							</div><!-- /portfolio hover content -->
-						</div><!-- /mask-->
-					</div><!-- /portfolio hover -->
-					<div class="portfolio-text mt20 mb5">
-				  	<h3 class="portfolio-title">
-							<%= link_to topic.name, topics_survey_path(topic) %>
-						</h3>
-					</div>
-				</li><!-- /list item -->
-			<% end %>
-
-
-		</ul><!-- /portfolio ul -->
-	</div><!-- /row -->
-
 </div>
