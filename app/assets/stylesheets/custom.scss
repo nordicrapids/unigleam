@@ -2,6 +2,10 @@
   color: #EE8742;
 }
 
+.white-font{
+  color: white !important;
+}
+
 .btn-theme, .btn-theme:hover{
   background: #EE8742;
   color: white;
@@ -139,3 +143,36 @@
 .footer-scrolltop-holder:hover {
   background: #EE8742 !important;
 }
+
+.footer {
+  background: #ed8742 !important;
+  color: white !important;
+
+  .upper-footer{
+    line-height: 150%;
+    padding-bottom: 10px;
+    .title {
+      font-weight: bold;
+    }
+    ul{
+      list-style: none;
+      padding-left: 0;
+      a, a:hover {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+  hr {
+    border: none;  // remove default style
+    border-bottom: 3px solid black;  //apply style
+  }
+
+  .lower-footer{
+    text-align: center;
+
+  }
+}
+
+
