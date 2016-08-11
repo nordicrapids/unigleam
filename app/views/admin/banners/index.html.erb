@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="pull-left">
+      <h2>Banner Settings</h2>
+    </div>
+  </div>
+</div>
+<hr/>
+
+<%= form_for [:admin, @banner], :url => admin_update_banner_path, :method => "post" do |f| %>
+
+  <div class="form-group">
+    <%= f.label :banner_title, "Banner Title" %>
+    <%= f.text_field :banner_title, :class => "form-control", :placeholder => "Banner Title" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :banner_image, "Title" %>
+    <%= f.file_field :banner_image %>
+
+    <%= image_tag @banner.banner_image.url(:preview), :class => "img-thumbnail" unless @banner.banner_image.blank? %>
+  </div>
+
+  <br/>
+  <br/>
+
+  <div class="form-action">
+    <%= f.submit "#{@banner.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success" %>
+    <%= link_to "Cancel", admin_survey_questions_path %>
+  </div>
+
+<% end %>

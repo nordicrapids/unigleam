@@ -39,6 +39,10 @@
               <%= link_to "Survey Questions", admin_survey_questions_path %>
             </li>
 
+            <li class="<%= 'active' if params[:controller] == 'admin/banners' %>">
+              <%= link_to "Banner Setting", admin_banner_path %>
+            </li>
+
             <li>
               <%= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
             </li>
@@ -66,6 +70,10 @@
 
         <li class="<%= 'active' if params[:controller] == 'admin/topics' %>">
           <%= link_to "<i class='fa fa-sticky-note'></i> Topics".html_safe, admin_topics_path %>
+        </li>
+
+        <li class="<%= 'active' if params[:controller] == 'admin/banners' %>">
+          <%= link_to "<i class='fa fa-picture-o'></i> Banner".html_safe, admin_banner_path %>
         </li>
 
         <li class="<%= 'active' if params[:controller] == 'admin/survey_questions' %>">

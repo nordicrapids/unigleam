@@ -1,4 +1,14 @@
-<div style="height: 800px;">
+<% unless @banner_image.blank? %>
+	<div class="banner">
+		<div class="banner_title">
+			<%= @banner_image.banner_title %>		
+		</div>
+		<%= image_tag @banner_image.banner_image, :class => "banner_image" %>
+	</div>		
+<% end %>
+
+<div class="circular-topics">
+	<p class="theme-font title-text">What's Trending</p>
 	<div class='circular-selector'>
 	  <ul>
 	  	<% unit_degree = 360/(@topics.count-1) %>		  
@@ -25,24 +35,3 @@
 	  </label>
 	</div>
 </div>
-
-
-<% @topics.all.each do |topic| %>
-  <li onclick="" class="item print col-sm-3 mix_all" style="display: none;  opacity: 1;">
-		<div class="view-circle img-circle image-hover-1">
-			<%= image_tag topic.photo.url(:medium), :class => "img-responsive" %>
-	    <div class="mask img-circle">
-		    <div class="image-hover-content">
-					<%= link_to topics_survey_path(topic) do %>
-						<div class="image-icon-holder"><span class="ion-ios7-search image-icons"></span></div>
-					<% end %>
-				</div>
-			</div>
-		</div>
-		<div class="portfolio-text mt20 mb5">
-	  	<h3 class="portfolio-title">
-				<%= link_to topic.name, topics_survey_path(topic) %>
-			</h3>
-		</div>
-	</li>
-<% end %>
