@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"
   
+  match "search" => "pages#search", :via => :get, as: "search"
+
   namespace :admin do
     resources :topics
     resources :survey_questions

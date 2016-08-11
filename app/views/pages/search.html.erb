@@ -1,0 +1,139 @@
+<% unless @banner_image.blank? %>
+  <div class="banner">
+    <div class="banner_title">
+      <%= @banner_image.banner_title %>   
+    </div>
+    <%= image_tag @banner_image.banner_image, :class => "banner_image" %>
+  </div>    
+<% end %>
+
+<div class="">
+  <br/>
+  <center>
+    <h3 class="theme-font title-text">Search Results</h3>
+  </center>
+
+  <div class="container">
+    <h3 class="theme-font title-text">Topics Results</h3>
+    <br/>
+    <div class="col-sm-12">
+      <% unless @topics.blank? %> 
+        <% @topics.each do |topic| %>
+          <div class="col-sm-4">
+            <%= link_to topics_survey_path(topic) do %> 
+              <span class="circle-title"><%= topic.name %></span>
+              <%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <center>
+          No result found.
+        </center>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <hr/>
+    <h3 class="theme-font title-text">Gleams Results</h3>
+    <br/>
+    <div class="col-sm-12">
+      <% unless @survey_questions.blank? %> 
+        <% @survey_questions.each_with_index do |survey_question,index| %>
+          <div class="pt40 pb40">
+            <div class="container">
+              <!-- Begin Carousel + Content -->
+              <div class="row">
+
+                <!-- Begin Carousel -->
+                <div class="col-sm-4" style="visibility: visible; ">
+
+                  <center>
+                    <%= link_to topics_survey_path(survey_question.topic) do %> 
+                      <div style="background-image:url('<%= survey_question.image.url(:medium) %>');" class="survey-image"></div>
+                    <% end %>
+                    <br/>                  
+                    <%= link_to "Go to Gleam", topics_survey_path(survey_question.topic), :class => "btn btn-theme btn-category" %>
+                  </center>
+
+                </div><!-- /column -->
+                <!-- End Carousel -->
+
+                <!-- Content Inside -->
+                <div class="col-sm-8" style="visibility: visible; ">
+                  <div class="mb20 mt30-xs">
+                    <h4 class="theme-font">
+                      <%= survey_question.title %>
+                    </h4>
+                  </div>
+
+                  <div id="survey_question_<%= survey_question.id %>">
+                    <%= render partial: "survey_questions/survey_question", locals: {:survey_question => survey_question} %>
+                  </div>
+
+                </div><!-- /column -->
+                <!-- End Content Inside -->
+
+              </div><!-- /row -->
+              <!-- End Carousel + Content -->
+
+            </div><!-- /container -->
+          </div>
+        <% end %>
+      <% else %>
+        <center>
+          No result found.
+        </center>
+      <% end %>
+    </div>    
+  </div>
+
+  <br/>
+  <br/>
+
+</div>
+
+<script src="https://connect.facebook.net/en_US/all.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+
+  FB.init({
+    appId: '<%= ENV["FACEBOOK_KEY"] %>',
+    status: true,
+    cookie: true,
+    xfbml: true
+  });
+
+  function share_prompt(title,url,picture_url,survey_url) {
+    FB.ui( {
+      method: 'feed',
+      name: title,
+      link: url,
+      picture: picture_url
+    }, function( response ) {
+
+      if (response && response.post_id) {
+        $.ajax({
+          url: survey_url,
+          type: "POST",
+          data: {},
+          success: function (response) {
+          },
+          error: function (xhr, status) {
+          }
+        });
+      }
+
+    });
+  }
+
+  $(".facebook-share-btn").on( "click", function() {
+    title       = $(this).data("title")
+    url         = $(this).data("url")
+    picture_url = $(this).data("picture-url")
+    survey_url  = $(this).data("survey")
+    share_prompt(title,url,picture_url,survey_url)
+  });
+
+
+</script>

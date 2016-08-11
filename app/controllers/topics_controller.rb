@@ -7,6 +7,4 @@ class TopicsController < ApplicationController
     @other_topics = @topics.where("id != ?", @first_topic.id)
   end 
 
-  
-
 end
