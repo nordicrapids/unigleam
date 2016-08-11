@@ -28,6 +28,15 @@
   padding-top: 60px;
 }
 
+.modal-backdrop {
+  opacity: 0.8 !important;
+  background: #000;
+}
+
+.hideBlock {
+  display:none;
+}
+
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -100,29 +109,63 @@
 }
 
 // login
-.modal-header {
-	background-color: #ED8742 !important;
-  .close{
-    color: white;
+.login-modal {
+  .modal-header {
+    background: white !important;
+    border-bottom: none;
+    .close{
+      color: black;
+    }
+  }
+
+  .modal-footer {
+    .btn {
+      width: 100%;
+    }
+  }
+
+  .sign-up-content {
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+  
+  .orange-login-link {
+    border-radius: 3px;
+    border: 1px solid #ED8742;
+    color: #ED8742;
+    padding: 6px 30px;
   }
 }
 
-.modal-footer {
-  .btn {
-    width: 100%;
-  }
-}
 
 .facebook_login, .facebook_login:hover {
-  .fa {
-    padding-right: 18px;
-  }
-  width: 100%;
   background-color: #3b5998;
-  padding: 10px;
-  color: white;
-  text-decoration: none;
+  color: white !important;
+}
+
+.email_login, .email_login:hover {
+  background-color: #ED8742;
+  color: white !important;
+  border: none;
+}
+
+.social-button {  
+  width: 100%;
+  padding: 15px;
   display: block;
+  font-size: 17px;
+  line-height: 28px;
+  cursor: pointer;
+
+  .fa {
+    padding-left: 10px;
+    line-height: 0px;
+  }
+
+  .social-button-text {
+    text-align: center;
+  }
 }
 
 .image-hover-1:hover .mask {
@@ -133,6 +176,20 @@
     color: #ED8742 !important;
   }
 }
+
+.or_line {
+  width: 100%; 
+  height: 15px; 
+  border-bottom: 1px solid #d2d2d2; 
+  text-align: center;
+  span {
+    font-size: 20px; 
+    background-color: white; 
+    padding: 0 10px; 
+    color: #121212;
+  }
+}
+
 
 // header login links
 .topbar-list li a:hover {

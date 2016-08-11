@@ -25,4 +25,5 @@
 //= require theme/js/activate-snippet
 //= require theme/js/skrollr.min
 //= require theme/js/main
+//= require common
 //= require_tree .
