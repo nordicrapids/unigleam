@@ -22,9 +22,9 @@
 
 <br/>
 <br/>
-<%= link_to "Vote", vote_survey_path(survey_question.id), :class => "btn btn-theme", :remote => true %>
+<%= link_to "Vote", vote_survey_path(survey_question.id), :class => "btn btn-theme btn-category", :remote => true %>
 
-<div class="btn btn-theme facebook-share-btn"
+<div class="btn btn-theme facebook-share-btn btn-category"
   data-title="<%= survey_question.title %>"
   data-picture-url= "<%= survey_question.image.url(:medium) %>"
   data-url="<%= topics_survey_question_url(survey_question.topic, survey_question) %>"
