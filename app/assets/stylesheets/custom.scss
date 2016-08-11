@@ -181,4 +181,26 @@
   }
 }
 
+.main-nav-bar {
+  li {
+    font-family: 'Avenir', 'Nunito', Arial, Helvetica, sans-serif !important;
+    a {
+      color: #121212 !important;
+    }    
+  }
+
+  li.search-form {
+    padding-top: 25px !important;
+
+    input[type="text"] {
+      border: 1px solid #ED8742;
+      margin-right: 0px;
+      padding: 3px;
+    }
+
+    .gleams-input {
+      // width: 60%;
+    }
+  }
+}
 

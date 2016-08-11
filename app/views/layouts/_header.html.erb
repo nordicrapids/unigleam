@@ -129,9 +129,13 @@
 
 						<!-- Main Navigation - Explained in Documentation -->
 						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
-							<ul class="nav navbar-nav navbar-right">
-								<li>
-									<%= link_to "Home", root_path %>
+							<ul class="nav navbar-nav navbar-right main-nav-bar">
+								<li class="search-form">
+									<%= form_for "" do |f| %>
+                    <%= text_field "", "", placeholder: "Search Gleams", :class => "gleams-input" %>
+                    <%= text_field "", "", placeholder: "Search Topics" %>
+                    <%= f.submit "Search", class: "btn btn-theme" %>
+                  <% end %>
 						    </li>
 
 						    <% unless user_signed_in? %>
