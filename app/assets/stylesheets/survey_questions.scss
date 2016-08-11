@@ -1,6 +1,12 @@
 // Place all the styles related to the survey_questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-category, .btn-category:hover{
+  width: 100px;
+  margin-right: 10px;
+  color: white;
+}
+
 .answer_fields{
   width: 85%;
   display: inline-block;

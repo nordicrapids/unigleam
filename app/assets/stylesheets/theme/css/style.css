@@ -58,8 +58,9 @@ Author:Denis Samardjiev
 -------------------------------------------------------------- */
 body {
 	background:#fff;
-	font:normal 14px 'Open Sans', sans-serif;
-	font-weight:300;
+	font-family: 'Avenir', 'Nunito', Arial, Helvetica, sans-serif;
+	font:normal 14px;
+	font-weight:100;
 	color:#616161;
 	height:100%;
 	line-height:1.6;
