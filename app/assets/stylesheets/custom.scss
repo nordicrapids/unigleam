@@ -294,3 +294,13 @@
   }
 }
 
+.unveil_img{
+  display: inline-block;
+  max-width:  100%;
+  min-width:  32px;
+  min-height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(image-path('loading.gif'));
+}
+

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require highcharts
+//= require theme/js/jquery.unveil
 //= require theme/js/jquery.easing.min
 //= require theme/js/jquery.mixitup.min
 //= require theme/js/scrollReveal
