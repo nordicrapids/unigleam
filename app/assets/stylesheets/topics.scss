@@ -1,3 +1,108 @@
 // Place all the styles related to the topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.circle-image {
+  border-radius: 50%;
+}
+
+.circle-title {
+  color: white;
+  display: block;
+  position: absolute;
+  left: 35%;
+  top: 35%;
+  font-size: 30px;
+  font-weight: bold;
+}
+    
+.circular-topics {
+  height: 800px;
+  text-align: center;
+
+  .title-text {
+    padding-top: 20px;
+    font-size: 20px;
+  }
+
+  .circle_image_link {
+    text-align: center;    
+    .image-title {
+      position: absolute;
+      left: 50%;
+      color: white;
+      top: 50%;
+    }
+  }
+
+  .circular-selector {
+    position: relative;
+    left: 50%;
+    top: 25%;
+    width: 260px;
+    height: 260px;
+    margin-top: 0px;
+    margin-left: -120px;
+    display: block;
+
+    // first image 
+    .first_circle_label {
+      line-height: 260px;
+      a {
+        .circle_label {
+          position: absolute;
+          color: white;
+          font-size: 23px;
+          height: 260px;
+          width: 260px;
+          display: block;
+        }
+      }
+    }
+
+    // other images
+    ul {
+      position: absolute;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      top: -20px;
+      right: -20px;
+      bottom: -20px;
+      left: -20px;
+
+      li {
+        position: absolute;
+        width: 0;
+        height: 100%;
+        margin: 0 50%;
+        transition: all 0.8s ease-in-out;
+
+        label {
+          max-width: 150px;
+          width: 150px;
+          height: 150px;
+          line-height: 80px;
+          margin-left: -40px;
+          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+          font-size: 14px;
+          position: absolute;
+          left: 50%;
+          bottom: 100%;
+          border-radius: 50%;
+          text-align: center;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+          .circle_label{
+            position: absolute;
+            color: white;
+            left: 30%;
+            top: 20%;
+            font-size: 23px;
+          }
+        }
+      }
+    }
+
+  }
+}

@@ -1,84 +1,79 @@
 <!-- Begin Header -->
 <header>
-
-	<!-- Begin Top Bar -->
-	<div class="top-bar">
-		<div class="container">
-			<div class="row">
-				<!-- Address and Phone -->
-				<div class="col-sm-7 hidden-xs">
-					<span class="ion-android-system-home home-icon"></span>Bright Passage, Fond du Lac, 63138 USA<span class="ion-ios7-telephone phone-icon"></span>1702983921
-				</div>
-				<!-- Social Buttons -->
-				<div class="col-sm-5 text-right">
-	        <ul class="topbar-list list-inline">
-						<% unless user_signed_in? %>
-							<li>
-								<a data-toggle="modal" data-target="#login_modal">Login</a>
-							</li>
-
-							<li>
-								<a data-toggle="modal" data-target="#register_modal">Register</a>
-							</li>
-						<% else %>
-
-							<li>
-								Welcome, <%= current_user.full_name %>
-							</li>
-
-							<li>
-								<%= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
-							</li>
-						<% end %>
-					</ul>
-				</div>
-			</div><!--/row -->
-		</div><!--/container header -->
-	</div><!--/top bar -->
-	<!-- End Top Bar -->
-
 	<!-- Login -->
-	<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+	<div class="modal fade login-modal" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 			  <div class="modal-header">
 		      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-		      <h4 class="modal-title" id="loginLabel">Login</h4>
 			  </div>
-				<%= form_for(resource, :as => resource_name,
-					 :url => session_path(resource_name),
-					 :html => {:id => "sign_in_user"},
-					 :format => :json,
-					 :remote => true ) do |f| %>
 
-					<div class="modal-body">
+        <div class="sign-up-content">
+  				<%= form_for(resource, :as => resource_name,
+  					 :url => session_path(resource_name),
+  					 :html => {:id => "sign_in_user"},
+  					 :format => :json,
+  					 :remote => true ) do |f| %>
 
-						<div class="alert alert-danger" role="alert" id="login_error_message" style="display:none;">
-						  <strong>Warning!</strong> Username or password is invalid!
-						</div>
+  					<div class="modal-body">
 
-			      <div class="form-group">
-							<%= f.label :email, "Email address" %>
-							<%= f.email_field :email, :class => "form-control", :placeholder => "Enter email" %>
-			      </div>
-			      <div class="form-group">
-							<%= f.label :password, "Password" %>
-							<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
-			      </div>
-			      <div class="checkbox">
-			        <label>
-								<%= f.check_box :remember_me %> Remember me
-			        </label>
-			      </div>
-			  	</div>
+              <div class="form-group">
+                <h3 class="theme-font">Sign in</h3>   
+              </div>
 
-					<div class="modal-footer">
-						<center><%= f.submit "Login", :class => "btn btn-rw btn-theme login-btn" %></center>
-						<br/>
-						<center><%= link_to "<i class='fa fa-facebook'></i> Sign in with Facebook".html_safe, user_omniauth_authorize_path(:facebook), :class => "facebook_login" %></center>
-						<br/>
-			    </div>
-				<% end %>
+  						<div class="alert alert-danger" role="alert" id="login_error_message" style="display:none;">
+  						  <strong>Warning!</strong> Username or password is invalid!
+  						</div>
+
+  			      <div class="form-group">
+  							<%= f.label :email, "Email address" %>
+  							<%= f.email_field :email, :class => "form-control", :placeholder => "Enter email" %>
+  			      </div>
+  			      <div class="form-group">
+  							<%= f.label :password, "Password" %>
+  							<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+  			      </div>
+  			      <div class="checkbox">
+  			        <label>
+  								<%= f.check_box :remember_me %> Remember me
+  			        </label>
+  			      </div>
+
+  						<center><%= f.submit "Login", :class => "social-button email_login" %></center>
+  						<br/>
+
+              <%= link_to user_omniauth_authorize_path(:facebook), :class => "social-button facebook_login" do %>   
+                <div class="row">
+                  <div class="col-xs-2 social-button-icon">
+                    <i class="fa fa-facebook"></i>  
+                  </div>                 
+
+                  <div class="col-xs-10 social-button-text">
+                    Continue with Facebook
+                  </div>
+                </div> 
+              <% end %>
+  			    </div>
+
+            <hr/>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="pull-left">
+                  <h4 class="theme-font">Not a member?</h4>
+                </div>
+
+                <div class="pull-right login_link">
+                  <div class="modal-link orange-login-link btn" data-modal-target="#sign_up_modal">
+                    Register now 
+                  </div>              
+                </div>
+              </div>
+              <br/>
+              <br/>
+              <br/>
+          </div>
+  				<% end %>
+        </div>
 
 			</div><!-- /modal content -->
 
@@ -87,61 +82,171 @@
 	<!-- End Login -->
 
 	<!-- register -->
-	<div class="modal fade" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+	<div class="modal fade login-modal" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-			  <div class="modal-header">
-		      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-		      <h4 class="modal-title" id="loginLabel">Register</h4>
+			  <div class="modal-header">	
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">
+              Close
+            </span>
+          </button>	      		      
 			  </div>
-				<%= form_for(resource, :as => resource_name,
-					 :url => registration_path(resource_name),
-					 :html => {:id => "sign_up_user"},
-					 :format => :json,
-					 :remote => true ) do |f| %>
+        <div class="sign-up-content">
+          <%= link_to user_omniauth_authorize_path(:facebook), :class => "social-button facebook_login" do %>   
+            <div class="row">
+              <div class="col-xs-2 social-button-icon">
+                <i class="fa fa-facebook"></i>  
+              </div>                 
 
-					<div class="modal-body">
+              <div class="col-xs-10 social-button-text">
+                Continue with Facebook
+              </div>
+            </div> 
+          <% end %>
 
-						<div class="alert alert-danger" role="alert" id="register_error_message" style="display:none;">
-						</div>
+          <br/>
+          
+          <div class="or_line">
+            <span>
+              Or
+            </span>
+          </div>
 
-						<div class="form-group">
-			        <%= f.label :email %>
-			        <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Enter email" %>
-			      </div>
+          <br/>
+          <br/>
 
-			      <div class="form-group">
-			        <%= f.label :first_name %>
-			        <%= f.text_field :first_name, :class => "form-control", :placeholder => "First name" %>
-			      </div>
+          <div class = "social-button email_login modal-link" data-modal-target="#sign_up_modal">
+            <div class="row">
+              <div class="col-xs-2 social-button-icon">
+                <i class="fa fa-envelope-o"></i>  
+              </div>                 
 
-			      <div class="form-group">
-			        <%= f.label :last_name %>
-			        <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last name" %>
-			      </div>
+              <div class="col-xs-10 social-button-text">
+                Sign up with Email
+              </div>
+            </div> 
+          </div>
 
-			      <div class="form-group">
-							<%= f.label :password, "Password" %>
-							<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
-			      </div>
+          <br/>
+          
+          <div class="sign-up-text">
+            By signing up, I agree to Unigleam's 
+            <%= link_to "Terms of Service", root_path, :class => "theme-font" %> and
+            <%= link_to "Privacy Policy", root_path, :class => "theme-font" %>.
+          </div>
 
-						<div class="form-group">
-			        <%= f.label :password_confirmation %>
-			        <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Password confirmation" %>
-			      </div>
+          <hr/>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="pull-left">
+                <h4 class="theme-font">Already a Unigleamer?</h4>
+              </div>
 
-			  	</div>
+              <div class="pull-right login_link">
+                <div class="modal-link orange-login-link btn" data-modal-target="#login_modal">
+                  Log in  
+                </div>              
+              </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
 
-					<div class="modal-footer">
-						<center><%= f.submit "Sign Up", :class => "btn btn-rw btn-theme login-btn" %></center>
-			    </div>
-				<% end %>
+        </div>
 
 			</div><!-- /modal content -->
 
 		</div><!-- /modal dialog -->
 	</div><!-- /modal holder -->
 	<!-- End register -->
+
+  <!-- register -->
+  <div class="modal fade login-modal" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">  
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">
+              Close
+            </span>
+          </button>                 
+        </div>
+        <div class="sign-up-content">
+          <div class="sign-up-form">          
+            <%= form_for(resource, :as => resource_name,
+               :url => registration_path(resource_name),
+               :html => {:id => "sign_up_user"},
+               :format => :json,
+               :remote => true ) do |f| %>
+
+              <div class="modal-body">
+                <div class="form-group">
+                  <h3 class="theme-font">Sign up as Unigleamer</h3>   
+                </div>
+
+                <div class="alert alert-danger" role="alert" id="register_error_message" style="display:none;">
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Enter email" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name, :class => "form-control", :placeholder => "First name" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last name" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password, "Password" %>
+                  <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Password confirmation" %>
+                </div>
+                              
+                <center><%= f.submit "Sign Up", :class => "social-button email_login" %></center>
+
+              </div>
+
+              <hr/>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="pull-left">
+                    <h4 class="theme-font">Already a Unigleamer?</h4>
+                  </div>
+
+                  <div class="pull-right login_link">
+                    <div class="modal-link orange-login-link btn" data-modal-target="#login_modal">
+                      Log in 
+                    </div>              
+                  </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+      </div><!-- /modal content -->
+
+    </div><!-- /modal dialog -->
+  </div><!-- /modal holder -->
+  <!-- End register -->
+
 
   <!-- Begin Navigation -->
   <div class="navbar-wrapper">
@@ -166,10 +271,28 @@
 
 						<!-- Main Navigation - Explained in Documentation -->
 						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
-							<ul class="nav navbar-nav navbar-right">
-								<li>
-									<%= link_to "Home", root_path %>
+							<ul class="nav navbar-nav navbar-right main-nav-bar">
+								<li class="search-form">
+									<%= form_for "", :url => search_path, :method => "get" do |f| %>
+                    <%= text_field_tag "gleams", params[:gleams], placeholder: "Search Gleams", :class => "gleams-input" %>
+                    <%= text_field_tag "topics", params[:topics], placeholder: "Search Topics" %>
+                    <%= f.submit "Search", class: "btn btn-theme" %>
+                  <% end %>
 						    </li>
+
+						    <% unless user_signed_in? %>
+									<li>
+										<a data-toggle="modal" data-target="#login_modal">Login</a>
+									</li>
+
+									<li>
+										<a data-toggle="modal" data-target="#register_modal">Register</a>
+									</li>
+								<% else %>
+									<li>
+										<%= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
+									</li>
+								<% end %>
 
 								<li>
 									<%#= link_to "Topics", topics_path %>
@@ -183,26 +306,6 @@
 		</div><!-- /navbar -->
 	</div><!-- /navbar wrapper -->
 	<!-- End Navigation -->
-
-	<!-- Begin Page Header -->
-	<div class="header">
-		<div class="container">
-			<div class="row">
-				<!-- Page Title -->
-				<div class="col-sm-6 col-xs-12">
-				</div>
-
-				<!-- Breadcrumbs -->
-				<div class="col-sm-6">
-					<ol class="breadcrumb">
-						<li><span class="ion-home breadcrumb-home"></span><%= link_to "Home", root_path %></li>
-						<li>Topics</li>
-					</ol>
-				</div><!-- /column -->
-			</div><!-- /row -->
-		</div><!-- /container -->
-	</div><!-- /page header -->
-
 </header><!-- /header -->
 <!-- End Header -->
 

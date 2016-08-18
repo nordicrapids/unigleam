@@ -22,7 +22,7 @@ $ ->
 
     $('.line-chart').highcharts
       chart:
-        backgroundColor: "#EE8742",
+        backgroundColor: "#ED8742",
       title:
         text: ''
       xAxis:

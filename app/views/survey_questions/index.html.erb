@@ -1,47 +1,56 @@
-<%= content_for :banner do %>
-  <%= image_tag "banner/vote.png", :class=>'page_banner' %>
+<% unless @topic.banner_image.blank? %>		
+	<div class="banner">
+		<div class="banner_title">
+			<%= @topic.name %>		
+		</div>
+		<%= image_tag @topic.banner_image, :class => "banner_image" %>
+	</div>		
 <% end %>
 
-<div class="container">
-	<div class="col-xs-4 col-xs-offset-4 text-center mb10">
-		<div class="heading"><h4>Cast your gleam - <%= @topic.name %></h4></div>
+<div class="pt40 pb40">
+	<div class="container">
+		<!-- Begin Carousel + Content -->
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-8" style="visibility: visible; ">
+				<h3 class="theme-font bold-font">Cast your gleam</h3>
+			</div>
+		</div>
 	</div>
+
+	<% @survey_questions.each_with_index do |survey_question, index| %>
+		<div class="pt40 pb40">
+			<div class="container">
+				<!-- Begin Carousel + Content -->
+				<div class="row">
+
+					<!-- Begin Carousel -->
+					<div class="col-sm-4" style="visibility: visible; ">
+						<div style="background-image:url('<%= survey_question.image.url(:medium) %>');" class="survey-image"></div>
+					</div><!-- /column -->
+					<!-- End Carousel -->
+
+					<!-- Content Inside -->
+					<div class="col-sm-8" style="visibility: visible; ">
+						<div class="mb20 mt30-xs">
+							<h4 class="theme-font">
+								<%= survey_question.title %>
+							</h4>
+						</div>
+
+						<div id="survey_question_<%= survey_question.id %>">
+				      <%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
+				    </div>
+
+					</div><!-- /column -->
+					<!-- End Content Inside -->
+
+				</div><!-- /row -->
+				<!-- End Carousel + Content -->
+
+			</div><!-- /container -->
+		</div>
+	<% end %>
 </div>
-
-<% @survey_questions.each_with_index do |survey_question, index| %>
-	<div class="<%= index.even? ? "background-light-grey" : "" %> pt40 pb40 border-top">
-		<div class="container">
-			<!-- Begin Carousel + Content -->
-			<div class="row">
-
-				<!-- Begin Carousel -->
-				<div class="col-sm-4" style="visibility: visible; ">
-					<div style="background-image:url('<%= survey_question.image.url(:medium) %>'); height:260px; background-repeat: no-repeat;"></div>
-				</div><!-- /column -->
-				<!-- End Carousel -->
-
-				<!-- Content Inside -->
-				<div class="col-sm-8" style="visibility: visible; ">
-					<div class="heading mb20 mt30-xs">
-						<h4>
-							<span class="ion-beaker mr15"></span>
-							<span class="theme-font"><%= survey_question.title %></span>
-						</h4>
-					</div>
-
-					<div id="survey_question_<%= survey_question.id %>">
-			      <%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
-			    </div>
-
-				</div><!-- /column -->
-				<!-- End Content Inside -->
-
-			</div><!-- /row -->
-			<!-- End Carousel + Content -->
-
-		</div><!-- /container -->
-	</div>
-<% end %>
 
 <script src="https://connect.facebook.net/en_US/all.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">

@@ -1,10 +1,10 @@
 // preloader
 $(document).ready(function() {
-  Royal_Preloader.config({
-    mode:           'number',
-    showProgress:   false,
-    background:     '#ffffff'
-  });
+  // Royal_Preloader.config({
+  //   mode:           'number',
+  //   showProgress:   false,
+  //   background:     '#ffffff'
+  // });
 });
 
 // image zoom

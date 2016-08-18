@@ -16,10 +16,16 @@ Rails.application.routes.draw do
   match "survey_question/:id/share" => "survey_questions#share_counter", :via => :post, as: "survey_share_counter"
 
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"
+  
+  match "search" => "pages#search", :via => :get, as: "search"
 
   namespace :admin do
     resources :topics
     resources :survey_questions
+
+    match "banner" => "banners#index", :via => :get, as: "banner"
+    match "banner/update" => "banners#update", :via => :post, as: "update_banner"
+
     root "pages#dashboard"
   end
 

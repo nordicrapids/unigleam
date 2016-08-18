@@ -1,3 +1,36 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.theme-content {
+  h1, h2, h3, h4, h5 {
+    font-family: 'Avenir', 'Nunito', Arial, Helvetica, sans-serif !important;
+    font-weight: 100;
+  }
+
+  .banner {
+    text-align: center;
+
+    .banner_title {
+      color: white;
+      position: absolute;
+      margin: auto;
+      display: block;
+      margin-top: 15%;
+      font-size: 40px;
+      width: 100%;
+      font-weight: bold;
+      line-height: 30px;
+    }
+
+    @media (max-width: 700px) { 
+      .banner_title {
+        font-size: 30px;
+      }
+    }
+
+    .banner_image {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}
