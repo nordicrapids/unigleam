@@ -7,7 +7,7 @@
 	</div>		
 <% end %>
 
-<div class="circular-topics">
+<div class="circular-topics hidden-xs">
 	<p class="theme-font title-text">What's Trending</p>
 	<div class='circular-selector'>
 	  <ul>
@@ -34,4 +34,24 @@
 	  	<% end %>
 	  </label>
 	</div>
+</div>
+
+<div class='visible-xs mobile-view'>
+	<br/>
+	<center><h3 class="theme-font title-text">What's Trending</h3></center>
+	<br/>
+	<div class='circular-selector'>
+	  <ul>	  	
+		  <% @topics.each_with_index do |topic, i| %>		  	
+		    <li class='circle-topic'>		 		    	     
+		      <label>
+		      	<%= link_to topics_survey_path(topic) do %>   		
+		      		<span class="circle_label"><%= topic.name %></span>
+			      	<%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>			      	
+			      <% end %>
+		      </label>
+		    </li>
+		   <% end %>	    
+	  </ul>
+	 </div>
 </div>

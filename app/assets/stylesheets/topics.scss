@@ -106,3 +106,23 @@
 
   }
 }
+
+.mobile-view {
+  .circular-selector {
+    text-align: center;
+    li {
+      list-style: none;
+      padding-bottom: 15px;
+      
+      .circle_label {
+        text-decoration: none;
+        color: white !important;
+        font-size: 35px;
+        position: absolute;
+        margin: auto;
+        left: 45%;
+        margin-top: 100px;
+      }
+    }
+  }
+}
