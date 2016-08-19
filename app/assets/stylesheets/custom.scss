@@ -304,3 +304,10 @@
   background-image: url(image-path('loading.gif'));
 }
 
+@media only screen and (max-width : 767px) {
+  .upper-footer {
+    text-align: center;
+  }
+}
+
+

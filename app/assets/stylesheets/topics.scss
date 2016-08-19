@@ -110,6 +110,11 @@
 .mobile-view {
   .circular-selector {
     text-align: center;
+    
+    ul {
+      -webkit-padding-start: 0px;
+    }
+
     li {
       list-style: none;
       padding-bottom: 15px;
