@@ -1,8 +1,0 @@
-development:
-  adapter:  postgresql
-  host:     localhost
-  encoding: unicode
-  database: unigleam
-  pool:     5
-  username: postgres
-  password: postgres
