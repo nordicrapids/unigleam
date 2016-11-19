@@ -107,7 +107,7 @@
 								<%= f.label :email, "Email address" %>
 								<%= f.email_field :email, :class => "form-control required email", :placeholder => "Enter email", autofocus: true %>
 							</div>
-							<center><%= f.button "Send me reset password instructions", :class => "social-button email_login", data: { disable_with: "<i class='fa fa-spinner fa-spin fa-2x'></i> Sending Mail...".html_safe %></center>
+							<center><%= f.button "Send me reset password instructions".html_safe, :class => "social-button email_login", data: { disable_with: "<i class='fa fa-spinner fa-spin fa-2x padding-left-0'></i> Sending Mail...".html_safe} %></center>
 							<br/>
 
 						</div>
