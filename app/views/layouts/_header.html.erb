@@ -42,8 +42,8 @@
   						<center><%= f.submit "Login", :class => "social-button email_login" %></center>
   						<br/>
 
-              <%#= link_to user_omniauth_authorize_path(:facebook), :class => "social-button facebook_login" do %>
-                <!-- <div class="row">
+              <%= link_to user_omniauth_authorize_path(:facebook), :class => "social-button facebook_login" do %>
+                <div class="row">
                   <div class="col-xs-2 social-button-icon">
                     <i class="fa fa-facebook"></i>
                   </div>
@@ -51,8 +51,8 @@
                   <div class="col-xs-10 social-button-text">
                     Continue with Facebook
                   </div>
-                </div> -->
-              <%# end %>
+                </div>
+              <% end %>
   			    </div>
 
             <hr/>
@@ -134,8 +134,8 @@
           </button>
 			  </div>
         <div class="sign-up-content">
-          <%#= link_to user_omniauth_authorize_path(:facebook), :class => "social-button facebook_login" do %>
-            <!-- <div class="row">
+          <%= link_to user_omniauth_authorize_path(:facebook), :class => "social-button facebook_login" do %>
+            <div class="row">
               <div class="col-xs-2 social-button-icon">
                 <i class="fa fa-facebook"></i>
               </div>
@@ -143,8 +143,8 @@
               <div class="col-xs-10 social-button-text">
                 Continue with Facebook
               </div>
-            </div> -->
-          <%# end %>
+            </div>
+          <% end %>
 
           <br/>
 

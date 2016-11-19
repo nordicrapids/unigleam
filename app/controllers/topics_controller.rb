@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
     @banner_image = Banner.first
     @topics = Topic.all
     @first_topic = @topics.first
-    # @other_topics = @topics.where("id != ?", @first_topic.id)
+     @other_topics = @topics.where("id != ?", @first_topic.id)
   end
 
 end
