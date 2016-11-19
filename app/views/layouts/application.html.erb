@@ -11,6 +11,7 @@
 </head>
 <body class="scrollreveal theme-content" data-url="<%= request.original_url %>">
 	<!-- Begin Boxed or Fullwidth Layout -->
+	<%= flash_messages %>
 	<div id="bg-boxed">
 	    <div class="boxed">
 
@@ -22,7 +23,7 @@
 			</section><!-- /content -->
 			<!-- End Content Section -->
 
-			<%= render "layouts/footer" %>				
+			<%= render "layouts/footer" %>
 
 		</div><!-- /boxed -->
 	</div><!-- /bg boxed-->

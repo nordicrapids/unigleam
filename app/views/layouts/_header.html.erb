@@ -57,20 +57,22 @@
 
             <hr/>
             <div class="row">
-              <div class="col-sm-12">
-                <div class="pull-left col-md-4 padding-left-0 padding-right-0">
-                  <h4 class="theme-font">Not a member?</h4>
-                </div>
-								<div class="col-md-4 padding-left-0 padding-right-0">
+              <div class="col-sm-12 padding-left-0 padding-right-0">
+								<div class="col-md-8 padding-left-0 padding-right-0">
+									<div class="pull-left col-md-5 padding-left-0 padding-right-0">
+	                  <h4 class="theme-font">Not a member?</h4>
+	                </div>
+									<div class="login_link col-md-7 padding-left-0">
+	                  <div class="modal-link orange-login-link btn" data-modal-target="#sign_up_modal">
+	                    Register now
+	                  </div>
+	                </div>
+								</div>
+								<div class="col-md-4 padding-left-0 padding-right-0 pull-right">
 									<h4 class="theme-font">
 										<%= link_to "Forgot password ?", "javascript:void(0)", class: "theme-font forgot_password", remote: true, "data-toggle" => "modal", 'data-target' => '#forgot_password_modal' %>
 									</h4>
 								</div>
-                <div class="pull-right login_link">
-                  <div class="modal-link orange-login-link btn" data-modal-target="#sign_up_modal">
-                    Register now
-                  </div>
-                </div>
               </div>
               <br/>
               <br/>
