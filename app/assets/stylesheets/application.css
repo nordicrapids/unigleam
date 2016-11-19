@@ -15,6 +15,8 @@
  *= require ionicons
  *= require theme/css/style
  *= require theme/css/royal_preloader
+ *= require plugins/bootstrap/css/bootstrap.min
+ *= require font-awesome.min
  *= require theme/css/bootstrap-social
  *= require theme/css/animate.min
  *= require theme/css/owl.carousel

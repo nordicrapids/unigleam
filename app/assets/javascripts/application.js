@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require plugins/jquery-validation/dist/jquery.validate.min.js
 //= require highcharts
 //= require theme/js/jquery.unveil
 //= require theme/js/jquery.easing.min

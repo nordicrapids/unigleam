@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :passwords => 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   match "survey_question/:id/share" => "survey_questions#share_counter", :via => :post, as: "survey_share_counter"
 
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"
-  
+  match 'users/sessions/check_email' => "users/sessions#check_email", :via => :get
+  match 'users/sessions/check_email_registration' => "users/sessions#check_email_registration", :via => :get
   match "search" => "pages#search", :via => :get, as: "search"
 
   namespace :admin do

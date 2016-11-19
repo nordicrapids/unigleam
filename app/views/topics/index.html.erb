@@ -1,39 +1,43 @@
 <% unless @banner_image.blank? %>
 	<div class="banner">
 		<div class="banner_title">
-			<%= @banner_image.banner_title %>		
+			<%= @banner_image.banner_title %>
 		</div>
-		
-		<%= image_tag @banner_image.banner_image, :class => "banner_image unveil_img" %>		
-		
-	</div>		
+
+		<%= image_tag @banner_image.banner_image, :class => "banner_image unveil_img" %>
+
+	</div>
 <% end %>
 
 <div class="circular-topics hidden-xs">
 	<p class="theme-font title-text">What's Trending</p>
 	<div class='circular-selector'>
 	  <ul>
-	  	<% unit_degree = 360/(@topics.count-1) %>		  
-		  <% @other_topics.each_with_index do |topic, i| %>
-		  	<%
-		  		rotate_degree = i*unit_degree
-		  	%>
-		    <li style="transform: rotate(<%= rotate_degree %>deg);">		 		    	     
-		      <label style="transform: rotate(<%= 360-rotate_degree %>deg);">
-		      	<%= link_to topics_survey_path(topic) do %>   		
-		      		<span class="circle_label"><%= topic.name %></span>
-			      	<%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>			      	
-			      <% end %>
-		      </label>
-		    </li>
-		   <% end %>	    
+	  	<% unit_degree = 360/(@topics.count-1) %>
+			<% if @other_topics.present? %>
+				<% @other_topics.each_with_index do |topic, i| %>
+			  	<%
+			  		rotate_degree = i*unit_degree
+			  	%>
+			    <li style="transform: rotate(<%= rotate_degree %>deg);">
+			      <label style="transform: rotate(<%= 360-rotate_degree %>deg);">
+			      	<%= link_to topics_survey_path(topic) do %>
+			      		<span class="circle_label"><%= topic.name %></span>
+				      	<%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>
+				      <% end %>
+			      </label>
+			    </li>
+			  <% end %>
+			<% end %>
 	  </ul>
 
 	  <label class="first_circle_label">
-	  	<%= link_to topics_survey_path(@first_topic), :class=>"first_circle_image circle_image_link" do %>
-	  		<span class="circle_label"><%= @first_topic.name %></span>
-		  	<%= image_tag @first_topic.photo.url(:medium), :class => "img-responsive circle-image" %>		  			  
-	  	<% end %>
+			<% if @first_topic.present? %>
+				<%= link_to topics_survey_path(@first_topic), :class=>"first_circle_image circle_image_link" do %>
+		  		<span class="circle_label"><%= @first_topic.name %></span>
+			  	<%= image_tag @first_topic.photo.url(:medium), :class => "img-responsive circle-image" %>
+		  	<% end %>
+			<% end %>
 	  </label>
 	</div>
 </div>
@@ -43,17 +47,17 @@
 	<center><h3 class="theme-font title-text">What's Trending</h3></center>
 	<br/>
 	<div class='circular-selector'>
-	  <ul>	  	
-		  <% @topics.each_with_index do |topic, i| %>		  	
-		    <li class='circle-topic'>		 		    	     
+	  <ul>
+		  <% @topics.each_with_index do |topic, i| %>
+		    <li class='circle-topic'>
 		      <label>
-		      	<%= link_to topics_survey_path(topic) do %>   		
+		      	<%= link_to topics_survey_path(topic) do %>
 		      		<span class="circle_label"><%= topic.name %></span>
-			      	<%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>			      	
+			      	<%= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>
 			      <% end %>
 		      </label>
 		    </li>
-		   <% end %>	    
+		   <% end %>
 	  </ul>
 	 </div>
 </div>

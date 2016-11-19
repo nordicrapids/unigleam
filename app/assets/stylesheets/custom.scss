@@ -1,3 +1,15 @@
+.error{
+  color:red;
+  font-weight: 300 !important;
+}
+.padding-left-0{
+  padding-left: 0px !important;
+}
+
+.padding-right-0{
+  padding-right: 0px !important;
+}
+
 .theme-font{
   color: #ED8742;
 }
@@ -157,7 +169,7 @@
     display: block;
     margin: auto;
   }
-  
+
   .orange-login-link {
     border-radius: 3px;
     border: 1px solid #ED8742;
@@ -178,7 +190,7 @@
   border: none;
 }
 
-.social-button {  
+.social-button {
   width: 100%;
   padding: 15px;
   display: block;
@@ -206,14 +218,14 @@
 }
 
 .or_line {
-  width: 100%; 
-  height: 15px; 
-  border-bottom: 1px solid #d2d2d2; 
+  width: 100%;
+  height: 15px;
+  border-bottom: 1px solid #d2d2d2;
   text-align: center;
   span {
-    font-size: 20px; 
-    background-color: white; 
-    padding: 0 10px; 
+    font-size: 20px;
+    background-color: white;
+    padding: 0 10px;
     color: #121212;
   }
 }
@@ -276,7 +288,7 @@
     font-family: 'Avenir', 'Nunito', Arial, Helvetica, sans-serif !important;
     a {
       color: #121212 !important;
-    }    
+    }
   }
 
   li.search-form {
@@ -309,5 +321,3 @@
     text-align: center;
   }
 }
-
-

@@ -20,5 +20,18 @@ class Users::SessionsController < ApplicationController
 
   end
 
+  def check_email
+    @user = User.find_by_email(params[:user][:email])
+    respond_to do |format|
+     format.json { render :json => @user.present? }
+    end
+  end
+
+  def check_email_registration
+    @user = User.find_by_email(params[:user][:email])
+    respond_to do |format|
+     format.json { render :json => !@user.present? }
+    end
+  end
 
 end

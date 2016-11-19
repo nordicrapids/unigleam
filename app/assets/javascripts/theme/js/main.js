@@ -211,3 +211,68 @@ $('#fixed-navbar').affix({
         top: $('.top-bar').height()
     }
 });
+
+$(document).ready(function() {
+  $(".forgot_password").click(function(event){
+    $('#login_modal').modal('hide')
+  });
+
+  $('#new_user').validate({
+	  rules: {
+	    "user[email]": { required: true, remote:'/users/sessions/check_email' }
+	  },
+	  messages: {
+	    "user[email]": {
+	      required: "Email can't be blank",
+				remote: "Email not present",
+				pattern: "Email is invalid"
+	    }
+	  }
+	})
+
+  $('#sign_in_user').validate({
+	  rules: {
+	    "user[email]": { required: true, remote:'/users/sessions/check_email' }
+	  },
+	  messages: {
+	    "user[email]": {
+	      required: "Email can't be blank",
+				remote: "Email not present",
+				pattern: "Email is invalid"
+	    }
+	  }
+	})
+
+  $('#sign_up_user').validate({
+    rules: {
+      "user[email]": { required: true, remote:'/users/sessions/check_email_registration' },
+      "user[password_confirmation]": {required: true, equalTo: "#user_password_registration"}
+    },
+    messages: {
+      "user[email]": {
+        required: "Email can't be blank",
+        remote: "Email already taken",
+        pattern: "Email is invalid"
+      },
+    "user[password_confirmation]": {
+      equalTo: "Confirm password mismatch"
+     }
+    }
+  })
+
+  $('.reset_password_new_user').validate({
+    rules: {
+      "user[password]": {required: true, minlength: 6},
+      "user[password_confirmation]": {required: true, equalTo: "#user_password_reset"}
+    },
+    messages: {
+      "user[password]":{
+        minlength: "Password must be 6 character long"
+      },
+      "user[password_confirmation]": {
+        equalTo: "Confirm password mismatch"
+       }
+    }
+  })
+
+});
