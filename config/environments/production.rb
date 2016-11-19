@@ -48,6 +48,19 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+  config.action_mailer.smtp_settings  = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "google.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "Info@unigleam.com",
+    password: "Sneakerchange2016"
+  }
+
+  config.action_mailer.default_url_options = { :host => 'https://unigleam-development.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
