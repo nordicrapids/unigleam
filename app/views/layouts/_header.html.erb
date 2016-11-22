@@ -317,7 +317,7 @@
 								<li class="search-form">
 									<%= form_for "", :url => search_path, :method => "get" do |f| %>
                     <%= text_field_tag "gleams", params[:gleams], placeholder: "Search Gleams", :class => "gleams-input" %>
-                    <%= text_field_tag "topics", params[:topics], placeholder: "Search Topics" %>
+                    <%#= text_field_tag "topics", params[:topics], placeholder: "Search Topics" %>
                     <%= f.submit "Search", class: "btn btn-theme" %>
                   <% end %>
 						    </li>
