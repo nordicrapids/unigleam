@@ -40,10 +40,10 @@ class Topic < ActiveRecord::Base
 																								:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
                                                 :bucket => ENV['AWS_BUCKET'],
 																								}
-  validates_attachment 	:photo,
-				:presence => true,
-				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-				:size => { :less_than => 5.megabyte }
+  # validates_attachment 	:photo,
+	# 			:presence => true,
+	# 			:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
+	# 			:size => { :less_than => 5.megabyte }
 
   has_attached_file :banner_image,:styles => {
                                   :preview => ["400x400",:jpg],
