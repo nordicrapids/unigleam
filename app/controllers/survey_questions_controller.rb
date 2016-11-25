@@ -1,6 +1,6 @@
 class SurveyQuestionsController < ApplicationController
 before_action :authenticate_user!, only: [:create_vote_survey]
-
+layout 'user', only: [:user_survey_question, :new, :edit, :create, :update, :show]
   def index
     @topic = Topic.friendly.find(params[:id])
     if params[:survey_question_id].present?
@@ -8,6 +8,44 @@ before_action :authenticate_user!, only: [:create_vote_survey]
     else
       @survey_questions = @topic.survey_questions
     end
+  end
+
+  def user_survey_question
+      @survey_questions = SurveyQuestion.where('user_id = ?', params[:id])
+  end
+
+  def new
+    @survey_question = SurveyQuestion.new
+  end
+
+  def edit
+    @survey_question = SurveyQuestion.find(params[:id])
+  end
+
+  def show
+    @survey_question = SurveyQuestion.find(params[:id])
+  end
+
+  def create
+    @survey_question = SurveyQuestion.new(survey_question_params)
+    if (@survey_question.save)
+			flash[:notice] = "Survey question has been created."
+			redirect_to admin_survey_questions_path
+		else
+			flash[:alert] = "Survey question has not been created."
+			render "new"
+		end
+  end
+
+  def update
+    @survey_question = SurveyQuestion.find(params[:id])
+    if (@survey_question.update_attributes(survey_question_params))
+			flash[:notice] = "Survey question has been updated."
+			redirect_to admin_survey_questions_path
+		else
+			flash[:alert] = "Survey question not been updated."
+			render "edit"
+		end
   end
 
   def create_vote_survey
@@ -33,8 +71,12 @@ before_action :authenticate_user!, only: [:create_vote_survey]
     render json: {:status => "success"}
   end
 
-  # def user_survey_question
-  #   @survey_questions = SurveyQuestion
-  # end
+
+  private
+  	def survey_question_params
+      columns = SurveyQuestion.strong_parameters
+  		params.require(:survey_question)
+  		.permit(columns)
+  	end
 
 end

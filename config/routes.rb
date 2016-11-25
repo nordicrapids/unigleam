@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   match "topics" => "topics#index", :via => :get, as: "topics"
-
+  resources :survey_questions
   # survey questions
   match "topics/:id/surveys" => "survey_questions#index", :via => :get, as: "topics_survey"
   match "topics/:id/surveys/:survey_question_id" => "survey_questions#index", :via => :get, as: "topics_survey_question"
@@ -14,15 +14,12 @@ Rails.application.routes.draw do
   match "survey_question/:id/result" => "survey_questions#vote_result", :via => :get, as: "vote_result"
   match "survey_question/:id/survey" => "survey_questions#vote_survey", :via => :get, as: "vote_survey"
   match "survey_question/:id/share" => "survey_questions#share_counter", :via => :post, as: "survey_share_counter"
+  match "users/:id/user_survey_question" => "survey_questions#user_survey_question", :via => :get, as: "user_survey_question"
 
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"
   match 'users/sessions/check_email' => "users/sessions#check_email", :via => :get
   match 'users/sessions/check_email_registration' => "users/sessions#check_email_registration", :via => :get
   match "search" => "pages#search", :via => :get, as: "search"
-
-  namespace :user do
-    resources :survey_questions
-  end
 
   namespace :admin do
     resources :topics

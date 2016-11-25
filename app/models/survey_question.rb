@@ -20,7 +20,7 @@ class SurveyQuestion < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: :slugged
-
+  belongs_to :user
   belongs_to :topic
   has_many :survey_question_answers, -> { order(position: :asc) }
   has_many :survey_responses
@@ -45,7 +45,7 @@ class SurveyQuestion < ActiveRecord::Base
 
 
   def self.strong_parameters
-    columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
+    columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :user_id, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
   end
 
   def user_response(user)
