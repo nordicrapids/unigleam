@@ -1,3 +1,71 @@
+.file-field-show-disable{
+  position: absolute;
+  opacity: 0;
+}
+.upload-box {
+	width: 150px;
+	height: 150px;
+	position: relative;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	overflow: hidden;
+	background: #eee;
+	float: left; /*Temp CSS*/
+	margin-right: 10px; /*Temp CSS*/
+}
+.upload-box input {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding-left: 110%;
+	height: 100%;
+	z-index: 1;
+	cursor: pointer;
+}
+.upload-box .icn-upload {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border-radius: 100%;
+	background: #4794fc;
+	color: #fff;
+	left: 0;
+	right: 0;
+	margin: -15px auto 0px;
+	padding-top: 5px;
+	top: 50%;
+}
+.upload-box img {
+	width: 100%;
+	height: 100%;
+	border-radius: 3px;
+	display: none;
+}
+.upload-box .icn-remove {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border-radius: 100%;
+	background: #d9534f;
+	color: #fff;
+	left: 0;
+	right: 0;
+	margin: -15px auto 0px;
+	padding-top: 5px;
+	top: 50%;
+	display: none;
+	cursor: pointer;
+}
+.upload-box.file-uploaded input,
+.upload-box.file-uploaded .icn-upload {
+	display: block;
+}
+.upload-box.file-uploaded img,
+.upload-box.file-uploaded .icn-remove {
+	display: block;
+}
 .set-cursor-pointer{
   cursor: pointer;
 }

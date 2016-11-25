@@ -29,3 +29,29 @@
 //= require theme/js/main
 //= require common
 //= require_tree .
+
+$(document).ready(function() {
+  $("#wizard-picture").change(function(){
+    readURL(this);
+    $(this).parent().addClass('file-uploaded')
+  });
+  function readURL(input) {
+  		if (input.files && input.files[0]) {
+  				var reader = new FileReader();
+          if (input.value.split('.')[input.value.split('.').length - 1] == "gif"){
+             $('.error_msg_for_main_image').empty().append('<label id="wizard-picture-error" class="error" for="wizard-picture">.GIF extension invalid!</label>')
+             $('#wizard-picture').val('')
+             $('#wizard-picture').attr('value', '')
+             $('#wizard-picture').addClass('required')
+             $('#wizardPicturePreview').attr('src', '')
+             $('#wizardPicturePreview').attr('alt', '')
+          }else{
+    				reader.onload = function (e) {
+    						$('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+    				}
+            $('.error_msg_for_main_image').empty()
+            reader.readAsDataURL(input.files[0]);
+          }
+  		}
+  }
+})
