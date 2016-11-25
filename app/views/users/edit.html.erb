@@ -1,0 +1,27 @@
+<h2 class="font-color-head font-weight-500">Profile Settings</h2>
+<%= form_for(current_user, url: user_path(current_user), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.email_field :email, class: 'form-control width-30-percent', placeholder: 'Email' %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.text_field :city, class: 'form-control width-30-percent', placeholder: "City" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label "Gender", class:'font-color-grey'%><br />
+    <%= f.radio_button :gender, "male" %>&nbsp;<%= f.label :gender, 'Male', class: 'font-color-grey set-cursor-pointer', value: 'male' %><br />
+    <%= f.radio_button :gender, "female"%>&nbsp;<%= f.label :gender, 'Female', class: 'font-color-grey set-cursor-pointer', value: 'female' %><br />
+    <%= f.radio_button :gender, "transgender"%>&nbsp;<%= f.label :gender, 'Transgender', class: 'font-color-grey set-cursor-pointer', value: 'transgender' %><br />
+    <%= f.radio_button :gender, ""%>&nbsp;<%= f.label :gender, 'Not Specified', class: 'font-color-grey set-cursor-pointer',value: '' %><br />
+  </div>
+  <br />
+  <div class="field">
+    <%= f.select :age,(1..100), { prompt: "Select Age" }, class: 'form-control width-30-percent', placeholder: "City" %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit "Save", class: 'btn background-color' %>
+  </div>
+<% end %>
