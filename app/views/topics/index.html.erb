@@ -13,7 +13,7 @@
 	<p class="theme-font title-text">What's Trending</p>
 	<div class='circular-selector'>
 	  <ul>
-	  	<% unit_degree = 360/(@topics.count-1) %>
+	  	<% unit_degree = 360/(@topics.count <= 1 ? 1 : @topics.count-1) %>
 			<% if @other_topics.present? %>
 				<% @other_topics.each_with_index do |topic, i| %>
 			  	<%

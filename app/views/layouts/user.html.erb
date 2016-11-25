@@ -31,7 +31,7 @@
               <%= link_to "Dashboard", dashboard_path %>
             </li>
 
-            <li class="<%= 'active' if controller.controller_name.eql?('survey_questions') && controller.action_name.eql?('user_survey_question') %>">
+            <li class="<%= 'active' if controller.controller_name.eql?('survey_questions')%>">
               <%= link_to "Survey Questions", user_survey_question_path(current_user.id) %>
             </li>
 
@@ -64,7 +64,7 @@
           <%= link_to "<i class='fa fa-dashboard'></i> Dashboard".html_safe, dashboard_path %>
         </li>
 
-        <li class="<%= 'active' if controller.controller_name.eql?('survey_questions') && controller.action_name.eql?('user_survey_question') %>">
+        <li class="<%= 'active' if controller.controller_name.eql?('survey_questions') %>">
           <%= link_to "<i class='fa fa-question-circle'></i> Survey Questions".html_safe, user_survey_question_path(current_user.id) %>
         </li>
 

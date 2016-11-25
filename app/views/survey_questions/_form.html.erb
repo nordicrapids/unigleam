@@ -1,8 +1,8 @@
 <%= form_for (@survey_question) do |f| %>
-
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
     <%= f.label :topic_id, "Topic" %>
-    <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.name, x.id] }, @survey_question.topic_id), {}, :class => "form-control" %>
+    <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.name, x.id] }, @survey_question.topic_id), {prompt: 'Select Topic Name'}, :class => "form-control" %>
   </div>
 
   <div class="form-group">
@@ -14,7 +14,7 @@
     <%= f.label :image, "Topic Image" %>
     <%= f.file_field :image %>
 
-    <% if @survey_question.image.present? %>
+    <% if !@survey_question.new_record? && @survey_question.image.present? %>
       <br/>
       <%= image_tag @survey_question.image.url(:medium), :class => "img-thumbnail" %>
     <% end %>

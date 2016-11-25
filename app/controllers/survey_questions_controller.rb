@@ -30,7 +30,7 @@ layout 'user', only: [:user_survey_question, :new, :edit, :create, :update, :sho
     @survey_question = SurveyQuestion.new(survey_question_params)
     if (@survey_question.save)
 			flash[:notice] = "Survey question has been created."
-			redirect_to admin_survey_questions_path
+			redirect_to user_survey_question_path(current_user.id)
 		else
 			flash[:alert] = "Survey question has not been created."
 			render "new"
@@ -38,10 +38,10 @@ layout 'user', only: [:user_survey_question, :new, :edit, :create, :update, :sho
   end
 
   def update
-    @survey_question = SurveyQuestion.find(params[:id])
+    @survey_question = SurveyQuestion.find_by_slug(params[:id])
     if (@survey_question.update_attributes(survey_question_params))
 			flash[:notice] = "Survey question has been updated."
-			redirect_to admin_survey_questions_path
+			redirect_to user_survey_question_path(current_user.id)
 		else
 			flash[:alert] = "Survey question not been updated."
 			render "edit"
