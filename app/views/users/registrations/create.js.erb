@@ -1,9 +1,8 @@
-
 <% if @error.present? %>
-  $("#register_error_message").html("")
-  $("#register_error_message").text("<%= @error.html_safe %>")
-  $("#register_error_message").show()
+ $("#register_error_message").html("")
+ $("#register_error_message").text("<%= @error.html_safe %>")
+ $("#register_error_message").show()
 <% else %>
-  $('#register_modal').modal('hide')
-  window.location.href = $("body").data("url")
+ $('#register_modal').modal('hide')
+ window.location.href = $("body").data("url")
 <% end %>

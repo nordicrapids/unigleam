@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :passwords => 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks" }
-
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   match 'users/sessions/check_email_registration' => "users/sessions#check_email_registration", :via => :get
   match "search" => "pages#search", :via => :get, as: "search"
 
+  namespace :user do
+    resources :survey_questions
+  end
+
   namespace :admin do
     resources :topics
     resources :survey_questions
@@ -32,5 +36,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root "topics#index"
+  get '/dashboard' => "topics#dashboard"
 
 end

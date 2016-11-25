@@ -33,4 +33,8 @@ before_action :authenticate_user!, only: [:create_vote_survey]
     render json: {:status => "success"}
   end
 
+  # def user_survey_question
+  #   @survey_questions = SurveyQuestion
+  # end
+
 end
