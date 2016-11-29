@@ -32,16 +32,12 @@ class SurveyQuestion < ActiveRecord::Base
 														:medium => ["260x260#",:jpg],
 														:large => ["100%", :medium] },
 														:default_style => :thumb,
-														:default_url => "/assets/missing.png",
-														:storage => :s3,
-														:s3_credentials => {:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-																								:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-                                                :bucket => ENV['AWS_BUCKET'],
-																								}
-  # validates_attachment 	:image,
-	# 			:presence => true,
-	# 			:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-	# 			:size => { :less_than => 5.megabyte }
+														:default_url => "/assets/missing.png"
+
+  validates_attachment 	:image,
+				:presence => true,
+				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
+				:size => { :less_than => 5.megabyte }
 
 
   def self.strong_parameters

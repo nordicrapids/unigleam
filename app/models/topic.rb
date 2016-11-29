@@ -34,26 +34,17 @@ class Topic < ActiveRecord::Base
 														:medium => ["260x260#",:jpg],
 														:large => ["100%", :jpg] },
 														:default_style => :thumb,
-														:default_url => "/assets/missing.png",
-														:storage => :s3,
-														:s3_credentials => {:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-																								:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-                                                :bucket => ENV['AWS_BUCKET'],
-																								}
-  # validates_attachment 	:photo,
-	# 			:presence => true,
-	# 			:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-	# 			:size => { :less_than => 5.megabyte }
+														:default_url => "/assets/missing.png"
+
+  validates_attachment 	:photo,
+				:presence => true,
+				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
+				:size => { :less_than => 5.megabyte }
 
   has_attached_file :banner_image,:styles => {
                                   :preview => ["400x400",:jpg],
                                   :large => ["100%", :jpg] },
-                                  :default_url => "/assets/missing.png",
-                                  :storage => :s3,
-                                  :s3_credentials => {:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-                                                      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-                                                      :bucket => ENV['AWS_BUCKET'],
-                                                      }
+                                  :default_url => "/assets/missing.png"
 
   validates_attachment  :banner_image,
         :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] }

@@ -17,12 +17,7 @@ class Banner < ActiveRecord::Base
   has_attached_file :banner_image,:styles => {
                                   :preview => ["400x400",:jpg],
                                   :large => ["100%", :jpg] },
-                                  :default_url => "/assets/missing.png",
-                                  :storage => :s3,
-                                  :s3_credentials => {:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-                                                      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-                                                      :bucket => ENV['AWS_BUCKET'],
-                                                      }
+                                  :default_url => "/assets/missing.png"
 
   validates_attachment  :banner_image,
         :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] }
