@@ -48,15 +48,6 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['unigleam-pro'],
-      :access_key_id => ENV['AKIAJBOIRFKMQTJT6T6Q'],
-      :secret_access_key => ENV['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']
-    }
-  }
-
   config.action_mailer.smtp_settings  = {
     address: "smtp.gmail.com",
     port: 587,

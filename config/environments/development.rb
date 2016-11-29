@@ -41,15 +41,6 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['unigleam-dev'],
-      :access_key_id => ENV['AKIAJBOIRFKMQTJT6T6Q'],
-      :secret_access_key => ENV['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']
-    }
-  }
-
   config.action_mailer.smtp_settings  = {
     address: "smtp.gmail.com",
     port: 587,

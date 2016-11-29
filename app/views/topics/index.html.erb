@@ -1,4 +1,4 @@
-<% if @banner_image.banner_image_file_name.present? %>
+<% unless @banner_image.blank? %>
 	<div class="banner">
 		<div class="banner_title">
 			<%= @banner_image.banner_title %>
