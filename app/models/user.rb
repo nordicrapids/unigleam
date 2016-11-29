@@ -44,9 +44,9 @@ class User < ActiveRecord::Base
                             storage: :s3,
                             s3_protocol: :https,
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                            s3_domain_url: ':s3_domain_url',
-                            path:  '/user/:id/:filename',
-                            s3_host_alias: 's3-us-west-2.amazonaws.com',
+                            url: ':s3_domain_url',
+                            path:  '/profile_image/:id/:filename',
+                            s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
                             :styles => {
                               :preview => ["150x150>",:jpg],
   														:medium => ["260x260#",:jpg],

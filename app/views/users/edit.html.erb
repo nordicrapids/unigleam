@@ -43,6 +43,6 @@
   </div>
   <br />
   <div class="actions">
-    <%= f.submit "Save", class: 'btn background-color' %>
+    <%= f.button "Save", class: 'btn background-color', 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Saving".html_safe %>
   </div>
 <% end %>
