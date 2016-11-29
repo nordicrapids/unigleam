@@ -31,9 +31,9 @@ class SurveyQuestion < ActiveRecord::Base
                             :storage => :s3,
                             :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
                             :styles => {
-                            :preview => ["150x150>",:jpg],
-														:medium => ["260x260#",:jpg],
-														:large => ["100%", :medium] },
+                              :preview => ["150x150>",:jpg],
+  														:medium => ["260x260#",:jpg],
+  														:large => ["100%", :medium] },
 														:default_style => :thumb,
 														:default_url => "/assets/missing.png"
 
