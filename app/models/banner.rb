@@ -21,7 +21,7 @@ class Banner < ActiveRecord::Base
                                   s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
                                   url: ':s3_domain_url',
                                   path:  '/banner/:id/:filename',
-                                  s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
+                                  s3_host_alias: 'https://s3-ap-northeast-1.amazonaws.com/',
                                   :styles => {
                                     :preview => ["400x400",:jpg],
                                     :large => ["100%", :jpg] },
