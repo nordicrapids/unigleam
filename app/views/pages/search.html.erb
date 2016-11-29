@@ -13,82 +13,157 @@
     <h3 class="theme-font title-text">Search Results</h3>
   </center>
 
-  <!-- <div class="container">
-    <h3 class="theme-font title-text">Topics Results</h3>
-    <br/>
-    <div class="col-sm-12">
-      <%# unless @topics.blank? %>
-        <%# @topics.each do |topic| %>
-          <div class="col-sm-4">
-            <%#= link_to topics_survey_path(topic) do %>
-              <span class="circle-title"><%#= topic.name %></span>
-              <%#= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>
-            <%# end %>
-          </div>
+  <!--<%# if params.has_key?(:topics) %>
+     <div class="container">
+      <h3 class="theme-font title-text">Topics Results</h3>
+      <br/>
+      <div class="col-sm-12">
+        <%# unless @topics.blank? %>
+          <%# @topics.each do |topic| %>
+            <div class="col-sm-4">
+              <%#= link_to topics_survey_path(topic) do %>
+                <span class="circle-title"><%#= topic.name %></span>
+                <%#= image_tag topic.photo.url(:medium), :class => "img-responsive circle-image" %>
+              <%# end %>
+            </div>
+          <%# end %>
+        <%# else %>
+          <center>
+            No result found.
+          </center>
         <%# end %>
-      <%# else %>
-        <center>
-          No result found.
-        </center>
-      <%# end %>
+      </div>
     </div>
-  </div> -->
+  <%# end %>-->
 
-  <div class="container">
-    <hr/>
-    <h3 class="theme-font title-text">Gleams Results</h3>
-    <br/>
-    <div class="col-sm-12">
-      <% unless @survey_questions.blank? %>
-        <% @survey_questions.each_with_index do |survey_question,index| %>
-          <div class="pt40 pb40">
-            <div class="container">
-              <!-- Begin Carousel + Content -->
-              <div class="row">
+  <% if params.has_key?(:gleams) %>
+    <div class="container">
+      <hr/>
+      <h3 class="theme-font title-text">Gleams Results</h3>
+      <br/>
+      <div class="col-sm-12">
+        <% unless @survey_questions.blank? %>
+          <% @survey_questions.each_with_index do |survey_question,index| %>
+            <div class="pt40 pb40">
+              <div class="container">
+                <!-- Begin Carousel + Content -->
+                <div class="row">
 
-                <!-- Begin Carousel -->
-                <div class="col-sm-4" style="visibility: visible; ">
+                  <!-- Begin Carousel -->
+                  <div class="col-sm-4" style="visibility: visible; ">
 
-                  <center>
-                    <%= link_to topics_survey_path(survey_question.topic) do %>
-                      <div style="background-image:url('<%= survey_question.image.url(:medium) %>');" class="survey-image"></div>
-                    <% end %>
-                    <br/>
-                    <%= link_to "Go to Gleam", topics_survey_path(survey_question.topic), :class => "btn btn-theme btn-category" %>
-                  </center>
+                    <center>
+                      <%= link_to topics_survey_path(survey_question.topic) do %>
+                        <div style="background-image:url('<%= survey_question.image.url(:medium) %>');" class="survey-image"></div>
+                      <% end %>
+                      <br/>
+                      <%= link_to "Go to Gleam", topics_survey_path(survey_question.topic), :class => "btn btn-theme btn-category" %>
+                    </center>
 
-                </div><!-- /column -->
-                <!-- End Carousel -->
+                  </div><!-- /column -->
+                  <!-- End Carousel -->
 
-                <!-- Content Inside -->
-                <div class="col-sm-8" style="visibility: visible; ">
-                  <div class="mb20 mt30-xs">
-                    <h4 class="theme-font">
-                      <%= survey_question.title %>
-                    </h4>
-                  </div>
+                  <!-- Content Inside -->
+                  <div class="col-sm-8" style="visibility: visible; ">
+                    <div class="mb20 mt30-xs">
+                      <h4 class="theme-font">
+                        <%= survey_question.title %>
+                      </h4>
+                    </div>
 
-                  <div id="survey_question_<%= survey_question.id %>">
-                    <%= render partial: "survey_questions/survey_question", locals: {:survey_question => survey_question} %>
-                  </div>
+                    <div id="survey_question_<%= survey_question.id %>">
+                      <%= render partial: "survey_questions/survey_question", locals: {:survey_question => survey_question} %>
+                    </div>
 
-                </div><!-- /column -->
-                <!-- End Content Inside -->
+                  </div><!-- /column -->
+                  <!-- End Content Inside -->
 
-              </div><!-- /row -->
-              <!-- End Carousel + Content -->
+                </div><!-- /row -->
+                <!-- End Carousel + Content -->
 
-            </div><!-- /container -->
-          </div>
+              </div><!-- /container -->
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+            No result found.
+          </center>
         <% end %>
-      <% else %>
-        <center>
-          No result found.
-        </center>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
+  <% if params.has_key?(:profiles) %>
+    <div class="container">
+      <hr/>
+      <h3 class="theme-font title-text">Profiles Results</h3>
+      <br/>
+      <div class="col-sm-12">
+        <% unless @profiles.blank? %>
+          <% @profiles.each_with_index do |profile,index| %>
+            <div class="pt40 pb40">
+              <div class="container">
+                <!-- Begin Carousel + Content -->
+                <div class="row">
+
+                  <!-- Begin Carousel -->
+                  <div class="col-sm-4" style="visibility: visible; ">
+
+                    <center>
+                      <%= link_to edit_user_path(profile.id) do %>
+                        <div style="background-image:url('<%= profile.profile_image.url(:large) %>');" class="survey-image"></div>
+                      <% end %>
+                      <br/>
+                      <%#= link_to "Go to Gleam", topics_survey_path(survey_question.topic), :class => "btn btn-theme btn-category" %>
+                    </center>
+
+                  </div><!-- /column -->
+                  <!-- End Carousel -->
+
+                  <!-- Content Inside -->
+                  <div class="col-sm-8" style="visibility: visible; ">
+                    <div class="mb20 mt30-xs">
+                      <h4 class="theme-font">
+                        <%= profile.try(:full_name) %>
+                      </h4>
+                    </div>
+
+                    <div id="profile_<%= profile.id %>">
+                      <div class="rows">
+                        <div class="col-md-2">Email:</div>
+                        <div class="col-md-10"><%= profile.email%></div>
+                      </div>
+                      <div class="rows">
+                        <div class="col-md-2">City:</div>
+                        <div class="col-md-10"><%= profile.city.present? ? profile.city : '-'%></div>
+                      </div>
+                      <div class="rows">
+                        <div class="col-md-2">Age:</div>
+                        <div class="col-md-10"><%= profile.age.present? ? profile.age : '-'%></div>
+                      </div>
+                      <div class="rows">
+                        <div class="col-md-2">Gender:</div>
+                        <div class="col-md-10"><%= profile.gender.present? ? profile.gender : '-'%></div>
+                      </div>
+                    </div>
+
+                  </div><!-- /column -->
+                  <!-- End Content Inside -->
+
+                </div><!-- /row -->
+                <!-- End Carousel + Content -->
+
+              </div><!-- /container -->
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+            No result found.
+          </center>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <br/>
   <br/>
 

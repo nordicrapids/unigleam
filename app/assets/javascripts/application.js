@@ -27,6 +27,7 @@
 //= require theme/js/activate-snippet
 //= require theme/js/skrollr.min
 //= require theme/js/main
+//= require jquery.remotipart
 //= require common
 //= require_tree .
 
@@ -66,4 +67,11 @@ $(document).ready(function() {
     $('#wizardPicturePreview').attr('src', img_path).fadeIn('slow');
     $('#wizard-picture').removeAttr('value')
   }
+
+  $('#survey_question').on('hidden.bs.modal', function(e) {
+    $('#survey_question_topic_id').val('')
+    $('#survey_question_title').val('')
+    $('#survey_question_image').val('')
+    $('.section_rows').remove()
+  });
 })

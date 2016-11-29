@@ -288,6 +288,81 @@
     </div><!-- /modal dialog -->
   </div><!-- /modal holder -->
   <!-- End register -->
+
+	<!-- survey question -->
+	<% if user_signed_in? %>
+	  <div class="modal fade login-modal" id="survey_question" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+	    <div class="modal-dialog" style="left:0; width: 90%;">
+	      <div class="modal-content">
+	        <div class="modal-header">
+						<div class="pull-left">
+				      <h2>Add Survey Question</h2>
+				    </div>
+	          <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'>
+	            <span aria-hidden="true">×</span>
+	            <span class="sr-only">
+	              Close
+	            </span>
+	          </button>
+	        </div>
+					<div class="clearfix"></div>
+	        <div class="sign-up-content">
+	          <div class="sign-up-form">
+							<% @survey_question = SurveyQuestion.new%>
+							<%= form_for @survey_question, :remote => true do |f| %>
+							  <%= f.hidden_field :user_id, value: current_user.id %>
+							  <div class="form-group">
+							    <%= f.label :topic_id, "Topic" %>
+							    <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.name, x.id] }, @survey_question.topic_id), {prompt: 'Select Topic Name'}, :class => "form-control" %>
+							  </div>
+
+							  <div class="form-group">
+							    <%= f.label :title, "Title" %>
+							    <%= f.text_field :title, :class => "form-control", :placeholder => "Title" %>
+							  </div>
+
+							  <div class="form-group">
+							    <%= f.label :image, "Topic Image" %>
+							    <%= f.file_field :image %>
+
+							    <% if !@survey_question.new_record? && @survey_question.image.present? %>
+							      <br/>
+							      <%= image_tag @survey_question.image.url(:medium), :class => "img-thumbnail" %>
+							    <% end %>
+							  </div>
+
+
+							  <div class="form-group">
+							    <%= f.label :answer_options, "Answer Options" %>
+							  </div>
+
+							  <table class="table table-borderless" id="survey_question_answers">
+							    <tbody>
+							      <%= f.fields_for :survey_question_answers do |f2| %>
+							        <%= render "survey_questions/survey_question_answer_fields", :f => f2 %>
+							      <% end %>
+							    </tbody>
+							  </table>
+
+							  <%= link_to_add_tr_field("Add New Answer", f, :survey_question_answers, "survey_question_answers") %>
+
+							  <br/>
+
+
+	          </div>
+	        </div>
+					<div class="modal-footer">
+						<div class="form-action col-md-2 pull-right">
+							<%= f.button "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success", data: {disable_with: "<i class='fa fa-spinner spin'></i>Creating..".html_safe} %>
+						</div>
+					</div>
+					<% end %>
+	      </div><!-- /modal content -->
+
+	    </div><!-- /modal dialog -->
+	  </div><!-- /modal holder -->
+	<% end %>
+  <!-- End survey question -->
 	<div id="header_popup"> </div>
 
   <!-- Begin Navigation -->
@@ -310,10 +385,15 @@
 					            <span class="icon-bar"></span>
 							</button>
 						</div><!-- /navbar header -->
-
 						<!-- Main Navigation - Explained in Documentation -->
 						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
 							<ul class="nav navbar-nav navbar-right main-nav-bar">
+								<li class="search-form padding-right-10">
+									<%= form_for "", :url => search_path, :method => "get" do |f| %>
+                    <%= text_field_tag "profiles", params[:profiles], placeholder: "Search Profiles", :class => "gleams-input" %>
+                    <%= f.submit "Search", class: "btn btn-theme" %>
+                  <% end %>
+						    </li>
 								<li class="search-form">
 									<%= form_for "", :url => search_path, :method => "get" do |f| %>
                     <%= text_field_tag "gleams", params[:gleams], placeholder: "Search Gleams", :class => "gleams-input" %>
@@ -331,6 +411,9 @@
 										<a data-toggle="modal" data-target="#register_modal">Register</a>
 									</li>
 								<% else %>
+									<li>
+										<a data-toggle="modal" data-target="#survey_question" class="padding-bottom-0"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+									</li>
 									<li class="dropdown remove_class_active_header">
 						        <%= link_to "#{current_user.try(:full_name)}<i class='fa fa-user fa-fw'></i><i class=fa fa-caret-down'></i>".html_safe, "#", class: "dropdown-toggle", 'data-toggle' => "dropdown"%>
 						          <ul class="dropdown-menu dropdown-user">

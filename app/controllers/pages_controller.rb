@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  def search    
+  def search
     @banner_image = Banner.first
 
     unless params[:topics].blank?
@@ -11,6 +11,10 @@ class PagesController < ApplicationController
       @survey_questions = SurveyQuestion.where("title ILIKE ?", "%#{params[:gleams]}%")
     end
 
-  end 
+    unless params[:profiles].blank?
+      @profiles = User.where("email ILIKE ?", "%#{params[:profiles]}%")
+    end
+
+  end
 
 end
