@@ -28,8 +28,13 @@ class SurveyQuestion < ActiveRecord::Base
   accepts_nested_attributes_for :survey_question_answers, :allow_destroy => true
 
   has_attached_file :image,
-                            :storage => :s3,
-                            :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+                            s3_region: 'us-west-2',
+                            storage: :s3,
+                            s3_protocol: :https,
+                            s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+                            url: ':s3_domain_url',
+                            path:  '/images/:id/:filename',
+                            s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
                             :styles => {
                               :preview => ["150x150>",:jpg],
   														:medium => ["260x260#",:jpg],

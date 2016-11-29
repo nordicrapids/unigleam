@@ -15,8 +15,13 @@
 class Banner < ActiveRecord::Base
 
   has_attached_file :banner_image,
-                                  :storage => :s3,
-                                  :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+                                  s3_region: 'us-west-2',
+                                  storage: :s3,
+                                  s3_protocol: :https,
+                                  s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+                                  url: ':s3_domain_url',
+                                  path:  '/banner/:id/:filename',
+                                  s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
                                   :styles => {
                                     :preview => ["400x400",:jpg],
                                     :large => ["100%", :jpg] },
