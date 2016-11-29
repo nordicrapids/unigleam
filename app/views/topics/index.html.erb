@@ -1,11 +1,9 @@
-<% unless @banner_image.blank? %>
+<% if @banner_image.banner_image_file_name.present? %>
 	<div class="banner">
 		<div class="banner_title">
 			<%= @banner_image.banner_title %>
 		</div>
-
 		<%= image_tag @banner_image.banner_image, :class => "banner_image unveil_img" %>
-
 	</div>
 <% end %>
 
