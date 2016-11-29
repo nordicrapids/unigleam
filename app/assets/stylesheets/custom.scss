@@ -50,16 +50,20 @@
 	border-radius: 100%;
 	background: #d9534f;
 	color: #fff;
-	left: 0;
+	left: 116;
 	right: 0;
 	margin: -15px auto 0px;
 	padding-top: 5px;
-	top: 50%;
+	top: 11%;
 	display: none;
 	cursor: pointer;
 }
 .upload-box.file-uploaded input,
 .upload-box.file-uploaded .icn-upload {
+	display: none;
+}
+.upload-box:hover.file-uploaded input,
+.upload-box:hover.file-uploaded .icn-upload {
 	display: block;
 }
 .upload-box.file-uploaded img,

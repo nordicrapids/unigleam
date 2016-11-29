@@ -8,6 +8,7 @@
     </div>
     <div class="upload-box file-uploaded">
       <i class="icn-upload set-cursor-pointer fa fa-upload" onclick='$("#wizard-picture").trigger("click")'></i>
+      <!-- <i class="icn-remove set-cursor-pointer fa fa-remove" onclick='imgRemove()'></i> -->
       <% if f.object.profile_image.present? %>
         <% if f.object.profile_image.url.present? && !f.object.new_record? %>
           <%= image_tag(f.object.profile_image.url(:small), class: "picture-src ", id: "wizardPicturePreview")%>

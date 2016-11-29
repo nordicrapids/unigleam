@@ -31,6 +31,7 @@
 //= require_tree .
 
 $(document).ready(function() {
+  imgRemove()
   $("#wizard-picture").change(function(){
     readURL(this);
     $(this).parent().addClass('file-uploaded')
@@ -53,5 +54,16 @@ $(document).ready(function() {
             reader.readAsDataURL(input.files[0]);
           }
   		}
+  }
+
+  function imgRemove(){
+    var img_path = $('.logo_upload').data('default-url')
+    $('.logo_upload').parent().removeClass('file-uploaded')
+    $('#wizard-picture').val('')
+    $('#wizard-picture').removeAttr('value')
+    //  $('#wizardPicturePreview').attr('src', img_path).fadeIn('slow');
+    var img_path = $('.cancle_img').data('default-url')
+    $('#wizardPicturePreview').attr('src', img_path).fadeIn('slow');
+    $('#wizard-picture').removeAttr('value')
   }
 })
