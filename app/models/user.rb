@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
       storage: :s3,
       s3_protocol: :https,
       s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+      s3_host_name: "s3-us-west-2.amazonaws.com",
       url: ':s3_domain_url',
       path:  '/images/:id/:filename'
 
