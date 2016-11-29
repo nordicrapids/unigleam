@@ -14,7 +14,10 @@
 
 class Banner < ActiveRecord::Base
 
-  has_attached_file :banner_image,:styles => {
+  has_attached_file :banner_image,
+                                  :storage => :s3,
+                                  :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+                                  :styles => {
                                   :preview => ["400x400",:jpg],
                                   :large => ["100%", :jpg] },
                                   :default_url => "/assets/missing.png"

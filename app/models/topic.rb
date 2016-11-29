@@ -29,7 +29,10 @@ class Topic < ActiveRecord::Base
 
 	# Topic.find_each { |t| t.photo.reprocess! }
 
-  has_attached_file :photo, :styles => {
+  has_attached_file :photo,
+														:storage => :s3,
+														:s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+														:styles => {
                             :preview => ["150x150>",:jpg],
 														:medium => ["260x260#",:jpg],
 														:large => ["100%", :jpg] },
@@ -41,7 +44,10 @@ class Topic < ActiveRecord::Base
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 
-  has_attached_file :banner_image,:styles => {
+  has_attached_file :banner_image,
+																	:storage => :s3,
+																	:s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+																	:styles => {
                                   :preview => ["400x400",:jpg],
                                   :large => ["100%", :jpg] },
                                   :default_url => "/assets/missing.png"

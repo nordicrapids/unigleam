@@ -39,7 +39,10 @@ class User < ActiveRecord::Base
   has_many :survey_responses
   has_many :survey_questions
 
-  has_attached_file :profile_image, :styles => {
+  has_attached_file :profile_image,
+                            :storage => :s3,
+                            :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+                            :styles => {
                             :preview => ["150x150>",:jpg],
 														:medium => ["260x260#",:jpg],
 														:large => ["100%", :jpg] },
