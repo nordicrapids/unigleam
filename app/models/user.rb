@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
                             storage: :s3,
                             s3_protocol: :https,
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                            url: ':s3_domain_url',
+                            s3_domain_url: ':s3_domain_url',
                             path:  '/user/:id/:filename',
                             s3_host_alias: 'https://s3-ap-northeast-1.amazonaws.com/',
                             :styles => {
