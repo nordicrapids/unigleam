@@ -1,0 +1,30 @@
+<% survey_question.comments.each_with_index do |comment| %>
+  <div class="panel padding-5">
+    <div class="rows">
+      <!-- <div class="col-md-4 circle-topic"> -->
+          <!-- <label class=""> -->
+            <%#= link_to topics_survey_path(topic) do %>
+              <span class="circle_label"><%= comment.survey_question.user.try(:full_name) %>:</span>
+              <%#= image_tag comment.survey_question.user.profile_image.url(:medium), :class => "img-responsive circle-image" %>
+            <%# end %>
+          <!-- </label> -->
+      <!-- </div> -->
+    </div>
+    <div class="rows">
+      <div class="col-md-12 padding-left-0 padding-right-0">
+        <% if current_user.is_admin? %>
+          <%= form_for comment, :remote => true  do |f| %>
+            <%= f.hidden_field :survey_question_id, value: survey_question.id%>
+            <div class="rows">
+              <div class="col-md-10 padding-left-0 padding-right-0"><%= f.text_area :comment, :class => "form-control", :placeholder => "Write Your Comment Here" %></div>
+              <div class="col-md-2"><%= f.submit "Moderate" , class: 'btn btn-theme btn-category width-120' %></div>
+            </div>
+          <% end %>
+        <% else %>
+          <label><%= comment.comment%></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<% end %>

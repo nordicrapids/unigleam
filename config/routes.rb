@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :passwords => 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -20,6 +21,13 @@ Rails.application.routes.draw do
   match 'users/sessions/check_email' => "users/sessions#check_email", :via => :get
   match 'users/sessions/check_email_registration' => "users/sessions#check_email_registration", :via => :get
   match "search" => "pages#search", :via => :get, as: "search"
+
+  match 'privacy_policy' => "topics#privacy_policy", :via => :get, as: "privacy_policy"
+  match 'about' => "topics#about", :via => :get, as: "about"
+  match 'how_it_works' => "topics#how_it_works", :via => :get, as: "how_it_works"
+  match 'terms_of_use' => "topics#terms_of_use", :via => :get, as: "terms_of_use"
+  match 'contact' => "topics#contact", :via => :get, as: "contact"
+  match 'faq' => "topics#faq", :via => :get, as: "faq"
 
   namespace :admin do
     resources :topics

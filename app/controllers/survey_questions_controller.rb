@@ -1,6 +1,8 @@
 class SurveyQuestionsController < ApplicationController
 before_action :authenticate_user!, only: [:create_vote_survey]
 layout 'user', only: [:user_survey_question, :new, :edit, :create, :update, :show]
+skip_before_filter :verify_authenticity_token, only: [:create]
+
   def index
     @topic = Topic.friendly.find(params[:id])
     if params[:survey_question_id].present?
@@ -28,13 +30,15 @@ layout 'user', only: [:user_survey_question, :new, :edit, :create, :update, :sho
 
   def create
     @survey_question = SurveyQuestion.new(survey_question_params)
-    if (@survey_question.save)
-			flash[:notice] = "Survey question has been created."
-			redirect_to user_survey_question_path(current_user.id)
-		else
-			flash[:alert] = "Survey question has not been created."
-			render "new"
-		end
+    respond_to do |format|
+      if (@survey_question.save)
+        format.html { redirect_to user_survey_question_path(current_user.id), notice: 'Survey question has been created.' }
+        format.js   {}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
