@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   match 'contact' => "topics#contact", :via => :get, as: "contact"
   match 'faq' => "topics#faq", :via => :get, as: "faq"
 
+  match 'admin_pages' => "pages#admin_pages", :via => :get, as: "admin_pages"
+
   namespace :admin do
     resources :topics
     resources :survey_questions
