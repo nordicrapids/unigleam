@@ -28,7 +28,7 @@ class SurveyQuestion < ActiveRecord::Base
   accepts_nested_attributes_for :survey_question_answers, :allow_destroy => true
 
   has_attached_file :image,
-                            s3_region: 'IE',
+                            s3_region: 'us-west-2',
                             storage: :s3,
                             s3_protocol: :https,
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
@@ -40,7 +40,8 @@ class SurveyQuestion < ActiveRecord::Base
   														:medium => ["260x260#",:jpg],
   														:large => ["100%", :medium] },
 														:default_style => :thumb,
-														:default_url => "/assets/missing.png"
+														:default_url => "/assets/missing.png",
+                            bucket: 'unigleam-pro'
 
   validates_attachment 	:image,
 				:presence => true,
