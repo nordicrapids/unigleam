@@ -28,7 +28,7 @@ class SurveyQuestion < ActiveRecord::Base
   accepts_nested_attributes_for :survey_question_answers, :allow_destroy => true
 
   has_attached_file :image,
-                            s3_region: 'us-west-2',
+                            s3_region: 'IE',
                             storage: :s3,
                             s3_protocol: :https,
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
