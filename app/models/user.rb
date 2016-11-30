@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
 has_attached_file :profile_image,
                   :styles => { :myrecipes => "260x180#", :showrecipe => "600x300#", :medium => "300x300>", :thumb => "100x100>" },
                   :storage => :s3,
-                  :s3_credentials => "#{Rails.root}/config/s3.yml",
+                  :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
                   :path => "/images/:id/:style.:extension",
                   :url => ":s3_domain_url"
 
