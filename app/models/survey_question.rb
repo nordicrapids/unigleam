@@ -41,7 +41,7 @@ class SurveyQuestion < ActiveRecord::Base
   														:large => ["100%", :medium] },
 														:default_style => :thumb,
 														:default_url => "/assets/missing.png",
-                            bucket: 'unigleam-pro'
+                            bucket: 'unigleam-dev'
 
   validates_attachment 	:image,
 				:presence => true,
