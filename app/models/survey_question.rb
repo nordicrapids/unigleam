@@ -34,14 +34,13 @@ class SurveyQuestion < ActiveRecord::Base
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
                             url: ':s3_domain_url',
                             path:  '/images/:id/:filename',
-                            s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
+                            # s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
                             :styles => {
                               :preview => ["150x150>",:jpg],
   														:medium => ["260x260#",:jpg],
   														:large => ["100%", :medium] },
 														:default_style => :thumb,
-														:default_url => "/assets/missing.png",
-                            bucket: 'unigleam-dev'
+														:default_url => "/assets/missing.png"
 
   validates_attachment 	:image,
 				:presence => true,
