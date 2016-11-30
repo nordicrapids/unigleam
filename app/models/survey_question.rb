@@ -28,19 +28,29 @@ class SurveyQuestion < ActiveRecord::Base
   accepts_nested_attributes_for :survey_question_answers, :allow_destroy => true
 
   has_attached_file :image,
-                            s3_region: 'us-west-2',
-                            storage: :s3,
-                            s3_protocol: :https,
-                            s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                            url: ':s3_domain_url',
-                            path:  '/images/:id/:filename',
-                            # s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
-                            :styles => {
-                              :preview => ["150x150>",:jpg],
-  														:medium => ["260x260#",:jpg],
-  														:large => ["100%", :medium] },
-														:default_style => :thumb,
-														:default_url => "/assets/missing.png"
+    :storage => :s3,
+    :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+    :styles => {
+        :preview => ["150x150>",:jpg],
+				:medium => ["260x260#",:jpg],
+				:large => ["100%", :medium] },
+    :default_url => "/assets/missing.png",
+    path:  '/images/:id/:filename'
+
+  # has_attached_file :image,
+  #                           s3_region: 'us-west-1',
+  #                           storage: :s3,
+  #                           s3_protocol: :https,
+  #                           s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+  #                           url: ':s3_domain_url',
+  #                           path:  '/images/:id/:filename',
+  #                           s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
+  #                           :styles => {
+  #                             :preview => ["150x150>",:jpg],
+  # 														:medium => ["260x260#",:jpg],
+  # 														:large => ["100%", :medium] },
+	# 													:default_style => :thumb,
+	# 													:default_url => "/assets/missing.png"
 
   validates_attachment 	:image,
 				:presence => true,
