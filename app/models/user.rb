@@ -62,7 +62,8 @@ has_attached_file :profile_image,
                   s3_region: 'ap-northeast-1',
                   :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
                   :path => "/images/:id/:style.:extension",
-                  :url => ":s3_domain_url"
+                  :url => ":s3_domain_url",
+                  s3_host_name: "s3-us-west-1.amazonaws.com"
 
   # has_attached_file :profile_image,
   #     s3_region: 'us-west-2',
