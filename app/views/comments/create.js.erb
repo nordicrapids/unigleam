@@ -1,0 +1,1 @@
+$(".comment_question_div_<%= @comment.survey_question_id%>").html("<%= j render(:partial => 'shared/survey_question_list', :locals => { :survey_question => @comment.survey_question  } ) %>")

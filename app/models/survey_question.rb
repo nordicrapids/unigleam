@@ -23,9 +23,11 @@ class SurveyQuestion < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
   has_many :survey_question_answers, -> { order(position: :asc) }
-  has_many :survey_responses
-
   accepts_nested_attributes_for :survey_question_answers, :allow_destroy => true
+  has_many :survey_responses
+  has_many :comments
+  accepts_nested_attributes_for :comments, :allow_destroy => true
+
 
   has_attached_file :image,
                             s3_region: 'us-west-2',
