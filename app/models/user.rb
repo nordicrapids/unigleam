@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   has_many :survey_responses
   has_many :survey_questions
-
+=begin
   has_attached_file :profile_image,
                             s3_region: 'us-west-2',
                             storage: :s3,
@@ -53,6 +53,15 @@ class User < ActiveRecord::Base
   														:large => ["100%", :jpg] },
 														:default_style => :thumb,
 														:default_url => "/assets/NoImage.gif"
+
+=end
+
+has_attached_file :profile_image,
+                  :styles => { :myrecipes => "260x180#", :showrecipe => "600x300#", :medium => "300x300>", :thumb => "100x100>" },
+                  :storage => :s3,
+                  :s3_credentials => "#{Rails.root}/config/s3.yml",
+                  :path => "/images/:id/:style.:extension",
+                  :url => ":s3_domain_url"
 
   # has_attached_file :profile_image,
   #     s3_region: 'us-west-2',
