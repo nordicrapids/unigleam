@@ -50,3 +50,4 @@ gem 'friendly_id',                '~> 5.1'
 gem 'groupdate',                  '~> 3.0'
 gem 'font-ionicons-rails',        '~> 2.0', '>= 2.0.1.3'
 gem 'remotipart', '~> 1.2'
+gem "select2-rails"

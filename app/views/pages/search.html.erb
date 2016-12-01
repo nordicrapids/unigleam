@@ -88,6 +88,7 @@
                           </div>
                         </div>
   							      <% end %>
+                    <% end %>
                       <div class="clearfix"></div>
                       <br />
                       <div class="comment_question_div_<%= survey_question.id %>">
@@ -95,7 +96,7 @@
                             <%= render "shared/survey_question_list", :survey_question => survey_question %>
                         <% end %>
                       </div>
-                    <% end %>
+
                   </div><!-- /column -->
                   <!-- End Content Inside -->
 
@@ -114,7 +115,7 @@
     </div>
   <% end %>
 
-  <% if params.has_key?(:profiles) %>
+  <% if params.has_key?(:gleams) %>
     <div class="container">
       <hr/>
       <h3 class="theme-font title-text">Profiles Results</h3>

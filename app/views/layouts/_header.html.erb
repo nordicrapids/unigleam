@@ -387,18 +387,18 @@
 						</div><!-- /navbar header -->
 						<!-- Main Navigation - Explained in Documentation -->
 						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
-							<ul class="nav navbar-nav navbar-right main-nav-bar">
-								<li class="search-form padding-right-10">
+							<ul class="nav navbar-nav navbar-right main-nav-bar width-50-percent">
+								<!-- <li class="search-form padding-right-10">
+									<%#= form_for "", :url => search_path, :method => "get" do |f| %>
+                    <%#= text_field_tag "profiles", params[:profiles], placeholder: "Search Profiles", :class => "gleams-input" %>
+                    <%#= f.submit "Search", class: "btn btn-theme" %>
+                  <%# end %>
+						    </li> -->
+								<li class="search-form width-72-percent">
 									<%= form_for "", :url => search_path, :method => "get" do |f| %>
-                    <%= text_field_tag "profiles", params[:profiles], placeholder: "Search Profiles", :class => "gleams-input" %>
-                    <%= f.submit "Search", class: "btn btn-theme" %>
-                  <% end %>
-						    </li>
-								<li class="search-form">
-									<%= form_for "", :url => search_path, :method => "get" do |f| %>
-                    <%= text_field_tag "gleams", params[:gleams], placeholder: "Search Gleams", :class => "gleams-input" %>
+                    <%= text_field_tag "gleams", params[:gleams], placeholder: "Search Gleams and Profiles", :class => "gleams-input width-80-percent" %>
                     <%#= text_field_tag "topics", params[:topics], placeholder: "Search Topics" %>
-                    <%= f.submit "Search", class: "btn btn-theme" %>
+                    <%= f.submit "Search", class: "btn btn-theme search_button" %>
                   <% end %>
 						    </li>
 
