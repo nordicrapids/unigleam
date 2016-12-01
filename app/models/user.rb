@@ -84,7 +84,7 @@ has_attached_file :profile_image,
   #     path:  '/images/:id/:filename'
 
   validates_attachment 	:profile_image,
-				:presence => true,
+				# :presence => true,
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 
