@@ -38,7 +38,9 @@ class User < ActiveRecord::Base
 
   has_many :survey_responses
   has_many :survey_questions
-
+  has_many :comments
+  accepts_nested_attributes_for :comments, :allow_destroy => true
+  
   has_attached_file :profile_image,
                             s3_region: 'us-west-2',
                             storage: :s3,

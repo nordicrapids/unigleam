@@ -292,11 +292,11 @@
 	<!-- survey question -->
 	<% if user_signed_in? %>
 	  <div class="modal fade login-modal" id="survey_question" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-	    <div class="modal-dialog" style="left:0; width: 90%;">
+	    <div class="modal-dialog width-60-percent left-0">
 	      <div class="modal-content">
 	        <div class="modal-header">
-						<div class="pull-left">
-				      <h2>Add Survey Question</h2>
+						<div class="pull-left padding-left-40-percent">
+				      <h2 class="font-color-head">Add a Gleam</h2>
 				    </div>
 	          <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'>
 	            <span aria-hidden="true">×</span>
@@ -306,7 +306,7 @@
 	          </button>
 	        </div>
 					<div class="clearfix"></div>
-	        <div class="sign-up-content">
+	        <div class="sign-up-content width-90-percent">
 	          <div class="sign-up-form">
 							<% @survey_question = SurveyQuestion.new%>
 							<%= form_for @survey_question, :remote => true do |f| %>
@@ -351,7 +351,7 @@
 
 	          </div>
 	        </div>
-					<div class="modal-footer">
+					<div class="modal-footer border-top-none">
 						<div class="form-action col-md-2 pull-right">
 							<%= f.button "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success", data: {disable_with: "<i class='fa fa-spinner spin'></i>Creating..".html_safe} %>
 						</div>
