@@ -30,8 +30,7 @@
             <li class="visible-xs <%= 'active' if params[:action] == 'dashboard' %>">
               <%= link_to "Dashboard", admin_root_path %>
             </li>
-
-            <li class="<%= 'active' if params[:controller] == 'admin/pages' && params[:action] == "admin_pages" %>">
+            <li class="<%= 'active' if params[:controller] == 'pages' && params[:action] == "admin_pages" %>">
               <%= link_to "Pages", admin_pages_path %>
             </li>
 
@@ -72,7 +71,7 @@
           <%= link_to "<i class='fa fa-dashboard'></i> Dashboard".html_safe, admin_root_path %>
         </li>
 
-        <li class="<%= 'active' if params[:controller] == 'admin/pages' && params[:action] == "admin_pages" %>">
+        <li class="<%= 'active' if params[:controller] == 'pages' && params[:action] == "admin_pages" %>">
           <%= link_to "<i class='fa fa-sticky-note'></i> Pages".html_safe, admin_pages_path %>
         </li>
 

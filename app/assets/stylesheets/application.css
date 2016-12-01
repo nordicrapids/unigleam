@@ -13,6 +13,7 @@
  *= require_tree .
  *= require font-awesome
  *= require ionicons
+ *= require jquery.typeahead.min
  *= require theme/css/style
  *= require theme/css/royal_preloader
  *= require theme/css/bootstrap-social

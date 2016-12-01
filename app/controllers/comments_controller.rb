@@ -21,8 +21,8 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment: params[:comment][:comment], survey_question_id: params[:comment][:survey_question_id])
-
+    # @comment = Comment.new(comment: params[:comment][:comment], survey_question_id: params[:comment][:survey_question_id], user_id: params[:comment][:user_id])
+    @comment = Comment.new(comment_params)
     if @comment.save
       # render :nothing, notice: 'Comment was successfully created.'
     else
@@ -53,6 +53,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:comment, :survey_question_id)
+      params.require(:comment).permit(:comment, :survey_question_id, :user_id)
     end
 end

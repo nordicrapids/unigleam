@@ -28,10 +28,14 @@
 //= require theme/js/skrollr.min
 //= require theme/js/main
 //= require jquery.remotipart
+//= require jquery.typeahead.min
+//= require typeahead.jquery
+//= require typeahead_search.js
 //= require common
 //= require_tree .
 
 $(document).ready(function() {
+  // search_keyup()
   imgRemove()
   $("#wizard-picture").change(function(){
     readURL(this);
