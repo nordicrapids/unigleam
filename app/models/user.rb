@@ -41,20 +41,38 @@ class User < ActiveRecord::Base
   has_many :comments
   accepts_nested_attributes_for :comments, :allow_destroy => true
   
+=begin
   has_attached_file :profile_image,
                             s3_region: 'us-west-2',
                             storage: :s3,
                             s3_protocol: :https,
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                            s3_domain_url: ':s3_domain_url',
-                            path:  '/user/:id/:filename',
-                            s3_host_alias: 's3-us-west-2.amazonaws.com',
+                            url: ':s3_domain_url',
+                            path:  '/profile_image/:id/:filename',
+                            s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
                             :styles => {
                               :preview => ["150x150>",:jpg],
   														:medium => ["260x260#",:jpg],
   														:large => ["100%", :jpg] },
 														:default_style => :thumb,
 														:default_url => "/assets/NoImage.gif"
+
+=end
+
+has_attached_file :profile_image,
+                            s3_region: 'us-west-2',
+                            storage: :s3,
+                            s3_protocol: :https,
+                            s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+                            url: ':s3_domain_url',
+                            path:  '/profile_image/:id/:filename',
+                            s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
+                            :styles => {
+                              :preview => ["150x150>",:jpg],
+                              :medium => ["260x260#",:jpg],
+                              :large => ["100%", :medium] },
+                            :default_style => :thumb,
+                            :default_url => "/assets/missing.png"
 
   # has_attached_file :profile_image,
   #     s3_region: 'us-west-2',

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-
+  layout 'admin', only: [:admin_pages]
   def search
     @banner_image = Banner.first
 
@@ -15,6 +15,9 @@ class PagesController < ApplicationController
       @profiles = User.where("email ILIKE ?", "%#{params[:profiles]}%")
     end
 
+  end
+
+  def admin_pages
   end
 
 end
