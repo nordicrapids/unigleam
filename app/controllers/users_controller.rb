@@ -17,6 +17,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow_user
+    @user_follow = UserFollow.find_by_user_id_and_follow_id(params[:follow_id], current_user.id)
+    if @user_follow.present?
+      # @user_follow.destroy
+    else
+      @user_follow = UserFollow.create(user_id: params[:follow_id], follow_id: current_user.id)
+    end
+  end
+
   def destroy
 
   end

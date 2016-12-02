@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   has_many :survey_questions
   has_many :comments
   accepts_nested_attributes_for :comments, :allow_destroy => true
-
+  has_many :user_follows, foreign_key: "user_id" ,dependent:   :destroy
 
   has_attached_file :profile_image,
                                 s3_region: 'ap-northeast-1',
