@@ -46,7 +46,7 @@ class SurveyQuestion < ActiveRecord::Base
                             :default_url => "/assets/NoImage.gif"
 
   validates_attachment 	:image,
-				:presence => true,
+				# :presence => true,
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 

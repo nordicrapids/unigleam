@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :comments
   devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :passwords => 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :users
+    resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   match 'faq' => "topics#faq", :via => :get, as: "faq"
 
   match 'admin_pages' => "pages#admin_pages", :via => :get, as: "admin_pages"
+
+  match 'dashboard_chart_change' => "topics#dashboard_chart_change", :via => :get, as: "dashboard_chart_change"
+  match 'follow_user' => "users#follow_user", :via => :get, as: "follow_user"
+
 
   namespace :admin do
     resources :topics
