@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
     s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
     url: ':s3_domain_url',
     path:  '/profile_image/:id/:filename',
-   # s3_host_alias: 'https://s3-ap-northeast-1.amazonaws.com/',
+    s3_host_alias: 'https://s3-ap-northeast-1.amazonaws.com/',
     :styles => {
       :preview => ["150x150>",:jpg],
       :medium => ["260x260#",:jpg],
