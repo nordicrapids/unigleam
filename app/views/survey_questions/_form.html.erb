@@ -28,7 +28,7 @@
   <table class="table table-borderless" id="survey_question_answers">
     <tbody>
       <%= f.fields_for :survey_question_answers do |f2| %>
-        <%= render "survey_question_answer_fields", :f => f2 %>
+        <%= render "shared/survey_question_answer_fields", :f => f2 %>
       <% end %>
     </tbody>
   </table>
