@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   match 'admin_pages' => "pages#admin_pages", :via => :get, as: "admin_pages"
 
+  match 'dashboard_chart_change' => "topics#dashboard_chart_change", :via => :get, as: "dashboard_chart_change"
+
   namespace :admin do
     resources :topics
     resources :survey_questions

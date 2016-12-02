@@ -6,7 +6,7 @@
     <div class="col-sm-12">
 
       <div class="col-sm-6 col-md-3 box-counter-divider">
-        <%= link_to "javascript:void(0)" do %>
+        <%= link_to dashboard_chart_change_path(for: 'view_of_gleams'), remote: true do %>
           <div class="dashboard-counter-box">
             <div class="pull-left">
               <div class="icon-box red">
@@ -24,7 +24,7 @@
       </div>
 
       <div class="col-sm-6 col-md-3 box-counter-divider">
-        <%= link_to "javascript:void(0)" do %>
+        <%= link_to dashboard_chart_change_path(for: 'no_of_followers'), remote: true do %>
           <div class="dashboard-counter-box">
             <div class="pull-left">
               <div class="icon-box blue">
@@ -42,7 +42,7 @@
       </div>
 
       <div class="col-sm-6 col-md-3 box-counter-divider">
-        <%= link_to "javascript:void(0)" do %>
+        <%= link_to dashboard_chart_change_path(for: 'no_of_casted'), remote: true do %>
           <div class="dashboard-counter-box">
             <div class="pull-left">
               <div class="icon-box green">
@@ -60,7 +60,7 @@
       </div>
 
       <div class="col-sm-6 col-md-3 box-counter-divider">
-        <%= link_to "javascript:void(0)" do %>
+        <%= link_to dashboard_chart_change_path(for: 'no_of_shared'), remote: true do %>
           <div class="dashboard-counter-box">
             <div class="pull-left">
               <div class="icon-box yellow">
@@ -81,10 +81,9 @@
   </div>
 
   <br/>
-  <div class="col-sm-12 line-chart-content" id="line_chart_div">
-    <%= render "shared/line_chart_content", :chart => @survey_responses %>
+  <div id="line_chart_div">
+    <%= render "shared/line_chart_content", :chart => @survey_responses, head: "No of Gleams" %>
   </div>
-
   <br/>
   <br/>
   <br/>

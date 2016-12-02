@@ -1,0 +1,11 @@
+<% if params[:for].present? %>
+  <% if params[:for] == "view_of_gleams" %>
+    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @users, head: 'View of Your Gleams'  } ) %>")
+  <% elsif params[:for] == "no_of_followers" %>
+    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @users, head: 'No of Followers'  } ) %>")
+  <% elsif params[:for] == "no_of_casted" %>
+    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gleams Casted'  } ) %>")
+  <% elsif params[:for] == "no_of_shared" %>
+    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gelams Shared'  } ) %>")
+  <% end %>
+<% end %>
