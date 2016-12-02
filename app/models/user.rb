@@ -69,13 +69,13 @@ class User < ActiveRecord::Base
 #                             s3_host_name: 'https://s3-us-west-2.amazonaws.com/'
 
   has_attached_file :profile_image,
-    s3_region: 'ap-northeast-1',
+    s3_region: 'us-west-2',
     storage: :s3,
     s3_protocol: :https,
     s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
     url: ':s3_domain_url',
     path:  '/profile_image/:id/:filename',
-    s3_host_alias: 'https://s3-ap-northeast-1.amazonaws.com/',
+    s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
     :styles => {
       :preview => ["150x150>",:jpg],
       :medium => ["260x260#",:jpg],
