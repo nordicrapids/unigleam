@@ -30,19 +30,6 @@ class SurveyQuestion < ActiveRecord::Base
 
 
   has_attached_file :image,
-                            # s3_region: 'us-west-2',
-                            # storage: :s3,
-                            # s3_protocol: :https,
-                            # s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                            # url: ':s3_domain_url',
-                            # path:  '/images/:id/:filename',
-                            # s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
-                            # :styles => {
-                            #   :preview => ["150x150>",:jpg],
-  													# 	:medium => ["260x260#",:jpg],
-  													# 	:large => ["100%", :medium] },
-														# :default_style => :thumb,
-														# :default_url => "/assets/missing.png"
 
                             s3_region: 'ap-northeast-1',
                             storage: :s3,
@@ -59,7 +46,7 @@ class SurveyQuestion < ActiveRecord::Base
                             :default_url => "/assets/NoImage.gif"
 
   validates_attachment 	:image,
-				# :presence => true,
+				:presence => true,
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 

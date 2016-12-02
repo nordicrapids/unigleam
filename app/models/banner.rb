@@ -15,17 +15,6 @@
 class Banner < ActiveRecord::Base
 
   has_attached_file :banner_image,
-                                  # s3_region: 'us-west-2',
-                                  # storage: :s3,
-                                  # s3_protocol: :https,
-                                  # s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                                  # url: ':s3_domain_url',
-                                  # path:  '/banner/:id/:filename',
-                                  # s3_host_alias: 'https://s3-ap-northeast-1.amazonaws.com/',
-                                  # :styles => {
-                                  #   :preview => ["400x400",:jpg],
-                                  #   :large => ["100%", :jpg] },
-                                  # :default_url => "/assets/missing.png"
 
                                   s3_region: 'ap-northeast-1',
                                   storage: :s3,
