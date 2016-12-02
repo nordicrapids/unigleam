@@ -30,19 +30,19 @@ class Topic < ActiveRecord::Base
 	# Topic.find_each { |t| t.photo.reprocess! }
 
   has_attached_file :photo,
-														s3_region: 'us-west-2',
-														storage: :s3,
-														s3_protocol: :https,
-														s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-														url: ':s3_domain_url',
-														path:  '/photo/:id/:filename',
-														s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
-														:styles => {
-	                            :preview => ["150x150>",:jpg],
-															:medium => ["260x260#",:jpg],
-															:large => ["100%", :jpg] },
-														:default_style => :thumb,
-														:default_url => "/assets/missing.png"
+														s3_region: 'ap-northeast-1',
+                            storage: :s3,
+                            s3_protocol: :https,
+                            s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+                            url: ':s3_domain_url',
+                            path:  '/photo/:id/:filename',
+                            s3_host_name: 's3-ap-northeast-1.amazonaws.com',
+                            :styles => {
+                              :preview => ["150x150>",:jpg],
+                              :medium => ["260x260#",:jpg],
+                              :large => ["100%", :jpg] },
+                            :default_style => :thumb,
+                            :default_url => "/assets/NoImage.gif"
 
   validates_attachment 	:photo,
 				# :presence => true,
@@ -50,17 +50,18 @@ class Topic < ActiveRecord::Base
 				:size => { :less_than => 5.megabyte }
 
   has_attached_file :banner_image,
-																	s3_region: 'us-west-2',
-																	storage: :s3,
-																	s3_protocol: :https,
-																	s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-																	url: ':s3_domain_url',
-																	path:  '/banner/:id/:filename',
-																	s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
+																	s3_region: 'ap-northeast-1',
+			                            storage: :s3,
+			                            s3_protocol: :https,
+			                            s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+			                            url: ':s3_domain_url',
+			                            path:  '/banner/:id/:filename',
+			                            s3_host_name: 's3-ap-northeast-1.amazonaws.com',
 																	:styles => {
 	                                  :preview => ["400x400",:jpg],
 	                                  :large => ["100%", :jpg] },
-                                  :default_url => "/assets/missing.png"
+			                            :default_style => :thumb,
+			                            :default_url => "/assets/NoImage.gif"
 
   validates_attachment  :banner_image,
         :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] }
