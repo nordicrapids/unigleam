@@ -24,7 +24,4 @@ class PagesController < ApplicationController
   def admin_pages
   end
 
-  def admin_pages
-  end
-
 end
