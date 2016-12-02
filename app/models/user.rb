@@ -29,7 +29,7 @@
 class User < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
-
+  attr_accessor :login
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   has_many :survey_questions
   has_many :comments
   accepts_nested_attributes_for :comments, :allow_destroy => true
-  
+
 =begin
   has_attached_file :profile_image,
                             s3_region: 'us-west-2',
@@ -64,9 +64,9 @@ has_attached_file :profile_image,
                             storage: :s3,
                             s3_protocol: :https,
                             s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
-                            url: ':s3_domain_url',
+                            url: ':s3_host_name',
                             path:  '/profile_image/:id/:filename',
-                            s3_host_alias: 'https://s3-us-west-2.amazonaws.com/',
+                            s3_host_name: 'https://s3-us-west-2.amazonaws.com/',
                             :styles => {
                               :preview => ["150x150>",:jpg],
                               :medium => ["260x260#",:jpg],
@@ -83,10 +83,10 @@ has_attached_file :profile_image,
   #     url: ':s3_domain_url',
   #     path:  '/images/:id/:filename'
 
-  validates_attachment 	:profile_image,
-				:presence => true,
-				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-				:size => { :less_than => 5.megabyte }
+  # validates_attachment 	:profile_image,
+	# 			:presence => true,
+	# 			:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
+	# 			:size => { :less_than => 5.megabyte }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -107,5 +107,23 @@ has_attached_file :profile_image,
     name = "#{user.first_name} #{user.last_name}"
     return name
   end
+
+  def login=(login)
+    @login = login
+  end
+
+  def login
+    @login || self.username || self.email
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_h).first
+    end
+  end
+
 
 end

@@ -26,8 +26,8 @@
   						</div>
 
   			      <div class="form-group">
-  							<%= f.label :email, "Email address" %>
-  							<%= f.email_field :email, :class => "form-control required email", :placeholder => "Enter email" %>
+  							<%= f.label :email, "Username / Email address" %>
+  							<%= f.text_field :email, :class => "form-control required", :placeholder => "Enter username or email" %>
   			      </div>
   			      <div class="form-group">
   							<%= f.label :password, "Password" %>
@@ -236,6 +236,11 @@
                 <div class="form-group">
                   <%= f.label :email %>
                   <%= f.email_field :email, autofocus: true, :class => "form-control email required", :placeholder => "Enter email" %>
+                </div>
+
+								<div class="form-group">
+                  <%= f.label :username %>
+                  <%= f.text_field :username, :class => "form-control required", :placeholder => "Enter username" %>
                 </div>
 
                 <div class="form-group">

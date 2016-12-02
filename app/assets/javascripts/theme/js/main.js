@@ -236,9 +236,9 @@ $(document).ready(function() {
 	  },
 	  messages: {
 	    "user[email]": {
-	      required: "Email can't be blank",
-				remote: "Email not present",
-				pattern: "Email is invalid"
+	      required: "Username or Email can't be blank",
+				remote: "Username or Email not present",
+				pattern: "Username or Email is invalid"
 	    }
 	  }
 	})
@@ -246,6 +246,7 @@ $(document).ready(function() {
   $('#sign_up_user').validate({
     rules: {
       "user[email]": { required: true, remote:'/users/sessions/check_email_registration' },
+      "user[username]": { required: true, remote:'/users/sessions/check_email_registration', minlength: 8 },
       "user[password_confirmation]": {required: true, equalTo: "#user_password_registration"}
     },
     messages: {
@@ -253,6 +254,10 @@ $(document).ready(function() {
         required: "Email can't be blank",
         remote: "Email already taken",
         pattern: "Email is invalid"
+      },
+      "user[username]": {
+        required: "Username can't be blank",
+        remote: "Username already taken"
       },
     "user[password_confirmation]": {
       equalTo: "Confirm password mismatch"
