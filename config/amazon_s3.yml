@@ -1,9 +1,9 @@
 development:
-  bucket: unigleam-dev
-  access_key_id: AKIAJBOIRFKMQTJT6T6Q
-  secret_access_key: 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
+  bucket: 'unigleam-dev'
+  access_key_id: 'AKIAJBOIRFKMQTJT6T6Q'
+  secret_access_key: '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'
 
 production:
-  bucket: unigleam-pro
-  access_key_id: AKIAJBOIRFKMQTJT6T6Q
-  secret_access_key: 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
+  bucket: 'unigleam-pro'
+  access_key_id: 'AKIAJBOIRFKMQTJT6T6Q'
+  secret_access_key: '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'
