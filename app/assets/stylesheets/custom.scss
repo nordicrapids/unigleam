@@ -501,6 +501,11 @@
 
 @media all and (max-width:1247px) and (min-width:1000px) {
   .width-55-percent {
+    width: 72%;
+  }
+}
+@media all and (max-width:1282px) and (min-width:1247px) {
+  .width-55-percent {
     width: 70%;
   }
 }
