@@ -9,3 +9,68 @@
     $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gelams Shared'  } ) %>")
   <% end %>
 <% end %>
+$(function() {
+  var all_categories, all_records, categories, records;
+  if ($('.line-chart').length !== 0) {
+    categories = $(".line-chart").data("categories");
+    all_categories = [];
+    if (categories.toString().indexOf(",") >= 0) {
+      all_categories = $(".line-chart").data("categories");
+    } else {
+      all_categories = [categories];
+    }
+    records = $(".line-chart").data("records");
+    all_records = [];
+    if (records.toString().indexOf(",") >= 0) {
+      all_records = $(".line-chart").data("records").split(", ").map(Number);
+    } else {
+      all_records = [records];
+    }
+    $('.line-chart').highcharts({
+      chart: {
+        backgroundColor: "#ED8742"
+      },
+      title: {
+        text: ''
+      },
+      xAxis: {
+        title: {
+          text: ''
+        },
+        labels: {
+          style: {
+            color: "#FFF"
+          }
+        },
+        categories: all_categories
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+        labels: {
+          style: {
+            color: "#FFF"
+          }
+        },
+        plotLines: [
+          {
+            value: 0,
+            width: 1,
+            color: '#fff'
+          }
+        ]
+      },
+      tooltip: {
+        valueSuffix: ''
+      },
+      series: [
+        {
+          color: '#FFF',
+          name: 'No of Gleams Casted',
+          data: all_records
+        }
+      ]
+    });
+  }
+});

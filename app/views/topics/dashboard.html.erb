@@ -59,8 +59,8 @@
         <% end %>
       </div>
 
-      <div class="col-sm-6 col-md-3 box-counter-divider">
-        <%= link_to dashboard_chart_change_path(for: 'no_of_shared'), remote: true do %>
+      <!-- <div class="col-sm-6 col-md-3 box-counter-divider">
+        <%#= link_to dashboard_chart_change_path(for: 'no_of_shared'), remote: true do %>
           <div class="dashboard-counter-box">
             <div class="pull-left">
               <div class="icon-box yellow">
@@ -71,11 +71,11 @@
             <div class="right">
               <span class="record-title">Number of Gleams<span> <br/>
               <span class="record-title">Shared (user only)<span> <br/>
-              <span class="record-counter"><%= SurveyQuestion.sum(:share_counter) %></span>
+              <span class="record-counter"><%#= SurveyQuestion.sum(:share_counter) %></span>
             </div>
           </div>
-        <% end %>
-      </div>
+        <%# end %>
+      </div> -->
 
     </div>
   </div>
