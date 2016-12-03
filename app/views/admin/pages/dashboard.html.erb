@@ -53,7 +53,7 @@
             <div class="right">
               <span class="record-title">Number of Gleams<span> <br/>
               <span class="record-title">Casted (user only)<span> <br/>
-              <span class="record-counter"><%= SurveyResponse.where('user_id = ?', current_user.id).count %></span>
+              <span class="record-counter"><%= SurveyQuestion.where('user_id = ?', current_user.id).count %></span>
             </div>
           </div>
         <% end %>
@@ -81,14 +81,8 @@
   </div>
 
   <br/>
-  <div class="col-sm-12 line-chart-content">
-    <br/>
-    <p class="line-chart-title">Number of Gleams Casted Year to Date</p>
-    <br/>
-    <div class="line-chart" data-categories = "<%= @survey_responses.keys.join(", ") %>" data-records = "<%= @survey_responses.values.join(", ") %>">
-
-    </div>
-    <br/>
+  <div id="line_chart_div">
+    <%= render "shared/line_chart_content", :chart => @survey_responses, head: "No of Gleams" %>
   </div>
 
   <br/>

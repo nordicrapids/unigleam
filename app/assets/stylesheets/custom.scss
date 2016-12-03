@@ -486,3 +486,21 @@
   width: 62%;
 }
 // for header container
+
+.full-sec {
+  width: 100%;
+}
+.main-nav-bar li:last-child {
+  width: 170px;
+}
+.navbar.navbar-main .navbar-nav li a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media all and (max-width:1247px) and (min-width:1000px) {
+  .width-55-percent {
+    width: 70%;
+  }
+}

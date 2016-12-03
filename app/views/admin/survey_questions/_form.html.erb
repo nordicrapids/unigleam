@@ -1,5 +1,5 @@
 <%= form_for [:admin, @survey_question] do |f| %>
-
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
     <%= f.label :topic_id, "Topic" %>
     <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.name, x.id] }, @survey_question.topic_id), {}, :class => "form-control" %>
