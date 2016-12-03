@@ -243,14 +243,14 @@ $(document).ready(function() {
 	  }
 	})
 
-  $.validator.addMethod("regex", function(value, element) {
-    return this.optional(element) || /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9])$/.test(value);
+  $.validator.addMethod("alphanumeric", function(value, element) {
+    return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value) && /\d/.test(value);
   }, "Username must contain characters and numbers");
 
   $('#sign_up_user').validate({
     rules: {
       "user[email]": { required: true, remote:'/users/sessions/check_email_registration' },
-      "user[username]": { required: true, remote:'/users/sessions/check_email_registration', minlength: 8, regex: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9])$/ },
+      "user[username]": { required: true, remote:'/users/sessions/check_email_registration', minlength: 8, alphanumeric: true },
       "user[password_confirmation]": {required: true, equalTo: "#user_password_registration"}
     },
     messages: {
@@ -261,8 +261,7 @@ $(document).ready(function() {
       },
       "user[username]": {
         required: "Username can't be blank",
-        remote: "Username already taken",
-        regex: "Username must contain characters and numbers"
+        remote: "Username already taken"
       },
     "user[password_confirmation]": {
       equalTo: "Confirm password mismatch"
