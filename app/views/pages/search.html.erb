@@ -171,7 +171,7 @@
                         <% unless user_signed_in? %>
                           <a data-toggle="modal" data-target="#login_modal" class="btn btn-primary background-color">Follow</a>
                         <% else %>
-                          <% follow = UserFollow.find_by_user_id_and_follow_id(profile.id, current_user.id) %>
+                          <% follow = UserFollow.check_following(profile.id,current_user.id) %>
                           <%= link_to "#{follow.present? ? 'Unfollow' : 'Follow'}", follow_user_path(follow_id: profile.id), class: "btn btn-primary background-color follow_unfollow_#{profile.id}", remote: true%>
                         <% end %>
                         <%#= link_to "Follow", follow_user_path(follow_id: profile.id), class: "btn btn-primary background-color follow_unfollow_#{profile.id}", remote: true%>

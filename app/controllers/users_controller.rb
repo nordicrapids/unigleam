@@ -18,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def follow_user
-    @user_follow = UserFollow.find_by_user_id_and_follow_id(params[:follow_id], current_user.id)
-    if @user_follow.present?
-      # @user_follow.destroy
+    check_user_follow = UserFollow.check_following(params[:follow_id].to_i,current_user.id)
+    unless check_user_follow.present?
+      @user_follow = UserFollow.create(user_id: params[:follow_id], follow_id: current_user.id )
     else
-      @user_follow = UserFollow.create(user_id: params[:follow_id], follow_id: current_user.id)
+        check_user_follow.delete_all
     end
   end
 
