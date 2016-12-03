@@ -52,7 +52,7 @@
 
             <div class="right">
               <span class="record-title">Number of Gleams<span> <br/>
-              <span class="record-title">Casted (user only)<span> <br/>
+              <span class="record-title">Casted<span> <br/>
               <span class="record-counter"><%= SurveyQuestion.where('user_id = ?', current_user.id).count %></span>
             </div>
           </div>
@@ -70,7 +70,7 @@
 
             <div class="right">
               <span class="record-title">Number of Gleams<span> <br/>
-              <span class="record-title">Shared (user only)<span> <br/>
+              <span class="record-title">Shared<span> <br/>
               <span class="record-counter"><%#= SurveyQuestion.sum(:share_counter) %></span>
             </div>
           </div>
