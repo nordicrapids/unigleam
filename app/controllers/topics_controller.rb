@@ -19,9 +19,10 @@ class TopicsController < ApplicationController
       if params[:for] == "view_of_gleams"
         @users = User.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_followers"
+        # @users = UserFollow.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
         @users = User.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_casted"
-        @survey_responses = SurveyResponse.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
+        @survey_responses = SurveyResponse.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_shared"
         @survey_responses = SurveyQuestion.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       end

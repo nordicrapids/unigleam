@@ -23,7 +23,11 @@
   <div class="clearfix"></div>
   <br />
   <div class="field">
-    <%= f.email_field :email, class: 'form-control width-30-percent', placeholder: 'Email' %>
+    <%= f.email_field :email, class: 'form-control width-30-percent', placeholder: 'Email', disabled: "disabled" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.text_field :username, class: 'form-control width-30-percent', placeholder: 'Username', disabled: "disabled" %>
   </div>
   <br />
   <div class="field">
@@ -39,7 +43,7 @@
   </div>
   <br />
   <div class="field">
-    <%= f.select :age,(1..100), { prompt: "Select Age" }, class: 'form-control width-30-percent', placeholder: "City" %>
+    <%= f.select :age,(17..100), { prompt: "Select Age" }, class: 'form-control width-30-percent', placeholder: "City" %>
   </div>
   <br />
   <div class="actions">
