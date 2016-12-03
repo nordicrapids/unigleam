@@ -1,5 +1,5 @@
 <% if @user_follow.present? %>
-  $(".follow_unfollow_<%= params[:follow_id]%>").text('Follow')
-<% else %>
   $(".follow_unfollow_<%= params[:follow_id]%>").text('Unfollow')
+<% else %>
+  $(".follow_unfollow_<%= params[:follow_id]%>").text('Follow')
 <% end %>
