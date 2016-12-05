@@ -20,8 +20,8 @@ class TopicsController < ApplicationController
       if params[:for] == "view_of_gleams"
         @users = User.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_followers"
-        # @users = UserFollow.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
-        @users = User.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
+         @users = UserFollow.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
+        # @users = User.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_casted"
         @survey_responses = SurveyQuestion.where('user_id = ? and created_at >= ?', current_user.id, 30.days.ago).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
         @start = (Date.today - 30).strftime("%Y,%m,%d")

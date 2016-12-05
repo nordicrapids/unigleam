@@ -2,47 +2,71 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  all_categories = undefined
+  all_records = undefined
+  categories = undefined
+  records = undefined
   if $('.line-chart').length != 0
-
-    # all records
-    categories = $(".line-chart").data("categories")
+    categories = $('.line-chart').data('categories').split(', ')
     all_categories = []
-    if (categories.toString().indexOf(",") >= 0)
-      all_categories = $(".line-chart").data("categories")
+    # console.log($(".line-chart").data("categories").split(', '))
+    if categories.length >= 0
+      all_categories = $('.line-chart').data('categories').split(', ')
     else
-      all_categories = [categories]
-
-    # all records
-    records = $(".line-chart").data("records")
+      all_categories = [ categories ]
+    records = $('.line-chart').data('records')
     all_records = []
-    if (records.toString().indexOf(",") >= 0)
-      all_records = $(".line-chart").data("records").split(", ").map(Number)
+    if records.toString().indexOf(',') >= 0
+      all_records = $('.line-chart').data('records').split(', ').map(Number)
     else
-      all_records = [records]
-
+      all_records = [ records ]
+    all_join_record = []
+    if categories.length >= 0
+      i = 0
+      while i < categories.length
+        now = categories[i].split('-').map(Number)
+        all_join_record.push [
+          Date.UTC(now[2], now[1] - 1, now[0])
+          all_records[i]
+        ]
+        i++
+    else
+      all_join_record = []
     $('.line-chart').highcharts
-      chart:
-        backgroundColor: "#ED8742",
-      title:
-        text: ''
+      chart: backgroundColor: '#ED8742'
+      title: text: ''
       xAxis:
-        title: text: ''
-        labels: style: color: "#FFF"
-        categories: all_categories
+        type: 'datetime'
+        dateTimeLabelFormats: month: '%e. %b'
+        title:
+          style:
+            color: '#FFF'
+            fontWeight: 'bold'
+          text: 'Date'
+        labels: style: color: '#FFF'
+        series: [ {
+          color: '#FFF'
+          name: 'No of Gleams Casted'
+          categories: all_categories
+        } ]
       yAxis:
-        title: text: ''
-        labels: style: color: "#FFF"
+        min: 0
+        tickInterval: 1
+        title:
+          style:
+            color: '#FFF'
+            fontWeight: 'bold'
+          text: 'No of Gleams'
+        labels: style: color: '#FFF'
         plotLines: [ {
           value: 0
           width: 1
           color: '#fff'
         } ]
       tooltip: valueSuffix: ''
-      series: [
-        {
-          color: '#FFF',
-          name: 'Gleams casted'
-          data: all_records
-        }
-      ]
+      series: [ {
+        color: '#FFF'
+        name: 'No of Gleams Casted'
+        data: all_join_record
+      } ]
   return

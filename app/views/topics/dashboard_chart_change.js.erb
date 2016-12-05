@@ -12,10 +12,11 @@
 $(function() {
   var all_categories, all_records, categories, records;
   if ($('.line-chart').length !== 0) {
-    categories = $(".line-chart").data("categories");
+    categories = $(".line-chart").data("categories").split(', ');
     all_categories = [];
-    if (categories.toString().indexOf(",") >= 0) {
-      all_categories = $(".line-chart").data("categories");
+    // console.log($(".line-chart").data("categories").split(', '))
+    if (categories.length >= 0) {
+       all_categories = $(".line-chart").data("categories").split(', ');
     } else {
       all_categories = [categories];
     }
@@ -26,6 +27,16 @@ $(function() {
     } else {
       all_records = [records];
     }
+    all_join_record = []
+    if (categories.length>=0){
+      for (var i = 0; i < categories.length; i++)
+      {
+        var now = categories[i].split("-").map(Number)
+        all_join_record.push([Date.UTC(now[2], now[1] - 1, now[0]), all_records[i]])
+      }
+    }else{
+      all_join_record = []
+    }
     $('.line-chart').highcharts({
       chart: {
         backgroundColor: "#ED8742"
@@ -34,19 +45,40 @@ $(function() {
         text: ''
       },
       xAxis: {
+        type: 'datetime',
+        dateTimeLabelFormats: {
+            month: '%e. %b'
+        },
         title: {
-          text: ''
+          style: {
+            color: "#FFF",
+            fontWeight: 'bold'
+          },
+          text: 'Date'
         },
         labels: {
           style: {
             color: "#FFF"
           }
         },
-        categories: all_categories
+        series: [
+          {
+            color: '#FFF',
+            name: 'No of Gleams Casted',
+            categories: all_categories
+          }
+        ]
+
       },
       yAxis: {
+        min: 0,
+        tickInterval: 1,
         title: {
-          text: ''
+          style: {
+            color: "#FFF",
+            fontWeight: 'bold'
+          },
+          text: '<%= params[:for].eql?("view_of_gleams") ? "No of Views" : params[:for].eql?("no_of_followers") ? "No of Followers" : "No of Gleams"%>'
         },
         labels: {
           style: {
@@ -67,8 +99,8 @@ $(function() {
       series: [
         {
           color: '#FFF',
-          name: 'No of Gleams Casted',
-          data: all_records
+          name: '<%= params[:for].eql?("view_of_gleams") ? "View of Gleams" : params[:for].eql?("no_of_followers") ? "No of Followers" : "No of Gleams Casted"%>',
+          data: all_join_record
         }
       ]
     });
