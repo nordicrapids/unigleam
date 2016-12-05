@@ -1,12 +1,12 @@
 <% if params[:for].present? %>
   <% if params[:for] == "view_of_gleams" %>
-    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @users, head: 'View of Your Gleams'  } ) %>")
+    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @users, head: 'View of Your Gleams'  } ) %>")
   <% elsif params[:for] == "no_of_followers" %>
-    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @users, head: 'No of Followers'  } ) %>")
+    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @followers, head: 'No of Followers'  } ) %>")
   <% elsif params[:for] == "no_of_casted" %>
-    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gleams Casted'  } ) %>")
+    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @gleams, head: 'No of Gleams Casted'  } ) %>")
   <% elsif params[:for] == "no_of_shared" %>
-    $("#line_chart_div").html("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gelams Shared'  } ) %>")
+    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gelams Shared'  } ) %>")
   <% end %>
 <% end %>
 $(function() {
@@ -14,7 +14,6 @@ $(function() {
   if ($('.line-chart').length !== 0) {
     categories = $(".line-chart").data("categories").split(', ');
     all_categories = [];
-    // console.log($(".line-chart").data("categories").split(', '))
     if (categories.length >= 0) {
        all_categories = $(".line-chart").data("categories").split(', ');
     } else {
@@ -27,15 +26,28 @@ $(function() {
     } else {
       all_records = [records];
     }
-    all_join_record = []
+    data_date_utc_format = []
     if (categories.length>=0){
       for (var i = 0; i < categories.length; i++)
       {
         var now = categories[i].split("-").map(Number)
-        all_join_record.push([Date.UTC(now[2], now[1] - 1, now[0]), all_records[i]])
+        data_date_utc_format.push(Date.UTC(now[2], now[1] - 1, now[0]))
       }
     }else{
-      all_join_record = []
+      data_date_utc_format = []
+    }
+    dates_before_30_days = []
+    for(var i=1; i <= 30; i++){
+      var d = new Date();
+        d.setDate(d.getDate() - (30 - i))
+        var utc = d.toJSON().slice(0,10).split('-')
+        var utc_format = Date.UTC(utc[0], utc[1] - 1, utc[2])
+        if (data_date_utc_format.includes(utc_format) == true){
+          var index = data_date_utc_format.indexOf(utc_format)
+          dates_before_30_days.push([Date.UTC(utc[0], utc[1] - 1, utc[2]), all_records[index]])
+        }else{
+          dates_before_30_days.push([Date.UTC(utc[0], utc[1] - 1, utc[2]), 0])
+        }
     }
     $('.line-chart').highcharts({
       chart: {
@@ -47,14 +59,14 @@ $(function() {
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
-            month: '%e. %b'
+            month: '%e. %m'
         },
         title: {
           style: {
             color: "#FFF",
             fontWeight: 'bold'
           },
-          text: 'Date'
+          text: 'Dates'
         },
         labels: {
           style: {
@@ -100,7 +112,7 @@ $(function() {
         {
           color: '#FFF',
           name: '<%= params[:for].eql?("view_of_gleams") ? "View of Gleams" : params[:for].eql?("no_of_followers") ? "No of Followers" : "No of Gleams Casted"%>',
-          data: all_join_record
+          data: dates_before_30_days
         }
       ]
     });
