@@ -27,6 +27,9 @@
 #
 
 class User < ActiveRecord::Base
+  # extending the omniauth lib
+  extend OmniauthUnigleam
+
   geocoded_by :address
   after_validation :geocode
   attr_accessor :login
@@ -40,6 +43,8 @@ class User < ActiveRecord::Base
   has_many :survey_questions
   has_many :comments
   accepts_nested_attributes_for :comments, :allow_destroy => true
+
+  has_many :authenticates, dependent: :destroy
 
   has_many :user_follows, foreign_key: "user_id" ,dependent: :destroy
 
@@ -64,34 +69,7 @@ class User < ActiveRecord::Base
 				:size => { :less_than => 5.megabyte }
 
   def self.from_omniauth(ominiauth_data)
-    data = ominiauth_data.info
-    if data['email'].present?
-      user = User.where(email: data['email']).try(:last)
-    else ## Find with user_name when email is not find.
-    	user = User.find_with_username(ominiauth_data)
-    end
-    if user.present?
-      if user.provider.present?
-        ominiauth_user = user #.find_by_provider(ominiauth_data['provider'])
-       	create_new_provider_authenticates(ominiauth_data, user) if ominiauth_user.nil?
-      else
-      	create_new_provider_authenticates(ominiauth_data, user)
-      end
-      user.save
-      @user = user
-    else
-      where(provider: ominiauth_data.provider, uid: ominiauth_data.uid).first_or_create do |user|
-        user.email = ominiauth_data.info.email
-        if ominiauth_data.info.name.present?
-          name = ominiauth_data.info.name.split(' ', 2)
-          user.first_name = name.first
-          user.last_name  = name.last
-        end
-        user.password = Devise.friendly_token[0,20]
-        @user =  user
-      end
-    end
-    return @user
+    user = my_omniauth(ominiauth_data)
   end
 
   def full_name
