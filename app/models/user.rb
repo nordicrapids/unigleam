@@ -63,18 +63,35 @@ class User < ActiveRecord::Base
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-
-      if auth.info.name.present?
-        name = auth.info.name.split(' ', 2)
-        user.first_name = name.first
-        user.last_name  = name.last
-      end
-
-      user.password = Devise.friendly_token[0,20]
+  def self.from_omniauth(ominiauth_data)
+    data = ominiauth_data.info
+    if data['email'].present?
+      user = User.where(email: data['email']).try(:last)
+    else ## Find with user_name when email is not find.
+    	user = User.find_with_username(ominiauth_data)
     end
+    if user.present?
+      if user.provider.present?
+        ominiauth_user = user #.find_by_provider(ominiauth_data['provider'])
+       	create_new_provider_authenticates(ominiauth_data, user) if ominiauth_user.nil?
+      else
+      	create_new_provider_authenticates(ominiauth_data, user)
+      end
+      user.save
+      @user = user
+    else
+      where(provider: ominiauth_data.provider, uid: ominiauth_data.uid).first_or_create do |user|
+        user.email = ominiauth_data.info.email
+        if ominiauth_data.info.name.present?
+          name = ominiauth_data.info.name.split(' ', 2)
+          user.first_name = name.first
+          user.last_name  = name.last
+        end
+        user.password = Devise.friendly_token[0,20]
+        @user =  user
+      end
+    end
+    return @user
   end
 
   def full_name
@@ -99,6 +116,4 @@ class User < ActiveRecord::Base
       where(conditions.to_h).first
     end
   end
-
-
 end
