@@ -152,8 +152,8 @@
 
                     <div id="profile_<%= profile.id %>">
                       <div class="rows">
-                        <div class="col-md-2">Email:</div>
-                        <div class="col-md-10"><%= profile.email%></div>
+                        <div class="col-md-2">Username:</div>
+                        <div class="col-md-10"><%= profile.username.present? ? profile.username : profile.first_name+" "+profile.last_name %></div>
                       </div>
                       <div class="rows">
                         <div class="col-md-2">City:</div>
