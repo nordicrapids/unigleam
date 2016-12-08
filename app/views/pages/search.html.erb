@@ -74,6 +74,16 @@
                     <div id="survey_question_<%= survey_question.id %>">
                       <%= render partial: "survey_questions/survey_question", locals: {:survey_question => survey_question} %>
                     </div>
+
+                    <div class="clearfix"></div>
+                    <br />
+                    <div class="comment_question_div_<%= survey_question.id %>">
+                      <% if survey_question.comments.present? %>
+                          <%= render "shared/survey_question_list", :survey_question => survey_question %>
+                      <% end %>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
                     <% if user_signed_in? %>
                       <%= form_for Comment.new, :remote => true  do |f| %>
                         <%= f.hidden_field :survey_question_id, value: survey_question.id %>
@@ -89,13 +99,6 @@
                         </div>
   							      <% end %>
                     <% end %>
-                      <div class="clearfix"></div>
-                      <br />
-                      <div class="comment_question_div_<%= survey_question.id %>">
-                        <% if survey_question.comments.present? %>
-                            <%= render "shared/survey_question_list", :survey_question => survey_question %>
-                        <% end %>
-                      </div>
 
                   </div><!-- /column -->
                   <!-- End Content Inside -->
