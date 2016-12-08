@@ -1,10 +1,10 @@
-<% unless @topic.banner_image.blank? %>		
+<% unless @topic.banner_image.blank? %>
 	<div class="banner">
 		<div class="banner_title">
-			<%= @topic.name %>		
+			<%= @topic.name %>
 		</div>
 		<%= image_tag @topic.banner_image, :class => "banner_image" %>
-	</div>		
+	</div>
 <% end %>
 
 <div class="pt40 pb40">
