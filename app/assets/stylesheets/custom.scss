@@ -550,6 +550,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.circular-topics{
+  height: 100% !important;
+}
 
 .circular-topics .circular-selector .img-responsive {
   min-height: 100%;
@@ -559,6 +562,7 @@
   right: auto !important;
   margin: 0 auto !important;
   top: 5% !important;
+  height: 100% !important;
 }
 .circular-topics .circular-selector ul {
   position: inherit !important;
