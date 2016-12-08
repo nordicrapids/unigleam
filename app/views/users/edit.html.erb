@@ -1,6 +1,6 @@
 <h2 class="font-color-head font-weight-500">Profile Settings</h2>
 <%= form_for(current_user, url: user_path(current_user), html: { method: :put }) do |f| %>
-
+  <%= f.hidden_field :id, value: f.object.id%>
   <div class="field">
     <%#= f.file_field :profile_image, class: 'form-control width-30-percent', placeholder: 'Image' %>
     <div class="row">
@@ -27,7 +27,7 @@
   </div>
   <br />
   <div class="field">
-    <%= f.text_field :username, class: 'form-control width-30-percent', placeholder: 'Username', disabled: "disabled" %>
+    <%= f.text_field :username, class: 'form-control width-30-percent', placeholder: 'Username' %>
   </div>
   <br />
   <div class="field">
@@ -35,11 +35,11 @@
   </div>
   <br />
   <div class="field">
-    <%= f.label "Gender", class:'font-color-grey'%><br />
-    <%= f.radio_button :gender, "male" %>&nbsp;<%= f.label :gender, 'Male', class: 'font-color-grey set-cursor-pointer', value: 'male' %><br />
-    <%= f.radio_button :gender, "female"%>&nbsp;<%= f.label :gender, 'Female', class: 'font-color-grey set-cursor-pointer', value: 'female' %><br />
-    <%= f.radio_button :gender, "transgender"%>&nbsp;<%= f.label :gender, 'Transgender', class: 'font-color-grey set-cursor-pointer', value: 'transgender' %><br />
-    <%= f.radio_button :gender, ""%>&nbsp;<%= f.label :gender, 'Not Specified', class: 'font-color-grey set-cursor-pointer',value: '' %><br />
+    <%= f.label "Gender", class:''%><br />
+    <%= f.radio_button :gender, "male" %>&nbsp;<%= f.label :gender, 'Male', class: 'set-cursor-pointer', value: 'male' %><br />
+    <%= f.radio_button :gender, "female"%>&nbsp;<%= f.label :gender, 'Female', class: 'set-cursor-pointer', value: 'female' %><br />
+    <%= f.radio_button :gender, "transgender"%>&nbsp;<%= f.label :gender, 'Transgender', class: 'set-cursor-pointer', value: 'transgender' %><br />
+    <%= f.radio_button :gender, ""%>&nbsp;<%= f.label :gender, 'Not Specified', class: 'set-cursor-pointer',value: '' %><br />
   </div>
   <br />
   <div class="field">

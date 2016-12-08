@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"
   match 'users/sessions/check_email' => "users/sessions#check_email", :via => :get
   match 'users/sessions/check_email_registration' => "users/sessions#check_email_registration", :via => :get
+  match 'users/sessions/check_username' => "users/sessions#check_username", :via => :get
   match "search" => "pages#search", :via => :get, as: "search"
 
   match 'privacy_policy' => "topics#privacy_policy", :via => :get, as: "privacy_policy"

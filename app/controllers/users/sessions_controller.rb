@@ -42,4 +42,16 @@ class Users::SessionsController < ApplicationController
     end
   end
 
+  def check_username
+    @user = User.find_by_username(params[:user][:username])
+    @current_user = User.find(params[:id]) if params[:id].present?
+    respond_to do |format|
+      if @user.id == @current_user.id
+        format.json { render :json => @user.present? }
+      else
+        format.json { render :json => !@user.present? }
+      end
+    end
+  end
+
 end

@@ -284,4 +284,16 @@ $(document).ready(function() {
     }
   })
 
+  $('.edit_user').validate({
+    rules: {
+      "user[username]": { required: true, remote: '/users/sessions/check_username?id='+$('#user_id').val(), minlength: 8, alphanumeric: true }
+    },
+    messages: {
+      "user[username]": {
+        required: "Username can't be blank",
+        remote: "Username already taken"
+      }
+    }
+  })
+
 });
