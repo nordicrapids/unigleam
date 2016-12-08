@@ -136,7 +136,8 @@
 
                     <center>
                       <%= link_to edit_user_path(profile.id) do %>
-                        <div style="background-image:url('<%= profile.profile_image.url(:large) %>');" class="survey-image"></div>
+                        <!-- <div style="background-image:url('<%#= profile.profile_image.url(:large) %>');" class="survey-image"></div> -->
+                        <%= image_tag profile.profile_image.url(:large), class: 'survey-image' %>
                       <% end %>
                       <br/>
                       <%#= link_to "Go to Gleam", topics_survey_path(survey_question.topic), :class => "btn btn-theme btn-category" %>
