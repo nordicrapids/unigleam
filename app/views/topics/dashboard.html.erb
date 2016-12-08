@@ -17,7 +17,7 @@
             <div class="right">
               <span class="record-title">Views of<span> <br/>
               <span class="record-title">your gleams<span> <br/>
-              <span class="record-counter"><%= SurveyQuestionView.where('user_id = ?', current_user.id).count%></span>
+              <span class="record-counter"><%= SurveyQuestionView.where('survey_question_id IN (?)', current_user.survey_question_ids).count%></span>
             </div>
           </div>
         <% end %>
