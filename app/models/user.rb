@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :survey_question_views
   has_many :survey_responses
   has_many :survey_questions
   has_many :comments

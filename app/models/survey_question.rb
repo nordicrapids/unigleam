@@ -27,7 +27,7 @@ class SurveyQuestion < ActiveRecord::Base
   has_many :survey_responses
   has_many :comments
   accepts_nested_attributes_for :comments, :allow_destroy => true
-
+  has_many :survey_question_views
 
   has_attached_file :image,
 

@@ -57,7 +57,11 @@
                         <div style="background-image:url('<%= survey_question.image.url(:medium) %>');" class="survey-image"></div>
                       <% end %>
                       <br/>
-                      <%= link_to "Go to Gleam", topics_survey_path(survey_question.topic), :class => "btn btn-theme btn-category" %>
+                      <% if user_signed_in? %>
+                        <%= link_to "Go to Gleam", topics_survey_path(survey_question.id), :class => "btn btn-theme btn-category" %>
+                      <% else %>
+                        <a data-toggle="modal" data-target="#login_modal" class="btn btn-theme btn-category">Go to Gleam</a>
+                      <% end %>
                     </center>
 
                   </div><!-- /column -->

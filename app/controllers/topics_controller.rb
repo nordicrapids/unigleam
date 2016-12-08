@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
   def dashboard_chart_change
     if params[:for].present?
       if params[:for] == "view_of_gleams"
-        @users = User.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
+        @users = SurveyQuestionView.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_followers"
         @followers = UserFollow.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_casted"

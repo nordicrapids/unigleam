@@ -4,11 +4,13 @@ layout 'user', only: [:user_survey_question, :new, :edit, :create, :update, :sho
 skip_before_filter :verify_authenticity_token, only: [:create]
 
   def index
-    @topic = Topic.friendly.find(params[:id])
+    @survey_question = SurveyQuestion.find(params[:id])
+    @topic = @survey_question.topic
     if params[:survey_question_id].present?
       @survey_questions = @topic.survey_questions.where(:slug => params[:survey_question_id])
     else
-      @survey_questions = @topic.survey_questions
+      SurveyQuestionView.create(user_id: current_user.id, survey_question_id: @survey_question.id)
+      # @survey_questions = @topic.survey_questions
     end
   end
 
