@@ -557,6 +557,12 @@
     left: 0 !important;
     width: 100% !important;
 }
+.circular-topics .circular-selector ul li label:hover{
+  height: 180px !important;
+  max-width: 180px !important;
+  width: 180px !important;
+}
+
 // .circular-topics{
 //   height: 100% !important;
 // }

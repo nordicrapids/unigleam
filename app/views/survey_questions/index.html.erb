@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<%# @survey_questions.each_with_index do |survey_question, index| %>
+	<% if @survey_question.present? %>
 		<div class="pt40 pb40">
 			<div class="container">
 				<!-- Begin Carousel + Content -->
@@ -38,8 +38,8 @@
 						</div>
 
 						<div id="survey_question_<%= @survey_question.id %>">
-				      <%= render partial: "survey_question", locals: {:survey_question => @survey_question} %>
-				    </div>
+							<%= render partial: "survey_question", locals: {:survey_question => @survey_question} %>
+						</div>
 
 					</div><!-- /column -->
 					<!-- End Content Inside -->
@@ -49,7 +49,41 @@
 
 			</div><!-- /container -->
 		</div>
-	<%# end %>
+	<% else %>
+		<% @survey_questions.each_with_index do |survey_question, index| %>
+			<div class="pt40 pb40">
+				<div class="container">
+					<!-- Begin Carousel + Content -->
+					<div class="row">
+
+						<!-- Begin Carousel -->
+						<div class="col-sm-4" style="visibility: visible; ">
+							<div style="background-image:url('<%= survey_question.image.url(:medium) %>');" class="survey-image"></div>
+						</div><!-- /column -->
+						<!-- End Carousel -->
+
+						<!-- Content Inside -->
+						<div class="col-sm-8" style="visibility: visible; ">
+							<div class="mb20 mt30-xs">
+								<h4 class="theme-font">
+									<%= survey_question.title %>
+								</h4>
+							</div>
+
+							<div id="survey_question_<%= survey_question.id %>">
+								<%= render partial: "survey_question", locals: {:survey_question => survey_question} %>
+							</div>
+
+						</div><!-- /column -->
+						<!-- End Content Inside -->
+
+					</div><!-- /row -->
+					<!-- End Carousel + Content -->
+
+				</div><!-- /container -->
+			</div>
+		<% end %>
+	<% end %>
 </div>
 
 <script src="https://connect.facebook.net/en_US/all.js" type="text/javascript" charset="utf-8"></script>
