@@ -76,7 +76,7 @@ skip_before_filter :verify_authenticity_token, only: [:create]
   def create_vote_survey
 
     user_survey_response = SurveyResponse.find_or_create_by({user_id: current_user.id, survey_question_id: params[:id]})
-    user_survey_response.survey_question_answer_id = params[:survey_question][:answer].to_i
+    user_survey_response.survey_question_answer_id = params[:survey_question][:answer].to_i if params[:survey_question].present?
     user_survey_response.save
 
     @survey_question = SurveyQuestion.find(params[:id])

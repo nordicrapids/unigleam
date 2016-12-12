@@ -35,3 +35,26 @@
 
 <br/>
 <br/>
+<div class="clearfix"></div>
+<div class="comment_question_div_<%= survey_question.id %>">
+  <% if survey_question.comments.present? %>
+      <%= render "shared/survey_question_list", :survey_question => survey_question %>
+  <% end %>
+</div>
+<div class="clearfix"></div>
+<br />
+<% if user_signed_in? %>
+  <%= form_for Comment.new, :remote => true  do |f| %>
+    <%= f.hidden_field :survey_question_id, value: survey_question.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="rows">
+      <div class="col-md-12 padding-left-0 padding-right-0"><%= f.text_area :comment, :class => "form-control text_area_comment", :placeholder => "Write Your Comment Here" %></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="rows padding-top-5">
+      <div class="col-md-3 pull-right padding-left-0 padding-right-0">
+        <%= f.button "Add Comment", class: 'btn btn-theme btn-category width-120 pull-right margin-right-0 add_comment', 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i>Adding..." %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
