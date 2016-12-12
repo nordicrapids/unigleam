@@ -47,7 +47,9 @@ class User < ActiveRecord::Base
 
   has_many :authenticates, dependent: :destroy
 
-  has_many :user_follows, foreign_key: "user_id" ,dependent: :destroy
+  has_many :user_follows, foreign_key: "user_id"
+
+  before_destroy :remove_user_follows
 
   has_attached_file :profile_image,
                                 s3_region: 'ap-northeast-1',
@@ -95,4 +97,10 @@ class User < ActiveRecord::Base
       where(conditions.to_h).first
     end
   end
+
+  def remove_user_follows
+    user = self
+    UserFollow.where('user_id = ? or follow_id = ?', user.id,user.id).delete_all
+  end
+
 end
