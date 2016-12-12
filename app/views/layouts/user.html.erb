@@ -32,7 +32,7 @@
             </li>
 
             <li class="<%= 'active' if controller.controller_name.eql?('survey_questions')%>">
-              <%= link_to "Survey Questions", user_survey_question_path(current_user.id) %>
+              <%= link_to "Gleams", user_survey_question_path(current_user.id) %>
             </li>
 
             <li class="<%= 'active' if controller.controller_name.eql?('users') && controller.action_name.eql?('edit')  %>">
@@ -65,7 +65,7 @@
         </li>
 
         <li class="<%= 'active' if controller.controller_name.eql?('survey_questions') %>">
-          <%= link_to "<i class='fa fa-question-circle'></i> Survey Questions".html_safe, user_survey_question_path(current_user.id) %>
+          <%= link_to "<i class='fa fa-question-circle'></i> Gleams".html_safe, user_survey_question_path(current_user.id) %>
         </li>
 
         <li class="<%= 'active' if controller.controller_name.eql?('users') && controller.action_name.eql?('edit')  %>">

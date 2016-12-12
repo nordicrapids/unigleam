@@ -40,7 +40,7 @@
 
   <div class="form-action">
     <%= f.button "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i>#{@survey_question.new_record? ? 'Creating' : 'Updating' }".html_safe %>
-    <%= link_to "Cancel", user_survey_question_path(current_user.id) %>
+    <%= link_to "Cancel", user_survey_question_path(current_user.id), class: 'btn btn-default' %>
   </div>
 
 <% end %>

@@ -40,7 +40,7 @@
 
   <div class="form-action">
     <%= f.submit "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success" %>
-    <%= link_to "Cancel", admin_survey_questions_path %>
+    <%= link_to "Cancel", admin_survey_questions_path, class: 'btn btn-default' %>
   </div>
 
 <% end %>
