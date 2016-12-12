@@ -62,6 +62,17 @@ skip_before_filter :verify_authenticity_token, only: [:create]
 		end
   end
 
+  def destroy
+    @survey_question = SurveyQuestion.find(params[:id])
+    if (@survey_question.destroy)
+      flash[:notice] = "Survey question has been deleted."
+			redirect_to user_survey_question_path(current_user.id)
+    else
+      flash[:notice] = "Survey question has not been deleted."
+			redirect_to user_survey_question_path(current_user.id)
+    end
+  end
+
   def create_vote_survey
 
     user_survey_response = SurveyResponse.find_or_create_by({user_id: current_user.id, survey_question_id: params[:id]})

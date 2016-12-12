@@ -41,6 +41,17 @@ before_filter :authorize_admin
 		end
   end
 
+  def destroy
+    @survey_question = SurveyQuestion.find(params[:id])
+    if (@survey_question.destroy)
+      flash[:notice] = "Survey question has been deleted."
+			redirect_to admin_survey_questions_path
+    else
+      flash[:notice] = "Survey question has not been deleted."
+			redirect_to admin_survey_questions_path
+    end
+  end
+
 private
   	def survey_question_params
       columns = SurveyQuestion.strong_parameters
