@@ -31,7 +31,7 @@ before_filter :authorize_admin
   end
 
   def update
-    @survey_question = SurveyQuestion.find(params[:id])
+    @survey_question = SurveyQuestion.find_by_slug(params[:id])
     if (@survey_question.update_attributes(survey_question_params))
 			flash[:notice] = "Survey question has been updated."
 			redirect_to admin_survey_questions_path
