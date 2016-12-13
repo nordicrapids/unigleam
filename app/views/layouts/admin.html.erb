@@ -41,6 +41,10 @@
             <li class="<%= 'active' if params[:controller] == 'admin/survey_questions' %>">
               <%= link_to "Gleams", admin_survey_questions_path %>
             </li>
+  
+            <li class="<%= 'active' if params[:controller] == 'users' %>">
+              <%= link_to "Users", users_path %>
+            </li>
 
             <li class="<%= 'active' if params[:controller] == 'admin/banners' %>">
               <%= link_to "Banner Setting", admin_banner_path %>
@@ -85,6 +89,10 @@
 
         <li class="<%= 'active' if params[:controller] == 'admin/survey_questions' %>">
           <%= link_to "<i class='fa fa-question-circle'></i> Gleams".html_safe, admin_survey_questions_path %>
+        </li>
+
+        <li class="<%= 'active' if params[:controller] == 'users' %>">
+          <%= link_to "<i class='fa fa-user fa-fw'></i> Users".html_safe, users_path %>
         </li>
 
       </ul>

@@ -1,17 +1,32 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [ ]
-  layout 'user', only: [:edit, :update]
+
   def index
+    @users = User.all
+    render :layout => 'admin'
   end
 
   def edit
+    if params[:type].present?
+      @user = User.find(params[:id])
+      render :layout => 'admin'
+    else
+      @user = current_user
+      render :layout => 'user'
+    end
   end
 
   def update
-    if current_user.update_attributes(user_params)
-      current_user.save!
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      @user.save!
       flash[:notice] = 'Profile Updated Successfully'
-      redirect_to dashboard_path
+      
+      if params[:type].present?
+        redirect_to users_path
+      else
+        redirect_to dashboard_path
+      end
     else
       render :edit
     end

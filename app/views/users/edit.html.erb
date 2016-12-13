@@ -1,5 +1,5 @@
 <h2 class="font-color-head font-weight-500">Profile Settings</h2>
-<%= form_for(current_user, url: user_path(current_user), html: { method: :put }) do |f| %>
+<%= form_for(@user, url: params[:type].present? ? user_path(@user, type: 'admin') : user_path(@user), html: { method: :put }) do |f| %>
   <%= f.hidden_field :id, value: f.object.id%>
   <div class="field">
     <%#= f.file_field :profile_image, class: 'form-control width-30-percent', placeholder: 'Image' %>
