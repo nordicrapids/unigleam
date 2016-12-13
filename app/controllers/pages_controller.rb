@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
     unless params[:gleams].blank?
       @survey_questions = SurveyQuestion.where("title ILIKE ?", "%#{params[:gleams]}%")
-      @profiles = User.where("email ILIKE ?", "%#{params[:gleams]}%")
+      @profiles = User.where("email ILIKE ? or username ILIKE ?", "%#{params[:gleams]}%", "%#{params[:gleams]}%")
     end
 
     unless params[:profiles].blank?
