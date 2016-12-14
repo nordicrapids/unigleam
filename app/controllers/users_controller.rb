@@ -21,9 +21,13 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       @user.save!
       flash[:notice] = 'Profile Updated Successfully'
-      
+
       if params[:type].present?
-        redirect_to users_path
+        if params[:current].present?
+          redirect_to admin_root_path
+        else
+          redirect_to users_path
+        end
       else
         redirect_to dashboard_path
       end
