@@ -2968,7 +2968,7 @@ h6.progress-head {
 /* =Footer
 -------------------------------------------------------------- */
 .footer {
-	padding:30px 0 30px 0;
+	padding:30px 0 0px 0;
 	background-color:#272727;
 	color:#8F8F8F;
 	vertical-align:bottom;
