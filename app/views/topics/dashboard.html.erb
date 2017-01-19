@@ -28,7 +28,7 @@
           <div class="dashboard-counter-box">
             <div class="pull-left">
               <div class="icon-box blue">
-                <i class="fa fa-qrcode"></i>
+                <i class="fa fa-users"></i>
               </div>
             </div>
 
@@ -36,6 +36,24 @@
               <span class="record-title">Number of<span> <br/>
               <span class="record-title">Followers<span> <br/>
               <span class="record-counter"><%= UserFollow.where('user_id = ?', current_user.id).count %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-sm-6 col-md-3 box-counter-divider">
+        <%= link_to dashboard_chart_change_path(for: 'no_of_followings'), remote: true do %>
+          <div class="dashboard-counter-box">
+            <div class="pull-left">
+              <div class="icon-box green">
+                <i class="fa fa-user"></i>
+              </div>
+            </div>
+
+            <div class="right">
+              <span class="record-title">Number of<span> <br/>
+              <span class="record-title">Followings<span> <br/>
+              <span class="record-counter"><%= UserFollow.where('follow_id = ?', current_user.id).count %></span>
             </div>
           </div>
         <% end %>
@@ -81,11 +99,12 @@
   </div>
 
   <br/>
-  <div id="line_chart_div">
+  <div id="line_chart_div" class="clearfix">
     <%= render "shared/line_chart_content", :chart => @gleams, head: "No of Gleams" %>
   </div>
   <br/>
-  <br/>
+  <div id="data_list_div">
+  </div>
   <br/>
 
 </div>

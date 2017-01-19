@@ -1,12 +1,19 @@
 <% if params[:for].present? %>
   <% if params[:for] == "view_of_gleams" %>
     $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @users, head: 'View of Your Gleams'  } ) %>")
+    $("#data_list_div").empty()
   <% elsif params[:for] == "no_of_followers" %>
-    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @followers, head: 'No of Followers'  } ) %>")
+    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @followers_count, head: 'No of Followers'  } ) %>")
+    $("#data_list_div").empty().append("<%= j render(:partial => 'shared/following_list_content', :locals => { :user_follow_list => @followers, :is_follower => true  } ) %>")
+  <% elsif params[:for] == "no_of_followings" %>
+    $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @followings_count, head: 'No of Followings'  } ) %>")
+    $("#data_list_div").empty().append("<%= j render(:partial => 'shared/following_list_content', :locals => { :user_follow_list => @followings, :is_follower => false  } ) %>")
   <% elsif params[:for] == "no_of_casted" %>
     $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @gleams, head: 'No of Gleams Casted'  } ) %>")
+    $("#data_list_div").empty()
   <% elsif params[:for] == "no_of_shared" %>
     $("#line_chart_div").empty().append("<%= j render(:partial => 'shared/line_chart_content', :locals => { :chart => @survey_responses, head: 'No of Gelams Shared'  } ) %>")
+    $("#data_list_div").empty()
   <% end %>
 <% end %>
 $(function() {

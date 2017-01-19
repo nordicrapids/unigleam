@@ -1,3 +1,12 @@
+<% unless @banner_image.blank? %>
+  <div class="banner">
+    <div class="banner_title">
+      <%= @banner_image.banner_title %>
+    </div>
+    <%= image_tag @banner_image.banner_image, :class => "banner_image unveil_img" %>
+  </div>
+<% end %>
+
 <div class="circular-topics hidden-xs">
 	<p class="theme-font title-text">What's Trending</p>
 	<div class='circular-selector'>
@@ -30,15 +39,6 @@
 	  </label>
 	</div>
 </div>
-
-<% unless @banner_image.blank? %>
-  <div class="banner">
-    <div class="banner_title">
-      <%= @banner_image.banner_title %>
-    </div>
-    <%= image_tag @banner_image.banner_image, :class => "banner_image unveil_img" %>
-  </div>
-<% end %>
 
 <div class='visible-xs mobile-view'>
 	<br/>

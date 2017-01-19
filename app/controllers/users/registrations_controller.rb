@@ -4,7 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     if resource.save
-      sign_up(resource_name, resource)
 
     else
       @error = resource.errors.full_messages.to_sentence

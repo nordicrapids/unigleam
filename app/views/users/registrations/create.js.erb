@@ -4,5 +4,6 @@
  $("#register_error_message").show()
 <% else %>
  $('#register_modal').modal('hide')
- window.location.href = $("body").data("url")
+ $('#sign_up_modal').modal('hide')
+ $("body").prepend('<div class="alert alert-success fade in theme-font text-center"><button class="close" data-dismiss="alert">x</button>Thanks so much for joining Unigleam. To finish signing up, you just need to confirm that we got your email right</div>');
 <% end %>

@@ -1,0 +1,4 @@
+$(".comment_div_<%= @parent_comment.id %> .comment-reply-containers").html("<%= j render(:partial => 'shared/survey_question_comment_reply_list', :locals => { :comment => @parent_comment  } ) %>")
+$('.comment_div_<%= @parent_comment.id %> .text_area_comment').val('')
+$('.comment_div_<%= @parent_comment.id %> .toogle-replies').removeClass("hide")
+$('.comment_div_<%= @parent_comment.id %> .reply_count').text('<%= @parent_comment.children.size %>')

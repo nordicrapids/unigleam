@@ -203,6 +203,21 @@
   display:none;
 }
 
+.like-btn:before {
+  padding-right: 10px;
+}
+.comment-reply-containers {
+  margin: 10px 10px 10px 30px;
+  display: none;
+}
+.reply-form {
+  display: none;
+}
+#data_list_div> .container {
+  margin: 15px 0px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
 @media (max-width: 1000px) {
   .navbar-header {
     float: none;

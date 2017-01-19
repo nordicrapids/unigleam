@@ -1,0 +1,13 @@
+<% if comment.has_children? %>
+  <% comment.children.each_with_index do |comment_reply| %>
+    <div class="comment-reply-container">
+      <div>
+        <span class="circle_label bold-font"><%= comment_reply.user.try(:full_name) %>:</span>
+        <span><%= time_ago_in_words(comment_reply.created_at) %> ago</span>
+      </div>
+      <div>
+        <p><%= comment_reply.body.present? ? comment_reply.body : '-' %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -17,7 +17,8 @@
 #
 
 class SurveyQuestion < ActiveRecord::Base
-
+  acts_as_votable
+  acts_as_commentable
   extend FriendlyId
   friendly_id :title, use: :slugged
   belongs_to :user

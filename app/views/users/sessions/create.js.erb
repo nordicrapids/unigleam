@@ -1,6 +1,10 @@
-<% if @status == true %>
+$("#login_error_message").hide()
+$("#confirm_error_message").hide()
+<% if @status == "success" %>
  $('#login_modal').modal('hide')
  window.location.href = $("body").data("url")
-<% else %>
+<% elsif @status == "failed" %>
  $("#login_error_message").show()
+<% else %>
+ $("#confirm_error_message").show()
 <% end %>

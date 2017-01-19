@@ -25,6 +25,10 @@
   						  <strong>Warning!</strong> Username or password is invalid!
   						</div>
 
+  						<div class="alert alert-danger" role="alert" id="confirm_error_message" style="display:none;">
+  						  <strong>Warning!</strong> You need to be confirmed before log in
+  						</div>
+
   			      <div class="form-group">
   							<%= f.label :email, "Username / Email address" %>
   							<%= f.text_field :email, :class => "form-control required", :placeholder => "Enter username or email" %>
@@ -253,6 +257,50 @@
                 </div>
 
                 <div class="form-group">
+                  <%= f.label :gender %>
+                  <select class="form-control required" name="user[gender]" id="user_gender" required="true" title="Please select something!">
+                    <option value="">--Select Gender--</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <%= f.label :birthday %>
+                  <%= f.date_select :birthday, {start_year:1950, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }}, {:class => "form-control required"} %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :race %>
+                  <select class="form-control required" name="user[race]" id="user_race" required="true" title="Please select something!">
+                    <option value="">--Select Race--</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :marital_status %>
+                  <select class="form-control required" name="user[marital_status]" id="user_marital" required="true" title="Please select something!">
+                    <option value="">--Select Marital Status--</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :city %>
+                  <%= f.text_field :city, :class => "form-control required", :placeholder => "City" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :zip %>
+                  <%= f.text_field :zip, :class => "form-control required", :placeholder => "Zip" %>
+                </div>
+
+                <div class="form-group">
                   <%= f.label :password, "Password" %>
                   <%= f.password_field :password, id: "user_password_registration", :class => "form-control required", :placeholder => "Password" %>
                 </div>
@@ -400,7 +448,7 @@
 						    </li> -->
 								<li class="search-form width-62-per">
 									<%= form_for "", :url => search_path, :method => "get" do |f| %>
-                    <%= text_field_tag "gleams", params[:gleams], placeholder: "Search Gleams and Profiles", :class => "gleams-input width-80-percent" %>
+                    <%= text_field_tag "gleams", params[:gleams], placeholder: "Search", :class => "gleams-input width-80-percent" %>
                     <%#= text_field_tag "topics", params[:topics], placeholder: "Search Topics" %>
                     <%= f.submit "Search", class: "btn btn-theme search_button" %>
                   <% end %>

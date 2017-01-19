@@ -20,7 +20,11 @@ class TopicsController < ApplicationController
       if params[:for] == "view_of_gleams"
         @users = SurveyQuestionView.where('survey_question_id IN (?)', current_user.survey_question_ids).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_followers"
-        @followers = UserFollow.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
+        @followers = UserFollow.where('user_id = ?', current_user.id)
+        @followers_count = @followers.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
+      elsif params[:for] == "no_of_followings"
+        @followings = UserFollow.where('follow_id = ?', current_user.id)
+        @followings_count = @followings.group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_casted"
         @gleams = SurveyQuestion.where('user_id = ?', current_user.id).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
       elsif params[:for] == "no_of_shared"

@@ -96,7 +96,25 @@ skip_before_filter :verify_authenticity_token, only: [:create]
     render json: {:status => "success"}
   end
 
+  def like
+    @survey_question = SurveyQuestion.find(params[:id])
+    if current_user
+      @survey_question.liked_by current_user
+      render json: {:status => "success", :count => @survey_question.votes_for.size}
+    else
+      render json: {:status => "failed", :message => "Sign in first."}
+    end
+  end
 
+  def dislike
+    @survey_question = SurveyQuestion.find(params[:id])
+    if current_user
+      @survey_question.unliked_by current_user
+      render json: {:status => "success", :count => @survey_question.votes_for.size}
+    else
+      render json: {:status => "failed", :message => "Sign in first."}
+    end
+  end
   private
   	def survey_question_params
       columns = SurveyQuestion.strong_parameters

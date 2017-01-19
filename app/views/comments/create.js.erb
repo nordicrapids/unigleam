@@ -1,2 +1,2 @@
-$(".comment_question_div_<%= @comment.survey_question_id%>").html("<%= j render(:partial => 'shared/survey_question_list', :locals => { :survey_question => @comment.survey_question  } ) %>")
+$(".comment_question_div_<%= @comment.commentable.id %>").html("<%= j render(:partial => 'shared/survey_question_list', :locals => { :survey_question => SurveyQuestion.where(id:@comment.commentable.id).first  } ) %>")
 $('.text_area_comment').val('')

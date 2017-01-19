@@ -5,16 +5,18 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    @status = false
+    @status = "failed"
     if params[:user][:email].include?('.co')
       resource = User.find_for_database_authentication(email: params[:user][:email].downcase)
     else
       resource = User.find_for_database_authentication(username: params[:user][:email].downcase)
     end
 
-    if resource.valid_password?(params[:user][:password])
+    if resource.confirmed? && resource.valid_password?(params[:user][:password])
       sign_in :user, resource
-      @status = true
+      @status = "success"
+    elsif !resource.confirmed? && resource.valid_password?(params[:user][:password])
+      @status = "confirm error"
     end
   end
 

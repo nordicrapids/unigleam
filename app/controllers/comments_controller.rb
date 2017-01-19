@@ -22,11 +22,11 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     # @comment = Comment.new(comment: params[:comment][:comment], survey_question_id: params[:comment][:survey_question_id], user_id: params[:comment][:user_id])
-    @comment = Comment.new(comment_params)
+    @survey_question = SurveyQuestion.where(id: comment_params[:survey_question_id]).first
+    @comment = Comment.build_from(@survey_question, current_user.id, comment_params[:body])
     if @comment.save
-      # render :nothing, notice: 'Comment was successfully created.'
     else
-      render :new
+
     end
   end
 
@@ -45,6 +45,37 @@ class CommentsController < ApplicationController
     redirect_to comments_url, notice: 'Comment was successfully destroyed.'
   end
 
+  def reply
+    @parent_comment = Comment.where(id: params[:id]).first
+    @survey_question = SurveyQuestion.where(id: comment_params[:survey_question_id]).first
+    @comment = Comment.build_from(@survey_question, current_user.id, comment_params[:body])
+    if @comment.save
+      @comment.move_to_child_of(@parent_comment)
+    else
+
+    end
+  end
+
+  def like
+    @comment = Comment.find(params[:id])
+    if current_user
+      @comment.liked_by current_user
+      render json: {:status => "success", :count => @comment.votes_for.size}
+    else
+      render json: {:status => "failed", :message => "Sign in first."}
+    end
+  end
+
+  def dislike
+    @comment = Comment.find(params[:id])
+    if current_user
+      @comment.unliked_by current_user
+      render json: {:status => "success", :count => @comment.votes_for.size}
+    else
+      render json: {:status => "failed", :message => "Sign in first."}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
@@ -53,6 +84,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:comment, :survey_question_id, :user_id)
+      params.require(:comment).permit(:body, :survey_question_id)
     end
 end

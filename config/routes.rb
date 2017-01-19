@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   resources :comments
+  match "comments/:id/reply" => "comments#reply", :via => :post, as: "comment_reply"
+  match "comments/like" => "comments#like", :via => :post, as: "comment_like"
+  match "comments/dislike" => "comments#dislike", :via => :post, as: "comment_dislike"
+
   devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :passwords => 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks" }
     resources :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,6 +19,8 @@ Rails.application.routes.draw do
   match "survey_question/:id/result" => "survey_questions#vote_result", :via => :get, as: "vote_result"
   match "survey_question/:id/survey" => "survey_questions#vote_survey", :via => :get, as: "vote_survey"
   match "survey_question/:id/share" => "survey_questions#share_counter", :via => :post, as: "survey_share_counter"
+  match "survey_question/like" => "survey_questions#like", :via => :post, as: "survey_question_like"
+  match "survey_question/dislike" => "survey_questions#dislike", :via => :post, as: "survey_question_dislike"
   match "users/:id/user_survey_question" => "survey_questions#user_survey_question", :via => :get, as: "user_survey_question"
 
   match "vote/:id" => "survey_questions#create_vote_survey", :via => :post, as: "create_vote_survey"

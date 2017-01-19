@@ -24,9 +24,17 @@
 #  address                :text
 #  latitude               :float
 #  longitude              :float
+#  gender                 :string
+#  birthday               :datetime
+#  race                   :string
+#  maritial_status        :string
+#  maritial_status        :string
+#  city                   :string
+#  zip                    :string
 #
 
 class User < ActiveRecord::Base
+  acts_as_voter
   # extending the omniauth lib
   extend OmniauthUnigleam
 
@@ -35,7 +43,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 

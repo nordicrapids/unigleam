@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <% user_follow_list.each do |user_follow| %>
+      <% if is_follower
+        user = user_follow.follow
+      else
+        user = user_follow.user
+      end %>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-4">
+            <%= link_to(image_tag(user.profile_image, :alt => "user photo", :width => 100, :height => 100, :title => "Click here to return to Home"), "/") %>
+          </div>
+          <div class="col-md-8">
+            <h3><%= user.full_name %></h3>
+            <% follow = UserFollow.check_following(user.id,current_user.id) %>
+            <%= link_to "#{follow.present? ? 'Unfollow' : 'Follow'}", follow_user_path(follow_id: user.id), class: "btn btn-primary background-color follow_unfollow_#{user.id}", remote: true%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
