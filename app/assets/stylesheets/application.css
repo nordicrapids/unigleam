@@ -22,5 +22,6 @@
  *= require theme/css/jquery.snippet
  *= require theme/css/buttons
  *= require theme/css/ionicons.min
+ *= require chosen
  *= require_self
  */

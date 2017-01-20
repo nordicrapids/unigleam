@@ -59,8 +59,8 @@ class CommentsController < ApplicationController
   def like
     @comment = Comment.find(params[:id])
     if current_user
-      @comment.liked_by current_user
-      render json: {:status => "success", :count => @comment.votes_for.size}
+      @comment.upvote_by current_user
+      render json: {:status => "success", :up_count => @comment.get_upvotes.size, :down_count => @comment.get_downvotes.size}
     else
       render json: {:status => "failed", :message => "Sign in first."}
     end
@@ -69,8 +69,8 @@ class CommentsController < ApplicationController
   def dislike
     @comment = Comment.find(params[:id])
     if current_user
-      @comment.unliked_by current_user
-      render json: {:status => "success", :count => @comment.votes_for.size}
+      @comment.downvote_by current_user
+      render json: {:status => "success", :up_count => @comment.get_upvotes.size, :down_count => @comment.get_downvotes.size}
     else
       render json: {:status => "failed", :message => "Sign in first."}
     end

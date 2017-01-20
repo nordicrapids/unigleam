@@ -1,2 +1,3 @@
-$(".comment_question_div_<%= @comment.commentable.id %>").html("<%= j render(:partial => 'shared/survey_question_list', :locals => { :survey_question => SurveyQuestion.where(id:@comment.commentable.id).first  } ) %>")
+$(".comment_question_div_<%= @comment.commentable.id %>").prepend("<%= j render(:partial => 'shared/survey_question_list', :locals => { :comment => @comment  } ) %>")
+$("#survey_question_<%= @comment.commentable.id %> .comment-controls .comment_count").text("<%= @survey_question.root_comments.size%>")
 $('.text_area_comment').val('')

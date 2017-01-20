@@ -53,3 +53,5 @@ gem 'remotipart', '~> 1.2'
 gem "select2-rails"
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts_as_commentable_with_threading'
+gem 'chosen-rails'
+gem 'country_state_select', '3.0.1'

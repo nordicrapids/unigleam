@@ -1,45 +1,48 @@
-<% survey_question.root_comments.each_with_index do |comment| %>
-  <div class="panel padding-5 comment_div_<%= comment.id %>">
-    <div>
-      <span class="circle_label bold-font"><%= comment.user.try(:full_name) %>:</span>
-      <span><%= time_ago_in_words(comment.created_at) %> ago</span>
-    </div>
-    <div>
-      <p><%= comment.body.present? ? comment.body : '-' %></p>
-    </div>
-    <div class="comment-controls">
-      <% if current_user %>
-        <a class="reply-btn" data-parent-div="comment_div_<%= comment.id %>"><i class="fa fa-reply"></i> Reply</a>
-      <% end %>
-      <% if comment.has_children? %>
-        <a class="toogle-replies" data-parent-div="comment_div_<%= comment.id %>">Replies(<span class="reply_count"><%= comment.children.size %></span>)</a>
-      <% else %>
-        <a class="toogle-replies hide" data-parent-div="comment_div_<%= comment.id %>">Replies(<span class="reply_count"><%= comment.children.size %></span>)</a>
-      <% end %>
-      <% if current_user && (current_user.voted_for? comment) %>
-        <a class="btn btn-success fa fa-heart like-btn" data-id="<%= comment.id %>" data-path="/comments" data-loading-text=" ... "><%= comment.votes_for.size %></a>
-      <% else %>
-        <a type="button" class="btn btn-success fa fa-heart fa-heart-o like-btn" data-id="<%= comment.id %>" data-path="/comments" data-loading-text=" ... "><%= comment.votes_for.size %></a>
-      <% end %>
-    </div>
-    <div class="comment-reply-containers">
-      <%= render "shared/survey_question_comment_reply_list", :comment => comment %>
-    </div>
-    <div class="reply-form">
-      <% if user_signed_in? %>
-        <%= form_for Comment.new, :remote => true, :url => comment_reply_path(comment), :html => { class: "clearfix" } do |f| %>
-          <%= f.hidden_field :survey_question_id, value: comment.commentable.id %>
-          <div>
-            <%= f.text_area :body, :class => "form-control text_area_comment", :placeholder => "Write Your Reply Here" %>
-          </div>
-          <div class="clearfix"></div>
-          <div class="padding-top-5">
-            <div class="pull-right">
-              <%= f.button "Add Reply", class: 'btn btn-theme btn-category width-120 pull-right margin-right-0 add_reply', 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i>Adding..." %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+<div class="panel padding-5 comment_div_<%= comment.id %>">
+  <div>
+    <span class="circle_label bold-font"><%= comment.user.try(:full_name) %>:</span>
+    <span><%= time_ago_in_words(comment.created_at) %> ago</span>
   </div>
-<% end %>
+  <div>
+    <p><%= comment.body.present? ? comment.body : '-' %></p>
+  </div>
+  <div class="comment-controls">
+    <% if current_user %>
+      <a class="reply-btn" data-parent-div="comment_div_<%= comment.id %>"><i class="fa fa-reply"></i> Reply</a>
+    <% end %>
+    <% if comment.has_children? %>
+      <a class="toogle-replies" data-parent-div="comment_div_<%= comment.id %>"><i class="fa fa-comments"></i> <span class="reply_count"><%= comment.children.size %></span></a>
+    <% else %>
+      <a class="toogle-replies hide" data-parent-div="comment_div_<%= comment.id %>"><i class="fa fa-comments"></i> <span class="reply_count"><%= comment.children.size %></span></a>
+    <% end %>
+    <% if current_user && (current_user.voted_up_on? comment) %>
+      <a class="fa fa-thumbs-up like-btn" data-id="<%= comment.id %>" data-path="/comment" data-loading-text=" ... "><%= comment.get_upvotes.size %></a>
+      <a class="fa fa-thumbs-o-down dislike-btn" data-id="<%= comment.id %>" data-path="/comment" data-loading-text=" ... "><%= comment.get_downvotes.size %></a>
+    <% elsif current_user && (current_user.voted_down_on? comment) %>
+      <a class="fa fa-thumbs-o-up like-btn" data-id="<%= comment.id %>" data-path="/comment" data-loading-text=" ... "><%= comment.get_upvotes.size %></a>
+      <a class="fa fa-thumbs-down dislike-btn" data-id="<%= comment.id %>" data-path="/comment" data-loading-text=" ... "><%= comment.get_downvotes.size %></a>
+    <% else %>
+      <a class="fa fa-thumbs-o-up like-btn" data-id="<%= comment.id %>" data-path="/comment" data-loading-text=" ... "><%= comment.get_upvotes.size %></a>
+      <a class="fa fa-thumbs-o-down dislike-btn" data-id="<%= comment.id %>" data-path="/comment" data-loading-text=" ... "><%= comment.get_downvotes.size %></a>
+    <% end %>
+  </div>
+  <div class="comment-reply-containers">
+    <%= render "shared/survey_question_comment_reply_list", :comment => comment %>
+  </div>
+  <div class="reply-form">
+    <% if user_signed_in? %>
+      <%= form_for Comment.new, :remote => true, :url => comment_reply_path(comment), :html => { class: "clearfix" } do |f| %>
+        <%= f.hidden_field :survey_question_id, value: comment.commentable.id %>
+        <div>
+          <%= f.text_area :body, :class => "form-control text_area_comment", :placeholder => "Write Your Reply Here" %>
+        </div>
+        <div class="clearfix"></div>
+        <div class="padding-top-5">
+          <div class="pull-right">
+            <%= f.button "Add Reply", class: 'btn btn-theme btn-category width-120 pull-right margin-right-0 add_reply', 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i>Adding..." %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

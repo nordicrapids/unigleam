@@ -35,12 +35,28 @@
 <br/>
 <br/>
 <div class="clearfix"></div>
-<div class="comment_question_div_<%= survey_question.id %>">
+<div class="comment-controls">
+  <% if current_user && (current_user.voted_up_on? survey_question) %>
+    <a class="fa fa-thumbs-up like-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.get_upvotes.size %></a>
+    <a class="fa fa-thumbs-o-down dislike-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.get_downvotes.size %></a>
+  <% elsif current_user && (current_user.voted_down_on? survey_question) %>
+    <a class="fa fa-thumbs-o-up like-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.get_upvotes.size %></a>
+    <a class="fa fa-thumbs-down dislike-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.get_downvotes.size %></a>
+  <% else %>
+    <a class="fa fa-thumbs-o-up like-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.get_upvotes.size %></a>
+    <a class="fa fa-thumbs-o-down dislike-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.get_downvotes.size %></a>
+  <% end %>
   <% if survey_question.root_comments.present? %>
-      <%= render "shared/survey_question_list", :survey_question => survey_question %>
+    <a class="toogle-comments" data-parent-div="survey_question_<%= survey_question.id %>"><i class="fa fa-comments"></i> <span class="comment_count"><%= survey_question.root_comments.size %></span></a>
+  <% else %>
+    <a class="toogle-comments hide" data-parent-div="survey_question_<%= survey_question.id %>"><i class="fa fa-comments"></i> <span class="comment_count"><%= survey_question.root_comments.size %></span></a>
   <% end %>
 </div>
-<div class="clearfix"></div>
+<div class="comments-container comment_question_div_<%= survey_question.id %>">
+  <% if survey_question.root_comments.present? %>
+    <%= render :partial => 'shared/survey_question_list', :collection => survey_question.root_comments, :as => :comment %>
+  <% end %>
+</div>
 <br />
 <% if user_signed_in? %>
   <%= form_for Comment.new, :remote => true  do |f| %>

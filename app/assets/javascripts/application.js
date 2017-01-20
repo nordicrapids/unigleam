@@ -29,6 +29,7 @@
 //= require theme/js/main
 //= require jquery.remotipart
 //= require jquery.typeahead.min
+// = require chosen-jquery
 //= require typeahead.jquery
 //= require typeahead_search.js
 //= require common

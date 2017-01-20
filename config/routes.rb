@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   resources :comments
   match "comments/:id/reply" => "comments#reply", :via => :post, as: "comment_reply"
-  match "comments/like" => "comments#like", :via => :post, as: "comment_like"
-  match "comments/dislike" => "comments#dislike", :via => :post, as: "comment_dislike"
+  match "comment/like" => "comments#like", :via => :post, as: "comment_like"
+  match "comment/dislike" => "comments#dislike", :via => :post, as: "comment_dislike"
 
   devise_for :users, :controllers => { :sessions => 'users/sessions', :registrations => "users/registrations", :passwords => 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks" }
     resources :users

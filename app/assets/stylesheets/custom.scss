@@ -204,13 +204,23 @@
 }
 
 .like-btn:before {
-  padding-right: 10px;
+  padding-right: 3px;
 }
-.comment-reply-containers {
+
+.dislike-btn:before {
+  padding-right: 3px;
+}
+.comment-reply-container {
   margin: 10px 10px 10px 30px;
   display: none;
 }
+.comment-controls a{
+  margin-right: 10px;
+}
 .reply-form {
+  display: none;
+}
+.comments-container {
   display: none;
 }
 #data_list_div> .container {

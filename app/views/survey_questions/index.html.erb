@@ -34,17 +34,12 @@
 						<div class="mb20 mt30-xs">
 							<h4 class="theme-font">
 								<%= @survey_question.title %>
-                <% if current_user && (current_user.voted_for? @survey_question) %>
-                  <button type="button" class="btn btn-success fa fa-heart like-btn" data-id="<%= @survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= @survey_question.votes_for.size %></button>
-                <% else %>
-                  <button type="button" class="btn btn-success fa fa-heart fa-heart-o like-btn" data-id="<%= @survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= @survey_question.votes_for.size %></button>
-                <% end %>
 							</h4>
               <% if @survey_question.user %>
                 <ul class="list-inline posted-info">
                   <li>
                     By
-                    <a><%= @survey_question.user.full_name %></a>
+                    <a><%= @survey_question.user.username%> (<%= @survey_question.user.full_name %>)</a>
                     <span><%= time_ago_in_words(@survey_question.created_at) %> ago</span>
                   </li>
                 </ul>
@@ -81,17 +76,12 @@
 							<div class="mb20 mt30-xs">
 								<h4 class="theme-font">
 									<%= survey_question.title %>
-                  <% if current_user && (current_user.voted_for? survey_question) %>
-                    <button type="button" class="btn btn-success fa fa-heart like-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.votes_for.size %></button>
-                  <% else %>
-                    <button type="button" class="btn btn-success fa fa-heart fa-heart-o like-btn" data-id="<%= survey_question.id %>" data-path="/survey_question" data-loading-text=" ... "><%= survey_question.votes_for.size %></button>
-                  <% end %>
 								</h4>
                 <% if survey_question.user %>
                   <ul class="list-inline posted-info">
                     <li>
                       By
-                      <a><%= survey_question.user.full_name %></a>
+                      <a><%= survey_question.user.username%> (<%= survey_question.user.full_name %>)</a>
                       <span><%= time_ago_in_words(survey_question.created_at) %> ago</span>
                     </li>
                   </ul>

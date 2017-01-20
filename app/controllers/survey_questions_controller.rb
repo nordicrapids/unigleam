@@ -99,8 +99,8 @@ skip_before_filter :verify_authenticity_token, only: [:create]
   def like
     @survey_question = SurveyQuestion.find(params[:id])
     if current_user
-      @survey_question.liked_by current_user
-      render json: {:status => "success", :count => @survey_question.votes_for.size}
+      @survey_question.upvote_by current_user
+      render json: {:status => "success", :up_count => @survey_question.get_upvotes.size, :down_count => @survey_question.get_downvotes.size}
     else
       render json: {:status => "failed", :message => "Sign in first."}
     end
@@ -109,8 +109,8 @@ skip_before_filter :verify_authenticity_token, only: [:create]
   def dislike
     @survey_question = SurveyQuestion.find(params[:id])
     if current_user
-      @survey_question.unliked_by current_user
-      render json: {:status => "success", :count => @survey_question.votes_for.size}
+      @survey_question.downvote_by current_user
+      render json: {:status => "success", :up_count => @survey_question.get_upvotes.size, :down_count => @survey_question.get_downvotes.size}
     else
       render json: {:status => "failed", :message => "Sign in first."}
     end
