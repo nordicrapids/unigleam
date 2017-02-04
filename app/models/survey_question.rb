@@ -73,7 +73,17 @@ class SurveyQuestion < ActiveRecord::Base
   # if you are not logged in, you can see gleams are public
   def self.visible current_user
     if current_user
-      where("status = ? OR user_id = ? OR id in (?)", "public", current_user.id, SurveyResponse.where(user_id: current_user.id).pluck(:survey_question_id) )
+      vote_survey_ids = SurveyResponse.where(user_id: current_user.id).pluck(:survey_question_id)
+
+      like_survey_ids = current_user.get_voted(SurveyQuestion).pluck(:id)
+
+      current_user.get_voted(Comment).each do |comment|
+        like_survey_ids << comment.commentable(SurveyQuestion).id
+      end
+
+      survey_ids = (vote_survey_ids + like_survey_ids).uniq
+
+      where("status = ? OR user_id = ? OR id in (?)", "public", current_user.id, survey_ids )
     else
       where(status: "public")
     end
