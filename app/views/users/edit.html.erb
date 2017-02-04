@@ -31,18 +31,25 @@
   </div>
   <br />
   <div class="field">
-    <%= f.text_field :city, class: 'form-control width-30-percent', placeholder: "City" %>
+    <%= f.select :marital_status, marital_statuses, { prompt: "Select Marital Status" }, class: 'form-control width-30-percent' %>
+  </div>
+  <br />  
+  <div class="field">
+    <%= f.select :race, races, { prompt: "Select Race" }, class: 'form-control width-30-percent' %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.select :state, us_states, { prompt: "Select State" }, class: 'form-control width-30-percent' %>
   </div>
   <br />
   <div class="field">
     <%= f.label "Gender", class:''%><br />
     <%= f.radio_button :gender, "male" %>&nbsp;<%= f.label :gender, 'Male', class: 'set-cursor-pointer', value: 'male' %><br />
-    <%= f.radio_button :gender, "female"%>&nbsp;<%= f.label :gender, 'Female', class: 'set-cursor-pointer', value: 'female' %><br />
-    <%= f.radio_button :gender, "other"%>&nbsp;<%= f.label :gender, 'Other', class: 'set-cursor-pointer', value: 'other' %><br />
+    <%= f.radio_button :gender, "female"%>&nbsp;<%= f.label :gender, 'Female', class: 'set-cursor-pointer', value: 'female' %><br />    
   </div>
   <br />
-  <div class="field">
-    <%= f.select :age,(18..100), { prompt: "Select Age" }, class: 'form-control width-30-percent', placeholder: "City" %>
+  <div class="field">    
+    <%= f.select :age,(18..100), { prompt: "Select Age" }, class: 'form-control width-30-percent' %>
   </div>
   <br />
   <div class="actions">
