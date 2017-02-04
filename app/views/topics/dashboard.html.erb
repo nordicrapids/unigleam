@@ -108,3 +108,68 @@
   <br/>
 
 </div>
+
+<br/>
+
+<div class="gleams_chart">
+  <div>
+    <div id="chartGleamsByGender" class="pie_chart"></div>
+    <div id="chartGleamsByAge" class="pie_chart"></div>  
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  var gleams_by_gender = <%= @gleams_by_gender.to_json.html_safe %>;
+  var gleams_by_age = <%= @gleams_by_age.to_json.html_safe %>;
+
+  var gleams_by_gender_arr = []
+  var gleams_by_age_arr = []
+
+  for(var key in gleams_by_gender) {
+    gleams_by_gender_arr.push({y: gleams_by_gender[key], indexLabel: key})
+  }
+
+  for(var key in gleams_by_age) {
+    gleams_by_age_arr.push({y: gleams_by_age[key], indexLabel: key})
+  }
+
+  window.onload = function () {
+    var chartGender = new CanvasJS.Chart("chartGleamsByGender",
+    {
+      title:{
+        text: "Gleams by Gender"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{y} - #percent %",
+        yValueFormatString: "#. Gleams",
+        legendText: "{indexLabel}",
+        dataPoints: gleams_by_gender_arr
+      }
+      ]
+    });
+
+    var chartAge = new CanvasJS.Chart("chartGleamsByAge",
+    {
+      title:{
+        text: "Gleams by Age"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{y} - #percent %",
+        yValueFormatString: "#. Gleams",
+        legendText: "{indexLabel}",
+        dataPoints: gleams_by_age_arr
+      }
+      ]
+    });
+
+    chartGender.render();
+    chartAge.render();
+  }
+</script>

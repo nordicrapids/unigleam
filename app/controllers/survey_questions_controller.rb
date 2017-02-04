@@ -12,12 +12,12 @@ skip_before_filter :verify_authenticity_token, only: [:create]
     end
 
     if params[:survey_question_id].present?
-      @survey_questions = @topic.survey_questions.where(:slug => params[:survey_question_id])
+      @survey_questions = @topic.visible_survey_questions(current_user).where(:slug => params[:survey_question_id])
     else
       if params[:id].to_i.to_s == params[:id]
         SurveyQuestionView.create(user_id: current_user.id, survey_question_id: @survey_question.id)
       else
-        @survey_questions = @topic.survey_questions
+        @survey_questions = @topic.visible_survey_questions(current_user)
       end
     end
   end

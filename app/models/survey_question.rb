@@ -82,11 +82,31 @@ class SurveyQuestion < ActiveRecord::Base
       end
 
       survey_ids = (vote_survey_ids + like_survey_ids).uniq
-
-      where("status = ? OR user_id = ? OR id in (?)", "public", current_user.id, survey_ids )
+      
+      where("survey_questions.status = ? OR survey_questions.user_id = ? OR survey_questions.id in (?)", "public", current_user.id, survey_ids )
     else
       where(status: "public")
     end
+  end
+
+  def self.group_by_user_gender
+    joins("left join users on survey_questions.user_id = users.id").group("users.gender").count
+  end
+
+  def self.group_by_user_race
+    joins("left join users on survey_questions.user_id = users.id").group("users.race").count
+  end
+
+  def self.group_by_user_marital_status
+    joins("left join users on survey_questions.user_id = users.id").group("users.marital_status").count
+  end
+
+  def self.group_by_user_age
+    joins("left join users on survey_questions.user_id = users.id").group("users.age").count
+  end
+
+  def self.group_by_user_state
+    joins("left join users on survey_questions.user_id = users.id").group("users.state").count
   end
 
 end

@@ -13,6 +13,9 @@ class TopicsController < ApplicationController
      @gleams = SurveyQuestion.where('user_id = ? and created_at >= ?', current_user.id, 30.days.ago).group_by_day(:created_at, format: "%d-%m-%Y").order("day asc").count
     # %Y-%m-%d
     @users = User.all
+
+    @gleams_by_gender = SurveyQuestion.visible(current_user).group_by_user_gender
+    @gleams_by_age = SurveyQuestion.visible(current_user).group_by_user_age
   end
 
   def dashboard_chart_change

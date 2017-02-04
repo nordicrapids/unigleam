@@ -109,3 +109,139 @@
   <br/>
 
 </div>
+
+<br/>
+
+<div class="gleams_chart">
+  <div>
+    <div id="chartGleamsByGender" class="pie_chart"></div>
+    <div id="chartGleamsByAge" class="pie_chart"></div>  
+  </div>
+  <div>
+    <div id="chartGleamsByRace" class="pie_chart"></div>
+    <div id="chartGleamsByMarital" class="pie_chart"></div>  
+  </div>
+
+  <div id="chartGleamsByState"></div>
+</div>
+
+
+<script type="text/javascript">
+  var gleams_by_gender = <%= @gleams_by_gender.to_json.html_safe %>;
+  var gleams_by_age = <%= @gleams_by_age.to_json.html_safe %>;
+  var gleams_by_race = <%= @gleams_by_race.to_json.html_safe %>;
+  var gleams_by_marital = <%= @gleams_by_marital.to_json.html_safe %>;
+  var gleams_by_state = <%= @gleams_by_state.to_json.html_safe %>;
+
+  var gleams_by_gender_arr = []
+  var gleams_by_age_arr = []
+  var gleams_by_race_arr = []
+  var gleams_by_marital_arr = []
+  var gleams_by_state_arr = []
+
+  for(var key in gleams_by_gender) {
+    gleams_by_gender_arr.push({y: gleams_by_gender[key], indexLabel: key})
+  }
+
+  for(var key in gleams_by_age) {
+    gleams_by_age_arr.push({y: gleams_by_age[key], indexLabel: key})
+  }
+
+  for(var key in gleams_by_race) {
+    gleams_by_race_arr.push({y: gleams_by_race[key], indexLabel: key})
+  }
+
+  for(var key in gleams_by_marital) {
+    gleams_by_marital_arr.push({y: gleams_by_marital[key], indexLabel: key})
+  }
+
+  for(var key in gleams_by_state) {
+    gleams_by_state_arr.push({y: gleams_by_state[key], label: key})
+  }
+
+  window.onload = function () {
+    var chartGender = new CanvasJS.Chart("chartGleamsByGender",
+    {
+      title:{
+        text: "Gleams by Gender"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{y} - #percent %",
+        yValueFormatString: "#. Gleams",
+        legendText: "{indexLabel}",
+        dataPoints: gleams_by_gender_arr
+      }
+      ]
+    });
+
+    var chartAge = new CanvasJS.Chart("chartGleamsByAge",
+    {
+      title:{
+        text: "Gleams by Age"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{y} - #percent %",
+        yValueFormatString: "#. Gleams",
+        legendText: "{indexLabel}",
+        dataPoints: gleams_by_age_arr
+      }
+      ]
+    });
+
+    var chartRace = new CanvasJS.Chart("chartGleamsByRace",
+    {
+      title:{
+        text: "Gleams by Race"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{y} - #percent %",
+        yValueFormatString: "#. Gleams",
+        legendText: "{indexLabel}",
+        dataPoints: gleams_by_race_arr
+      }
+      ]
+    });
+
+    var chartMarital = new CanvasJS.Chart("chartGleamsByMarital",
+    {
+      title:{
+        text: "Gleams by Marital"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{y} - #percent %",
+        yValueFormatString: "#. Gleams",
+        legendText: "{indexLabel}",
+        dataPoints: gleams_by_marital_arr
+      }
+      ]
+    });
+
+    var chartState = new CanvasJS.Chart("chartGleamsByState", {
+        title: {
+          text: "Gleams by State"
+        },
+        data: [{
+          type: "column",
+          dataPoints: gleams_by_state_arr
+        }]
+      });
+
+    chartGender.render();
+    chartAge.render();
+    chartRace.render();
+    chartMarital.render();
+    chartState.render();
+  }
+</script>
