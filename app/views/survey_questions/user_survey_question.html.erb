@@ -27,6 +27,10 @@
       </th>
 
       <th>
+        Status
+      </th>
+
+      <th>
         Action
       </th>
     </thead>
@@ -47,8 +51,12 @@
           </td>
 
           <td>
+            <%= survey_question.status %>
+          </td>
+
+          <td>
             <%= link_to "Edit", edit_survey_question_path(survey_question.id), class: 'btn btn-primary' %>
-            <%#= link_to "Delete", survey_question_path(survey_question.id), method: 'delete', class: 'btn btn-danger' %>
+            <%= link_to "Delete", survey_question_path(survey_question.id), method: 'delete', class: 'btn btn-danger' %>
           </td>
         </tr>
       <% end %>

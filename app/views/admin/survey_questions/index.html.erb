@@ -27,6 +27,10 @@
       </th>
 
       <th>
+        Status
+      </th>
+
+      <th>
         Action
       </th>
     </thead>
@@ -44,6 +48,10 @@
 
           <td>
             <%= survey_question.title %>
+          </td>
+
+          <td>
+            <%= survey_question.status || "public" %>
           </td>
 
           <td>

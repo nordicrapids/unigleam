@@ -66,5 +66,7 @@ class Topic < ActiveRecord::Base
   validates_attachment  :banner_image,
         :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] }
 
-
+  def visible_survey_questions current_user
+    SurveyQuestion.visible(current_user).where(topic_id: id)
+  end
 end

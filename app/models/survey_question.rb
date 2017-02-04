@@ -51,9 +51,11 @@ class SurveyQuestion < ActiveRecord::Base
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 
+  STATUSES = ['public', 'private']
+  validates_inclusion_of :status, :in => STATUSES, :message => "{{value}} must be in #{STATUSES.join ','}"
 
   def self.strong_parameters
-    columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :user_id, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
+    columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :status, :user_id, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
   end
 
   def user_response(user)
@@ -64,6 +66,16 @@ class SurveyQuestion < ActiveRecord::Base
       return survey_response.survey_question_answer_id
     else
       return ""
+    end
+  end
+
+  # if you are logged in, you can see gleams you created, or voted or liked or are public
+  # if you are not logged in, you can see gleams are public
+  def self.visible current_user
+    if current_user
+      where("status = ? OR user_id = ? OR id in (?)", "public", current_user.id, SurveyResponse.where(user_id: current_user.id).pluck(:survey_question_id) )
+    else
+      where(status: "public")
     end
   end
 

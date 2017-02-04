@@ -20,6 +20,11 @@
     <% end %>
   </div>
 
+  <div class="form-group">
+    <%= f.radio_button :status, "public" %>&nbsp;<%= f.label :status, 'Public', class: 'set-cursor-pointer', value: 'public' %><br />
+    <%= f.radio_button :status, "private"%>&nbsp;<%= f.label :status, 'Private', class: 'set-cursor-pointer', value: 'private' %><br />
+  </div>
+
 
   <div class="form-group">
     <%= f.label :answer_options, "Answer Options" %>
