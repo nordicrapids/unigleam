@@ -42,6 +42,7 @@ gem 'omniauth-oauth2',            '~> 1.4'
 gem 'omniauth-google-oauth2',     '~> 0.4.1'
 gem 'omniauth-facebook',          '~> 3.0'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
+gem "paperclip-ffmpeg"
 gem 'geocoder',                   '~> 1.3', '>= 1.3.6'
 gem 'highcharts-rails',           '~> 4.2', '>= 4.2.5'
 gem 'aws-sdk'

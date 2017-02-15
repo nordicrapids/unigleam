@@ -51,11 +51,24 @@ class SurveyQuestion < ActiveRecord::Base
 				:content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
 				:size => { :less_than => 5.megabyte }
 
+  has_attached_file :video,
+                    s3_region: 'ap-northeast-1',
+                    storage: :s3,
+                    s3_protocol: :https,
+                    s3_credentials:  "#{Rails.root}/config/amazon_s3.yml",
+                    url: ':s3_domain_url',
+                    path:  '/videos/:id/:filename',
+                    s3_host_name: 's3-ap-northeast-1.amazonaws.com',
+                    :styles => {
+                      :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+                    },
+                    processors: [:ffmpeg]
+
   STATUSES = ['public', 'private']
   validates_inclusion_of :status, :in => STATUSES, :message => "{{value}} must be in #{STATUSES.join ','}"
 
   def self.strong_parameters
-    columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :status, :user_id, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
+    columns =[:id, :topic_id, :title, :answer_options, :share_counter, :image, :status, :user_id, :video, :synopsis, :survey_question_answers_attributes => [SurveyQuestionAnswer.strong_parameters]]
   end
 
   def user_response(user)

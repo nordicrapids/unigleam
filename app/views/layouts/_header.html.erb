@@ -1,50 +1,50 @@
 <!-- Begin Header -->
 <header>
-	<!-- Login -->
-	<div class="modal fade login-modal" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-		<div class="modal-dialog" style="left:0">
-			<div class="modal-content">
-			  <div class="modal-header">
-		      <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			  </div>
+  <!-- Login -->
+  <div class="modal fade login-modal" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog" style="left:0">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        </div>
 
         <div class="sign-up-content">
-  				<%= form_for(resource, :as => resource_name,
-  					 :url => session_path(resource_name),
-  					 :html => {:id => "sign_in_user"},
-  					 :format => :json,
-  					 :remote => true ) do |f| %>
+          <%= form_for(resource, :as => resource_name,
+             :url => session_path(resource_name),
+             :html => {:id => "sign_in_user"},
+             :format => :json,
+             :remote => true ) do |f| %>
 
-  					<div class="modal-body">
+            <div class="modal-body">
 
               <div class="form-group">
                 <h3 class="theme-font">Sign in</h3>
               </div>
 
-  						<div class="alert alert-danger" role="alert" id="login_error_message" style="display:none;">
-  						  <strong>Warning!</strong> Username or password is invalid!
-  						</div>
+              <div class="alert alert-danger" role="alert" id="login_error_message" style="display:none;">
+                <strong>Warning!</strong> Username or password is invalid!
+              </div>
 
-  						<div class="alert alert-danger" role="alert" id="confirm_error_message" style="display:none;">
-  						  <strong>Warning!</strong> You need to be confirmed before log in
-  						</div>
+              <div class="alert alert-danger" role="alert" id="confirm_error_message" style="display:none;">
+                <strong>Warning!</strong> You need to be confirmed before log in
+              </div>
 
-  			      <div class="form-group">
-  							<%= f.label :email, "Username / Email address" %>
-  							<%= f.text_field :email, :class => "form-control required", :placeholder => "Enter username or email" %>
-  			      </div>
-  			      <div class="form-group">
-  							<%= f.label :password, "Password" %>
-  							<%= f.password_field :password, :class => "form-control required", :placeholder => "Password" %>
-  			      </div>
-  			      <div class="checkbox">
-  			        <label>
-  								<%= f.check_box :remember_me %> Remember me
-  			        </label>
-  			      </div>
+              <div class="form-group">
+                <%= f.label :email, "Username / Email address" %>
+                <%= f.text_field :email, :class => "form-control required", :placeholder => "Enter username or email" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password, "Password" %>
+                <%= f.password_field :password, :class => "form-control required", :placeholder => "Password" %>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :remember_me %> Remember me
+                </label>
+              </div>
 
-  						<center><%= f.submit "Login", :class => "social-button email_login" %></center>
-  						<br/>
+              <center><%= f.submit "Login", :class => "social-button email_login" %></center>
+              <br/>
               <%= link_to user_facebook_omniauth_authorize_path, :class => "social-button facebook_login" do %>
                 <div class="row">
                   <div class="col-xs-2 social-button-icon">
@@ -56,88 +56,88 @@
                   </div>
                 </div>
               <% end %>
-  			    </div>
+            </div>
 
             <hr/>
             <div class="row">
               <div class="col-sm-12 padding-left-0 padding-right-0">
-								<div class="col-md-8 padding-left-0 padding-right-0">
-									<div class="pull-left col-md-5 padding-left-0 padding-right-0">
-	                  <h4 class="theme-font">Not a member?</h4>
-	                </div>
-									<div class="login_link col-md-7 padding-left-0">
-	                  <div class="modal-link orange-login-link btn" data-modal-target="#sign_up_modal">
-	                    Register now
-	                  </div>
-	                </div>
-								</div>
-								<div class="col-md-4 padding-left-0 padding-right-0 pull-right">
-									<h4 class="theme-font">
-										<%= link_to "Forgot password ?", "javascript:void(0)", class: "theme-font forgot_password", remote: true, "data-toggle" => "modal", 'data-target' => '#forgot_password_modal' %>
-									</h4>
-								</div>
+                <div class="col-md-8 padding-left-0 padding-right-0">
+                  <div class="pull-left col-md-5 padding-left-0 padding-right-0">
+                    <h4 class="theme-font">Not a member?</h4>
+                  </div>
+                  <div class="login_link col-md-7 padding-left-0">
+                    <div class="modal-link orange-login-link btn" data-modal-target="#sign_up_modal">
+                      Register now
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 padding-left-0 padding-right-0 pull-right">
+                  <h4 class="theme-font">
+                    <%= link_to "Forgot password ?", "javascript:void(0)", class: "theme-font forgot_password", remote: true, "data-toggle" => "modal", 'data-target' => '#forgot_password_modal' %>
+                  </h4>
+                </div>
               </div>
               <br/>
               <br/>
               <br/>
           </div>
-  				<% end %>
+          <% end %>
         </div>
 
-			</div><!-- /modal content -->
+      </div><!-- /modal content -->
 
-		</div><!-- /modal dialog -->
-	</div><!-- /modal holder -->
-	<!-- End Login -->
+    </div><!-- /modal dialog -->
+  </div><!-- /modal holder -->
+  <!-- End Login -->
 
 <!-- forgot password -->
-	<div class="modal fade login-modal" id="forgot_password_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-		<div class="modal-dialog" style="left:0">
-			<div class="modal-content">
-			  <div class="modal-header">
-		      <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			  </div>
-
-        <div class="sign-up-content">
-				  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-						<div class="modal-body">
-
-							<div class="form-group">
-								<h3 class="theme-font">Forgot your password?</h3>
-							</div>
-
-							<%= devise_error_messages! %>
-
-							<div class="form-group">
-								<%= f.label :email, "Email address" %>
-								<%= f.email_field :email, :class => "form-control required email", :placeholder => "Enter email", autofocus: true %>
-							</div>
-							<center><%= f.button "Send me reset password instructions", :class => "social-button email_login", data: { disable_with: "<i class='fa fa-spinner fa-spin fa-2x padding-left-0'></i> Sending Mail...".html_safe} %></center>
-							<br/>
-
-						</div>
-
-  				<% end %>
+  <div class="modal fade login-modal" id="forgot_password_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog" style="left:0">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
         </div>
 
-			</div><!-- /modal content -->
+        <div class="sign-up-content">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <div class="modal-body">
 
-		</div><!-- /modal dialog -->
-	</div><!-- /modal holder -->
-	<!-- end forgot password -->
+              <div class="form-group">
+                <h3 class="theme-font">Forgot your password?</h3>
+              </div>
 
-	<!-- register -->
-	<div class="modal fade login-modal" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-		<div class="modal-dialog" style="left:0">
-			<div class="modal-content">
-			  <div class="modal-header">
+              <%= devise_error_messages! %>
+
+              <div class="form-group">
+                <%= f.label :email, "Email address" %>
+                <%= f.email_field :email, :class => "form-control required email", :placeholder => "Enter email", autofocus: true %>
+              </div>
+              <center><%= f.button "Send me reset password instructions", :class => "social-button email_login", data: { disable_with: "<i class='fa fa-spinner fa-spin fa-2x padding-left-0'></i> Sending Mail...".html_safe} %></center>
+              <br/>
+
+            </div>
+
+          <% end %>
+        </div>
+
+      </div><!-- /modal content -->
+
+    </div><!-- /modal dialog -->
+  </div><!-- /modal holder -->
+  <!-- end forgot password -->
+
+  <!-- register -->
+  <div class="modal fade login-modal" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog" style="left:0">
+      <div class="modal-content">
+        <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'>
             <span aria-hidden="true">×</span>
             <span class="sr-only">
               Close
             </span>
           </button>
-			  </div>
+        </div>
         <div class="sign-up-content">
           <%= link_to user_facebook_omniauth_authorize_path, :class => "social-button facebook_login" do %>
             <div class="row">
@@ -202,11 +202,11 @@
 
         </div>
 
-			</div><!-- /modal content -->
+      </div><!-- /modal content -->
 
-		</div><!-- /modal dialog -->
-	</div><!-- /modal holder -->
-	<!-- End register -->
+    </div><!-- /modal dialog -->
+  </div><!-- /modal holder -->
+  <!-- End register -->
 
   <!-- register -->
   <div class="modal fade login-modal" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
@@ -241,7 +241,7 @@
                   <%= f.email_field :email, autofocus: true, :class => "form-control email required", :placeholder => "Enter email" %>
                 </div>
 
-								<div class="form-group">
+                <div class="form-group">
                   <%= f.label :username %>
                   <%= f.text_field :username, :class => "form-control required", :placeholder => "Enter username" %>
                 </div>
@@ -351,164 +351,179 @@
   </div><!-- /modal holder -->
   <!-- End register -->
 
-	<!-- survey question -->
-	<% if user_signed_in? %>
-	  <div class="modal fade login-modal" id="survey_question" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-	    <div class="modal-dialog width-60-percent left-0">
-	      <div class="modal-content">
-	        <div class="modal-header">
-						<div class="pull-left padding-left-40-percent">
-				      <h2 class="font-color-head">Add a Gleam</h2>
-				    </div>
-	          <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'>
-	            <span aria-hidden="true">×</span>
-	            <span class="sr-only">
-	              Close
-	            </span>
-	          </button>
-	        </div>
-					<div class="clearfix"></div>
-	        <div class="sign-up-content width-90-percent">
-	          <div class="sign-up-form">
-							<% @survey_question = SurveyQuestion.new%>
-							<%= form_for @survey_question, :remote => true do |f| %>
-							  <%= f.hidden_field :user_id, value: current_user.id %>
-							  <div class="form-group">
-							    <%= f.label :topic_id, "Topic" %>
-							    <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.name, x.id] }, @survey_question.topic_id), {prompt: 'Select Topic Name'}, :class => "form-control" %>
-							  </div>
+  <!-- survey question -->
+  <% if user_signed_in? %>
+    <div class="modal fade login-modal" id="survey_question" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+      <div class="modal-dialog width-60-percent left-0">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="pull-left padding-left-40-percent">
+              <h2 class="font-color-head">Add a Gleam</h2>
+            </div>
+            <button type="button" class="close" data-dismiss="modal" title="Close" data-toggle='tooltip' data-placement="left"  data-original-title="close" data-trigger='hover'>
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">
+                Close
+              </span>
+            </button>
+          </div>
+          <div class="clearfix"></div>
+          <div class="sign-up-content width-90-percent">
+            <div class="sign-up-form">
+              <% @survey_question = SurveyQuestion.new%>
+              <%= form_for @survey_question, :remote => true do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <div class="form-group">
+                  <%= f.label :topic_id, "Topic" %>
+                  <%= f.select :topic_id, options_for_select(Topic.all.map{ |x| [x.name, x.id] }, @survey_question.topic_id), {prompt: 'Select Topic Name'}, :class => "form-control" %>
+                </div>
 
-							  <div class="form-group">
-							    <%= f.label :title, "Title" %>
-							    <%= f.text_field :title, :class => "form-control", :placeholder => "Title" %>
-							  </div>
+                <div class="form-group">
+                  <%= f.label :title, "Title" %>
+                  <%= f.text_field :title, :class => "form-control", :placeholder => "Title" %>
+                </div>
 
-							  <div class="form-group">
-							    <%= f.label :image, "Topic Image" %>
-							    <%= f.file_field :image %>
+                <div class="form-group">
+                  <%= f.label :title, "Synopsis" %>
+                  <%= f.text_area :synopsis, :class => "form-control", :placeholder => "Synopsis" %>
+                </div>
 
-							    <% if !@survey_question.new_record? && @survey_question.image.present? %>
-							      <br/>
-							      <%= image_tag @survey_question.image.url(:medium), :class => "img-thumbnail" %>
-							    <% end %>
-							  </div>
+                <div class="form-group">
+                  <%= f.label :image, "Topic Image" %>
+                  <%= f.file_field :image %>
+
+                  <% if !@survey_question.new_record? && @survey_question.image.present? %>
+                    <br/>
+                    <%= image_tag @survey_question.image.url(:medium), :class => "img-thumbnail" %>
+                  <% end %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :video, "Topic Video" %>
+                  <%= f.file_field :video %>
+
+                  <% if !@survey_question.new_record? && @survey_question.video.present? %>
+                    <br/>
+                    <%= video_tag @survey_question.video.url(:medium), :class => "img-thumbnail" %>
+                  <% end %>
+                </div>
 
                 <div class="form-group">
                   <%= f.radio_button :status, "public", :checked => true %>&nbsp;<%= f.label :status, 'Public', class: 'set-cursor-pointer', value: 'public' %><br />
                   <%= f.radio_button :status, "private"%>&nbsp;<%= f.label :status, 'Private', class: 'set-cursor-pointer', value: 'private' %><br />
                 </div>
 
-							  <div class="form-group">
-							    <%= f.label :answer_options, "Answer Options" %>
-							  </div>
+                <div class="form-group">
+                  <%= f.label :answer_options, "Answer Options" %>
+                </div>
 
-							  <table class="table table-borderless" id="survey_question_answers">
-							    <tbody>
-							      <%= f.fields_for :survey_question_answers do |f2| %>
-							        <%= render "survey_questions/survey_question_answer_fields", :f => f2 %>
-							      <% end %>
-							    </tbody>
-							  </table>
+                <table class="table table-borderless" id="survey_question_answers">
+                  <tbody>
+                    <%= f.fields_for :survey_question_answers do |f2| %>
+                      <%= render "survey_questions/survey_question_answer_fields", :f => f2 %>
+                    <% end %>
+                  </tbody>
+                </table>
 
-							  <%= link_to_add_tr_field("Add New Answer", f, :survey_question_answers, "survey_question_answers") %>
+                <%= link_to_add_tr_field("Add New Answer", f, :survey_question_answers, "survey_question_answers") %>
 
-							  <br/>
+                <br/>
 
 
-	          </div>
-	        </div>
-					<div class="modal-footer border-top-none">
-						<div class="form-action col-md-2 pull-right">
-							<%= f.button "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success", data: {disable_with: "<i class='fa fa-spinner spin'></i>Creating..".html_safe} %>
-						</div>
-					</div>
-					<% end %>
-	      </div><!-- /modal content -->
+            </div>
+          </div>
+          <div class="modal-footer border-top-none">
+            <div class="form-action col-md-2 pull-right">
+              <%= f.button "#{@survey_question.new_record? ? 'Create' : 'Update' }", :class => "btn btn-success", data: {disable_with: "<i class='fa fa-spinner spin'></i>Creating..".html_safe} %>
+            </div>
+          </div>
+          <% end %>
+        </div><!-- /modal content -->
 
-	    </div><!-- /modal dialog -->
-	  </div><!-- /modal holder -->
-	<% end %>
+      </div><!-- /modal dialog -->
+    </div><!-- /modal holder -->
+  <% end %>
   <!-- End survey question -->
-	<div id="header_popup"> </div>
+  <div id="header_popup"> </div>
 
   <!-- Begin Navigation -->
   <div class="navbar-wrapper">
-		<div class="navbar navbar-main" id="fixed-navbar">
-			<div class="container width-95-per">
-				<div class="row">
-					<div class="col-sm-12 column-header">
-						<div class="navbar-header">
-							<!-- Brand -->
-							<%= link_to root_path, :class=>"navbar-brand" do %>
-			          <%= image_tag "company-logo.png", :class => "raleway-logo"  %>
-			        <% end %>
+    <div class="navbar navbar-main" id="fixed-navbar">
+      <div class="container width-95-per">
+        <div class="row">
+          <div class="col-sm-12 column-header">
+            <div class="navbar-header">
+              <!-- Brand -->
+              <%= link_to root_path, :class=>"navbar-brand" do %>
+                <%= image_tag "company-logo.png", :class => "raleway-logo"  %>
+              <% end %>
 
-							<!-- Mobile Navigation -->
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-					            <span class="sr-only">Toggle navigation</span>
-					            <span class="icon-bar"></span>
-					            <span class="icon-bar"></span>
-					            <span class="icon-bar"></span>
-							</button>
-						</div><!-- /navbar header -->
-						<!-- Main Navigation - Explained in Documentation -->
-						<nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
-							<ul class="nav navbar-nav navbar-right main-nav-bar width-55-percent">
-								<!-- <li class="search-form padding-right-10">
-									<%#= form_for "", :url => search_path, :method => "get" do |f| %>
+              <!-- Mobile Navigation -->
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+              </button>
+            </div><!-- /navbar header -->
+            <!-- Main Navigation - Explained in Documentation -->
+            <nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
+              <ul class="nav navbar-nav navbar-right main-nav-bar width-55-percent">
+                <!-- <li class="search-form padding-right-10">
+                  <%#= form_for "", :url => search_path, :method => "get" do |f| %>
                     <%#= text_field_tag "profiles", params[:profiles], placeholder: "Search Profiles", :class => "gleams-input" %>
                     <%#= f.submit "Search", class: "btn btn-theme" %>
                   <%# end %>
-						    </li> -->
-								<li class="search-form width-62-per">
-									<%= form_for "", :url => search_path, :method => "get" do |f| %>
+                </li> -->
+                <li class="search-form width-62-per">
+                  <%= form_for "", :url => search_path, :method => "get" do |f| %>
                     <%= text_field_tag "gleams", params[:gleams], placeholder: "Search", :class => "gleams-input width-80-percent" %>
                     <%#= text_field_tag "topics", params[:topics], placeholder: "Search Topics" %>
                     <%= f.submit "Search", class: "btn btn-theme search_button" %>
                   <% end %>
-						    </li>
+                </li>
 
-						    <% unless user_signed_in? %>
-									<li>
-										<a data-toggle="modal" data-target="#login_modal">Login</a>
-									</li>
+                <% unless user_signed_in? %>
+                  <li>
+                    <a data-toggle="modal" data-target="#login_modal">Login</a>
+                  </li>
 
-									<li>
-										<a data-toggle="modal" data-target="#register_modal">Register</a>
-									</li>
-								<% else %>
-									<li>
-										<a data-toggle="modal" data-target="#survey_question" class="padding-bottom-0"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-									</li>
+                  <li>
+                    <a data-toggle="modal" data-target="#register_modal">Register</a>
+                  </li>
+                <% else %>
+                  <li>
+                    <a data-toggle="modal" data-target="#survey_question" class="padding-bottom-0"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                  </li>
 
-									<li class="dropdown remove_class_active_header">
-							    		<%= link_to "<i class='fa fa-user fa-fw'></i><i class=fa fa-caret-down'></i>#{current_user.try(:full_name)}".html_safe, "#", class: "dropdown-toggle", 'data-toggle' => "dropdown"%>
-							      	<ul class="dropdown-menu dropdown-user">
-							          <li><%= link_to "<i class='fa fa-dashboard fa-fw'></i> Dashboard".html_safe, current_user.is_admin? ? admin_root_path : dashboard_path %></li>
-							          <li class="divider margin-0"></li>
-							          <li>
-							            <%= link_to "<i class='fa fa-sign-out fa-fw'></i> Logout".html_safe, destroy_user_session_path, method: 'delete' %>
-							        	</li>
-							        </ul>
-							    </li>
+                  <li class="dropdown remove_class_active_header">
+                      <%= link_to "<i class='fa fa-user fa-fw'></i><i class=fa fa-caret-down'></i>#{current_user.try(:full_name)}".html_safe, "#", class: "dropdown-toggle", 'data-toggle' => "dropdown"%>
+                      <ul class="dropdown-menu dropdown-user">
+                        <li><%= link_to "<i class='fa fa-dashboard fa-fw'></i> Dashboard".html_safe, current_user.is_admin? ? admin_root_path : dashboard_path %></li>
+                        <li class="divider margin-0"></li>
+                        <li>
+                          <%= link_to "<i class='fa fa-sign-out fa-fw'></i> Logout".html_safe, destroy_user_session_path, method: 'delete' %>
+                        </li>
+                      </ul>
+                  </li>
 
-									<!-- <li>
-										<%#= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
-									</li> -->
-								<% end %>
+                  <!-- <li>
+                    <%#= link_to "Logout", destroy_user_session_path, :method => "DELETE" %>
+                  </li> -->
+                <% end %>
 
-								<!-- <li> -->
-									<%#= link_to "Topics", topics_path %>
-						    <!-- </li> -->
+                <!-- <li> -->
+                  <%#= link_to "Topics", topics_path %>
+                <!-- </li> -->
 
-							</ul><!-- /navbar right -->
-						</nav><!-- /nav -->
-					</div>
-				</div>
-			</div><!-- /container header -->
-		</div><!-- /navbar -->
-	</div><!-- /navbar wrapper -->
-	<!-- End Navigation -->
+              </ul><!-- /navbar right -->
+            </nav><!-- /nav -->
+          </div>
+        </div>
+      </div><!-- /container header -->
+    </div><!-- /navbar -->
+  </div><!-- /navbar wrapper -->
+  <!-- End Navigation -->
 
 
 </header><!-- /header -->
