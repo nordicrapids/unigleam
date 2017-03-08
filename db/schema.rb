@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120132412) do
+ActiveRecord::Schema.define(version: 20170215082354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,12 @@ ActiveRecord::Schema.define(version: 20170120132412) do
     t.datetime "image_updated_at"
     t.string   "slug"
     t.integer  "user_id"
+    t.string   "status"
+    t.text     "synopsis"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   add_index "survey_questions", ["topic_id"], name: "index_survey_questions_on_topic_id", using: :btree
@@ -184,6 +190,7 @@ ActiveRecord::Schema.define(version: 20170120132412) do
     t.string   "marital_status"
     t.string   "zip"
     t.string   "country"
+    t.string   "state"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  port: 5432
+  host: localhost
+
+development:
+  <<: *default
+  database: unigleam_heroku_development
+
+test:
+  <<: *default
+  database: unigleam_test
+
+production:
+  <<: *default
+  database: unigleam_production
